@@ -18,4 +18,6 @@ Writes the site to `dist/` (no dependencies). Page bodies live in `src/`, shared
 
 ## Deploy
 
-Publish the `dist/` directory to any static host (Cloudflare Pages, Netlify, Vercel). Redirect `www` to the apex domain with a 301 and keep trailing slashes on URLs.
+On AnySites (Node): `npm start` runs `server.js`, a zero-dependency static server for `dist/` on `$PORT` (default 3000). No build command is needed because `dist/` is committed — run `python3 build.py` locally and commit the result after editing `src/`.
+
+Any static host also works: publish the `dist/` directory. Redirect `www` to the apex domain with a 301 and keep trailing slashes on URLs.

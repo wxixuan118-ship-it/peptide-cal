@@ -1,0 +1,13 @@
+{
+  "name": "peptide-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static peptide calculator site served from dist/",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

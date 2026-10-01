@@ -157,7 +157,65 @@
     }
   }
 
-  var map = { main: computeMain, recon: computeRecon, dose: computeDose };
+  /* TDEE: Mifflin-St Jeor BMR x activity factor */
+  function computeTdee(root) {
+    var sex = $("#t-sex", root).value;
+    var age = num($("#t-age", root));
+    var height = num($("#t-height", root));
+    var heightCm = $("#t-height-unit", root).value === "in" ? height * 2.54 : height;
+    var weight = num($("#t-weight", root));
+    var weightKg = $("#t-weight-unit", root).value === "lb" ? weight * 0.45359237 : weight;
+    var factor = num($("#t-activity", root));
+    var steps = num($("#t-steps", root));
+    var stepLevel = "";
+    if (steps > 0) {
+      // Tudor-Locke & Bassett (2004) step bands mapped to the standard activity factors
+      var bands = [[5000, 1.2, "sedentary"], [7500, 1.375, "low active"], [10000, 1.55, "somewhat active"],
+                   [12500, 1.725, "active"], [Infinity, 1.9, "highly active"]];
+      for (var i = 0; i < bands.length; i++) {
+        if (steps < bands[i][0]) { factor = bands[i][1]; stepLevel = bands[i][2]; break; }
+      }
+    }
+    set(root, "factor", "× " + factor + (stepLevel ? " (" + stepLevel + ", from steps)" : ""));
+    var ok = age > 0 && heightCm > 0 && weightKg > 0 && factor > 0;
+    var bmr = ok ? 10 * weightKg + 6.25 * heightCm - 5 * age + (sex === "male" ? 5 : -161) : 0;
+    var tdee = bmr * factor;
+    var floor = sex === "male" ? 1500 : 1200;
+    var r = function (v) { return ok ? Math.round(v).toLocaleString("en-US") : "–"; };
+    set(root, "tdee", r(tdee));
+    set(root, "bmr", r(bmr) + " kcal");
+    set(root, "mild", r(tdee - 250) + " kcal");
+    set(root, "loss", r(tdee - 500) + " kcal");
+    set(root, "gain", r(tdee + 250) + " kcal");
+    set(root, "protein", ok ? Math.round(weightKg * 1.2) + "–" + Math.round(weightKg * 1.6) + " g" : "–");
+    var alert = $('[data-out="alert"]', root), msg = "";
+    if (ok && tdee - 500 < floor) msg = "A 500 kcal deficit would put you under " + floor.toLocaleString("en-US") + " kcal a day. Very low intakes should only be followed with medical supervision.";
+    if (ok && age < 18) msg = "The Mifflin-St Jeor equation was developed for adults. Ask a pediatric professional about energy needs under 18.";
+    alert.textContent = msg; alert.hidden = !msg;
+  }
+
+  /* Adaptive TDEE: back-calculated from real intake and weight change */
+  function computeAdaptive(root) {
+    var intake = num($("#a-intake", root));
+    var toKg = $("#a-unit", root).value === "lb" ? 0.45359237 : 1;
+    var start = num($("#a-start", root)) * toKg;
+    var end = num($("#a-end", root)) * toKg;
+    var days = num($("#a-days", root));
+    var ok = intake > 0 && start > 0 && end > 0 && days > 0;
+    var balance = ok ? (end - start) * 7700 / days : 0;   // kcal/day stored (+) or drawn from reserves (-)
+    var tdee = intake - balance;
+    var perWeek = ok ? (end - start) / days * 7 : 0;
+    var unit = toKg === 1 ? "kg" : "lb";
+    set(root, "a-tdee", ok ? Math.round(tdee).toLocaleString("en-US") : "–");
+    set(root, "a-balance", ok ? (balance > 0 ? "+" : balance < 0 ? "−" : "") + Math.abs(Math.round(balance)).toLocaleString("en-US") + " kcal" : "–");
+    set(root, "a-rate", ok ? (perWeek > 0 ? "+" : perWeek < 0 ? "−" : "") + fmt(Math.abs(perWeek / toKg), 2) + " " + unit : "–");
+    set(root, "a-loss", ok ? Math.round(tdee - 500).toLocaleString("en-US") + " kcal" : "–");
+    var alert = $('[data-out="alert"]', root), msg = "";
+    if (ok && days < 14) msg = "Under two weeks of data is dominated by water-weight swings. Use at least 14 days, ideally 3–4 weeks.";
+    alert.textContent = msg; alert.hidden = !msg;
+  }
+
+  var map = { main: computeMain, recon: computeRecon, dose: computeDose, tdee: computeTdee, adaptive: computeAdaptive };
   $$("[data-calc]").forEach(function (root) {
     var fn = map[root.getAttribute("data-calc")];
     if (fn) wire(root, fn);

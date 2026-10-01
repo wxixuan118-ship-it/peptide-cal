@@ -1,0 +1,179 @@
+<section class="hero">
+  <h1>TDEE Calculator</h1>
+  <p class="lead">This TDEE calculator estimates your total daily energy expenditure — the calories you burn in a day — from your age, sex, height, weight and activity level. It then turns that number into practical calorie targets for weight loss, maintenance or gain, plus a daily protein range.</p>
+</section>
+
+<section class="tool" data-calc="tdee" aria-labelledby="tool-title">
+  <form onsubmit="return false">
+    <h2 id="tool-title">TDEE calculator inputs</h2>
+
+    <div class="field">
+      <label for="t-sex">Sex</label>
+      <select id="t-sex">
+        <option value="male" selected>Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="t-age">Age (years)</label>
+      <input id="t-age" type="number" inputmode="numeric" min="0" step="1" value="35">
+    </div>
+
+    <div class="field">
+      <label for="t-height">Height</label>
+      <div class="input-row">
+        <input id="t-height" type="number" inputmode="decimal" min="0" step="any" value="178">
+        <select id="t-height-unit" aria-label="Height unit"><option value="cm" selected>cm</option><option value="in">inches</option></select>
+      </div>
+      <p class="hint">5 ft 10 in = 70 inches.</p>
+    </div>
+
+    <div class="field">
+      <label for="t-weight">Weight</label>
+      <div class="input-row">
+        <input id="t-weight" type="number" inputmode="decimal" min="0" step="any" value="85">
+        <select id="t-weight-unit" aria-label="Weight unit"><option value="kg" selected>kg</option><option value="lb">lb</option></select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="t-activity">Activity level</label>
+      <select id="t-activity">
+        <option value="1.2">Sedentary — desk job, little exercise</option>
+        <option value="1.375">Light — exercise 1–3 days a week</option>
+        <option value="1.55" selected>Moderate — exercise 3–5 days a week</option>
+        <option value="1.725">Very active — hard exercise 6–7 days</option>
+        <option value="1.9">Extra active — physical job plus training</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="t-steps">Average daily steps (optional)</label>
+      <input id="t-steps" type="number" inputmode="numeric" min="0" step="100" placeholder="e.g. 8000">
+      <p class="hint">If you enter steps, they replace the activity level above.</p>
+    </div>
+  </form>
+
+  <div class="results" aria-live="polite">
+    <p class="big">Your TDEE is about <strong><span data-out="tdee">2,778</span> kcal</strong> per day</p>
+    <ul class="stats">
+      <li>BMR (at rest)<b data-out="bmr">1,793 kcal</b></li>
+      <li>Activity factor<b data-out="factor">× 1.55</b></li>
+      <li>Mild loss (−250)<b data-out="mild">2,528 kcal</b></li>
+      <li>Weight loss (−500)<b data-out="loss">2,278 kcal</b></li>
+      <li>Lean gain (+250)<b data-out="gain">3,028 kcal</b></li>
+      <li>Protein per day<b data-out="protein">102–136 g</b></li>
+    </ul>
+    <p class="alert" data-out="alert" hidden></p>
+  </div>
+</section>
+
+<article class="content">
+  <h2>What Is TDEE?</h2>
+  <p>TDEE stands for total daily energy expenditure. It is the sum of everything your body burns in 24 hours: the energy needed to keep you alive at rest (your basal metabolic rate, or BMR), the energy used to digest food, and the energy spent moving — from workouts to walking around the house.</p>
+  <p>Knowing your TDEE is the starting point for any calorie plan. Eat roughly at your TDEE and your weight stays stable; eat below it and you lose weight; eat above it and you gain. This tool gives you that baseline in seconds instead of weeks of food logging.</p>
+
+  <figure>
+    <img src="/assets/img/tdee-breakdown.svg" width="800" height="260" loading="lazy" decoding="async" alt="TDEE calculator breakdown: 1,793 kcal BMR, thermic effect of food and 707 kcal of activity make a 2,778 kcal TDEE">
+    <figcaption>BMR is usually 60–70% of TDEE; movement is the part you control most.</figcaption>
+  </figure>
+
+  <h2>How the TDEE Calculator Works</h2>
+  <p>The calculator uses the Mifflin-St Jeor equation, published in 1990 and widely regarded as one of the most accurate formulas for estimating resting energy expenditure in healthy adults (<a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" rel="noopener" target="_blank">Mifflin et al., American Journal of Clinical Nutrition</a>).</p>
+  <h3>TDEE step 1: BMR</h3>
+  <p class="formula">Men:   BMR = 10 × weight (kg) + 6.25 × height (cm) − 5 × age + 5<br>Women: BMR = 10 × weight (kg) + 6.25 × height (cm) − 5 × age − 161</p>
+  <h3>TDEE step 2: activity factor</h3>
+  <p class="formula">TDEE = BMR × activity factor</p>
+  <p>The activity factors run from 1.2 for a sedentary lifestyle to 1.9 for very physical work plus training. Most people overestimate their activity, so if you are unsure between two levels, choose the lower one.</p>
+
+  <h2>TDEE Calculator with Steps</h2>
+  <p>Picking an activity level is guesswork, and most people pick one level too high. If you wear a phone or watch that counts steps, a TDEE calculator with steps is more objective. Enter your average daily steps over the last week and the calculator selects the activity factor from published pedometer bands (<a href="https://pubmed.ncbi.nlm.nih.gov/14715035/" rel="noopener" target="_blank">Tudor-Locke &amp; Bassett, Sports Medicine</a>):</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Daily steps</th><th>Step category</th><th>Activity factor</th></tr></thead>
+      <tbody>
+        <tr><td>Under 5,000</td><td>Sedentary</td><td>1.2</td></tr>
+        <tr><td>5,000–7,499</td><td>Low active</td><td>1.375</td></tr>
+        <tr><td>7,500–9,999</td><td>Somewhat active</td><td>1.55</td></tr>
+        <tr><td>10,000–12,499</td><td>Active</td><td>1.725</td></tr>
+        <tr><td>12,500 or more</td><td>Highly active</td><td>1.9</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Steps capture walking well but miss cycling, swimming and weight training. If you do a lot of those, compare the step-based result with the activity-level result and lean towards the higher one.</p>
+
+  <h2>TDEE Calculator Example</h2>
+  <p>A 35-year-old man who is 178 cm tall, weighs 85 kg and exercises three to five days a week:</p>
+  <ul>
+    <li>BMR: 10 × 85 + 6.25 × 178 − 5 × 35 + 5 = 1,793 kcal.</li>
+    <li>TDEE: 1,793 × 1.55 = <strong>2,778 kcal</strong> per day.</li>
+    <li>Weight loss target: 2,778 − 500 = 2,278 kcal, which typically leads to around 0.5 kg (1 lb) of loss per week.</li>
+  </ul>
+  <p>Treat the result as an estimate. Track your weight for two to three weeks at the suggested intake, and adjust by 100–200 kcal if the scale moves faster or slower than expected.</p>
+
+  <h2>Using Your TDEE for Weight Loss</h2>
+  <p>A deficit of 250–500 kcal below TDEE is a sustainable range for most adults. Bigger deficits speed up early weight loss but make it harder to keep muscle, sleep well and stick with the plan. As a general safety floor, intakes below about 1,200 kcal a day for women or 1,500 kcal for men should only be followed under medical supervision; the calculator warns you if a target drops below that.</p>
+  <p>Your TDEE also falls as you lose weight, because a smaller body burns less energy. Recalculate after every 4–5 kg (about 10 lb) of change so your target stays accurate.</p>
+
+  <h2>Adaptive TDEE Calculator</h2>
+  <p>Formulas estimate; your own data measures. An adaptive TDEE calculator works backwards from what actually happened: how much you ate on average and how your weight changed. Every kilogram of body weight change represents roughly 7,700 kcal, so:</p>
+  <p class="formula">adaptive TDEE = average daily intake − (weight change (kg) × 7,700 ÷ days)</p>
+  <div class="tool" data-calc="adaptive" aria-labelledby="adaptive-title">
+    <form onsubmit="return false">
+      <h3 id="adaptive-title">Adaptive TDEE inputs</h3>
+      <div class="field">
+        <label for="a-intake">Average calories eaten per day</label>
+        <input id="a-intake" type="number" inputmode="numeric" min="0" step="10" value="2200">
+      </div>
+      <div class="field">
+        <label for="a-unit">Weight unit</label>
+        <select id="a-unit"><option value="kg" selected>kg</option><option value="lb">lb</option></select>
+      </div>
+      <div class="field">
+        <label for="a-start">Starting weight (weekly average)</label>
+        <input id="a-start" type="number" inputmode="decimal" min="0" step="any" value="86">
+      </div>
+      <div class="field">
+        <label for="a-end">Current weight (weekly average)</label>
+        <input id="a-end" type="number" inputmode="decimal" min="0" step="any" value="85">
+      </div>
+      <div class="field">
+        <label for="a-days">Days between the two weights</label>
+        <input id="a-days" type="number" inputmode="numeric" min="1" step="1" value="28">
+      </div>
+    </form>
+    <div class="results" aria-live="polite">
+      <p class="big">Your measured TDEE is <strong><span data-out="a-tdee">2,475</span> kcal</strong> per day</p>
+      <ul class="stats">
+        <li>Daily energy balance<b data-out="a-balance">−275 kcal</b></li>
+        <li>Weight change per week<b data-out="a-rate">−0.25 kg</b></li>
+        <li>Target for −500 kcal<b data-out="a-loss">1,975 kcal</b></li>
+      </ul>
+      <p class="alert" data-out="alert" hidden></p>
+    </div>
+  </div>
+  <p>For a reliable adaptive result, log food consistently for at least 3–4 weeks and compare weekly average weights, not single weigh-ins, because daily water swings of 1–2 kg are normal. Re-run it every month: as your weight and habits change, your adaptive TDEE changes too.</p>
+
+  <h2>TDEE Calculator for GLP-1 Users</h2>
+  <p>People using GLP-1 based medicines often eat far less than before because appetite drops sharply. That makes it easy to fall well below TDEE and short on protein, which raises the risk of losing muscle along with fat. Many clinicians suggest aiming for roughly 1.2–1.6 g of protein per kg of body weight while losing weight; the calculator shows that range for you.</p>
+  <p>If you are measuring a peptide yourself, our <a href="/">peptide calculator</a> converts doses into syringe units, the <a href="/peptide-dosage-calculator/">peptide dosage calculator</a> shows how long a vial lasts, and the <a href="/retatrutide-peptide-calculator/">retatrutide peptide calculator</a> covers that investigational compound. Always follow your prescriber's plan for both medication and nutrition.</p>
+
+  <section id="faq">
+    <h2>TDEE Calculator FAQ</h2>
+    <h3>How accurate is a TDEE calculator?</h3>
+    <p>For most healthy adults, Mifflin-St Jeor estimates resting needs within about 10%. Real-world tracking over a few weeks is the best way to fine-tune the number.</p>
+    <h3>Should I eat my TDEE calories to lose weight?</h3>
+    <p>No. Eating at TDEE maintains your weight. To lose weight, eat 250–500 kcal below it; the calculator shows both targets.</p>
+    <h3>What is the difference between BMR and TDEE?</h3>
+    <p>BMR is the energy you burn at complete rest. TDEE adds digestion and all daily movement, so it is always higher than BMR.</p>
+    <h3>Is a TDEE calculator with steps more accurate?</h3>
+    <p>Usually, because step counts are measured rather than guessed. It can underestimate people whose training is mostly cycling, swimming or lifting, since those barely register as steps.</p>
+    <h3>What is an adaptive TDEE calculator?</h3>
+    <p>It calculates TDEE from your real average intake and weight change over several weeks, instead of from a formula. It automatically accounts for your individual metabolism and activity.</p>
+    <h3>Does the TDEE calculator work for athletes?</h3>
+    <p>It works as a starting point. Very muscular people burn more than the formula predicts, so they may need to adjust upward after tracking.</p>
+  </section>
+
+  <p class="note">This TDEE calculator gives estimates for healthy adults and is for educational purposes only. It is not medical or dietetic advice. If you are pregnant, under 18, have a medical condition or take weight-loss medication, plan your intake with a doctor or registered dietitian. See our <a href="/disclaimer/">medical disclaimer</a> and <a href="/about/">how our formulas are checked</a>.</p>
+</article>

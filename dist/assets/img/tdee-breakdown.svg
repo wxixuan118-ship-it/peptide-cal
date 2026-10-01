@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" width="800" height="260" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="260" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="44" font-size="22" font-weight="700" fill="#15232b">What makes up TDEE: 2,778 kcal example</text>
+  <text x="40" y="70" font-size="15" fill="#546570">35-year-old man, 178 cm, 85 kg, moderately active</text>
+  <rect x="40" y="100" width="465" height="60" rx="8" fill="#0b7a75"/>
+  <rect x="505" y="100" width="72" height="60" fill="#3cc2b9"/>
+  <rect x="577" y="100" width="183" height="60" rx="8" fill="#9fd9d4"/>
+  <text x="60" y="137" font-size="17" font-weight="700" fill="#ffffff">BMR · 1,793 kcal (65%)</text>
+  <text x="512" y="137" font-size="14" font-weight="700" fill="#062523">TEF</text>
+  <text x="590" y="137" font-size="15" font-weight="700" fill="#062523">Activity · 707</text>
+  <g font-size="14" fill="#15232b">
+    <rect x="40" y="190" width="14" height="14" fill="#0b7a75"/><text x="62" y="202">Basal metabolic rate — energy at complete rest</text>
+    <rect x="40" y="216" width="14" height="14" fill="#3cc2b9"/><text x="62" y="228">Thermic effect of food — about 10% of intake</text>
+    <rect x="440" y="190" width="14" height="14" fill="#9fd9d4"/><text x="462" y="202">Steps, exercise and daily movement</text>
+  </g>
+</svg>

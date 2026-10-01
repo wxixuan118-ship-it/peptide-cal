@@ -25,6 +25,8 @@ NAV = [
     ("/", "Peptide Calculator"),
     ("/peptide-reconstitution-calculator/", "Reconstitution Calculator"),
     ("/peptide-dosage-calculator/", "Dosage Calculator"),
+    ("/retatrutide-peptide-calculator/", "Retatrutide"),
+    ("/tdee-calculator/", "TDEE"),
 ]
 
 PAGES = [
@@ -57,6 +59,26 @@ PAGES = [
         "crumb": "Peptide Dosage Calculator",
         "app": "Peptide Dosage Calculator",
         "priority": "0.9",
+    },
+    {
+        "path": "/retatrutide-peptide-calculator/",
+        "src": "retatrutide.html",
+        "title": "Retatrutide Peptide Calculator: mg to Syringe Units",
+        "description": ("Retatrutide peptide calculator: convert vial mg, bacteriostatic water and a "
+                        "prescribed dose into U-100 syringe units and mL. Math only, no dose advice."),
+        "crumb": "Retatrutide Peptide Calculator",
+        "app": "Retatrutide Peptide Calculator",
+        "priority": "0.8",
+    },
+    {
+        "path": "/tdee-calculator/",
+        "src": "tdee.html",
+        "title": "TDEE Calculator with Steps & Adaptive TDEE",
+        "description": ("Free TDEE calculator with steps and an adaptive mode: estimate daily calorie burn, "
+                        "then get weight-loss targets and a protein range in seconds."),
+        "crumb": "TDEE Calculator",
+        "app": "TDEE Calculator",
+        "priority": "0.8",
     },
     {
         "path": "/about/", "src": "about.html", "crumb": "About",
@@ -122,6 +144,8 @@ TEMPLATE = """<!doctype html>
       <a href="/">Peptide Calculator</a>
       <a href="/peptide-reconstitution-calculator/">Peptide Reconstitution Calculator</a>
       <a href="/peptide-dosage-calculator/">Peptide Dosage Calculator</a>
+      <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
+      <a href="/tdee-calculator/">TDEE Calculator</a>
       <a href="/about/">About</a>
       <a href="/disclaimer/">Medical Disclaimer</a>
       <a href="/privacy/">Privacy</a>

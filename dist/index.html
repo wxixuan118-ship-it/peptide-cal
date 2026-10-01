@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peptide Calculator: Free mg to Syringe Units Tool</title>
+<meta name="description" content="Free peptide calculator: enter vial mg, bacteriostatic water and your dose to get exact syringe units, mL per injection and doses per vial. Instant results.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://peptidecalculatorpro.org/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Peptide Calculator">
+<meta property="og:title" content="Peptide Calculator: Free mg to Syringe Units Tool">
+<meta property="og:description" content="Free peptide calculator: enter vial mg, bacteriostatic water and your dose to get exact syringe units, mL per injection and doses per vial. Instant results.">
+<meta property="og:url" content="https://peptidecalculatorpro.org/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0b7a75">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css?v=6c7e2677">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://peptidecalculatorpro.org/#website",
+      "url": "https://peptidecalculatorpro.org/",
+      "name": "Peptide Calculator",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://peptidecalculatorpro.org/#webpage",
+      "url": "https://peptidecalculatorpro.org/",
+      "name": "Peptide Calculator: Free mg to Syringe Units Tool",
+      "description": "Free peptide calculator: enter vial mg, bacteriostatic water and your dose to get exact syringe units, mL per injection and doses per vial. Instant results.",
+      "isPartOf": {
+        "@id": "https://peptidecalculatorpro.org/#website"
+      },
+      "dateModified": "2026-10-01",
+      "inLanguage": "en",
+      "mainEntity": {
+        "@id": "https://peptidecalculatorpro.org/#app"
+      },
+      "breadcrumb": {
+        "@id": "https://peptidecalculatorpro.org/#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://peptidecalculatorpro.org/#app",
+      "name": "Peptide Calculator",
+      "url": "https://peptidecalculatorpro.org/",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any (web browser)",
+      "browserRequirements": "Requires JavaScript for live recalculation",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free peptide calculator: enter vial mg, bacteriostatic water and your dose to get exact syringe units, mL per injection and doses per vial. Instant results."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://peptidecalculatorpro.org/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Peptide Calculator",
+          "item": "https://peptidecalculatorpro.org/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://peptidecalculatorpro.org/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does a peptide calculator convert mg to units?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It divides the vial's mg by the water added to get mg per mL, divides your dose by that concentration to get mL, then multiplies by 100 because a U-100 syringe has 100 units per mL."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this peptide calculator free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. It is free, needs no account, and runs entirely in your browser, so the numbers you enter are never sent to a server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does more water change the peptide dose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Water only changes the concentration. With more water you draw more units for the same peptide dose; with less water you draw fewer units."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the peptide calculator handle blends?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, if you calculate one component at a time. Enter that component's mg in the vial and its dose; the units you get also deliver the other components in the same ratio as the blend."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which syringe does the peptide calculator assume?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A U-100 insulin syringe, where 1 mL equals 100 units. If you use a different syringe, convert the mL result shown instead of the unit figure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a peptides calculator the same as a dosage calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They use the same formula. A peptides calculator usually focuses on units per injection, while a dosage calculator also adds frequency and vial supply."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">P</span>Peptide Calculator</a>
+    <nav class="site-nav" aria-label="Calculators">
+      <a href="/" aria-current="page">Peptide Calculator</a>
+      <a href="/peptide-reconstitution-calculator/">Reconstitution Calculator</a>
+      <a href="/peptide-dosage-calculator/">Dosage Calculator</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="hero">
+  <h1>Peptide Calculator</h1>
+  <p class="lead">This peptide calculator turns three numbers — the mg of peptide in your vial, the millilitres of bacteriostatic water you add, and the dose you want — into the exact units to draw on a U-100 insulin syringe. The peptide calculator updates as you type and runs entirely in your browser.</p>
+</section>
+
+<section class="tool" data-calc="main" aria-labelledby="tool-title">
+  <form onsubmit="return false">
+    <h2 id="tool-title">Peptide calculator inputs</h2>
+
+    <div class="field">
+      <label for="vial">Peptide amount in the vial</label>
+      <div class="input-row">
+        <input id="vial" type="number" inputmode="decimal" min="0" step="any" value="5">
+        <select id="vial-unit" aria-label="Vial amount unit"><option value="mg" selected>mg</option><option value="mcg">mcg</option></select>
+      </div>
+      <div class="chips">
+        <button type="button" class="chip" data-target="vial" data-value="2">2 mg</button>
+        <button type="button" class="chip" data-target="vial" data-value="5">5 mg</button>
+        <button type="button" class="chip" data-target="vial" data-value="10">10 mg</button>
+        <button type="button" class="chip" data-target="vial" data-value="15">15 mg</button>
+        <button type="button" class="chip" data-target="vial" data-value="20">20 mg</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="water">Bacteriostatic water added (mL)</label>
+      <input id="water" type="number" inputmode="decimal" min="0" step="any" value="2">
+      <div class="chips">
+        <button type="button" class="chip" data-target="water" data-value="1">1 mL</button>
+        <button type="button" class="chip" data-target="water" data-value="2">2 mL</button>
+        <button type="button" class="chip" data-target="water" data-value="3">3 mL</button>
+        <button type="button" class="chip" data-target="water" data-value="5">5 mL</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="dose">Desired dose per injection</label>
+      <div class="input-row">
+        <input id="dose" type="number" inputmode="decimal" min="0" step="any" value="250">
+        <select id="dose-unit" aria-label="Dose unit"><option value="mcg" selected>mcg</option><option value="mg">mg</option></select>
+      </div>
+      <p class="hint">1 mg = 1,000 mcg. Switch the unit if your dose is written in mg.</p>
+    </div>
+
+    <div class="field">
+      <label for="syringe">Syringe size</label>
+      <select id="syringe">
+        <option value="30">0.3 mL (30 units)</option>
+        <option value="50">0.5 mL (50 units)</option>
+        <option value="100" selected>1.0 mL (100 units)</option>
+      </select>
+    </div>
+  </form>
+
+  <div class="results" aria-live="polite">
+    <p class="big">Draw to <strong><span data-out="units">10</span> units</strong> on a U-100 syringe</p>
+    <div class="syringe" aria-hidden="true"><svg viewBox="0 0 360 70" role="presentation"><rect class="barrel" x="30" y="12" width="300" height="34" rx="5" stroke-width="1.5"/><rect class="fill" x="31" y="13" width="30.0" height="32"/><rect class="plunger" x="60.0" y="8" width="5" height="42"/><rect class="plunger" x="2" y="26" width="28" height="6"/><g class="ticks" data-cap="100"><line class="tick" x1="30" y1="14" x2="30" y2="26"/><text class="tick-label" x="30" y="62" text-anchor="middle">0</text><line class="tick" x1="60" y1="14" x2="60" y2="22"/><line class="tick" x1="90" y1="14" x2="90" y2="26"/><text class="tick-label" x="90" y="62" text-anchor="middle">20</text><line class="tick" x1="120" y1="14" x2="120" y2="22"/><line class="tick" x1="150" y1="14" x2="150" y2="26"/><text class="tick-label" x="150" y="62" text-anchor="middle">40</text><line class="tick" x1="180" y1="14" x2="180" y2="22"/><line class="tick" x1="210" y1="14" x2="210" y2="26"/><text class="tick-label" x="210" y="62" text-anchor="middle">60</text><line class="tick" x1="240" y1="14" x2="240" y2="22"/><line class="tick" x1="270" y1="14" x2="270" y2="26"/><text class="tick-label" x="270" y="62" text-anchor="middle">80</text><line class="tick" x1="300" y1="14" x2="300" y2="22"/><line class="tick" x1="330" y1="14" x2="330" y2="26"/><text class="tick-label" x="330" y="62" text-anchor="middle">100</text></g></svg></div>
+    <ul class="stats">
+      <li>Volume per dose<b data-out="ml">0.1 mL</b></li>
+      <li>Concentration<b data-out="conc">2.5 mg/mL</b></li>
+      <li>Peptide per unit<b data-out="per-unit">25 mcg</b></li>
+      <li>Doses per vial<b data-out="doses">20</b></li>
+    </ul>
+    <p class="alert" data-out="alert" hidden></p>
+  </div>
+</section>
+
+<article class="content">
+  <h2>How to Use the Peptide Calculator</h2>
+  <p>You need three numbers from your vial label and your plan. The tool handles the unit conversions, so you never have to move a decimal point by hand.</p>
+  <ol>
+    <li><strong>Enter the vial amount.</strong> This is the total peptide printed on the label, usually in mg (for example 5 mg or 10 mg). Use the mcg option if the label lists micrograms.</li>
+    <li><strong>Enter the water you added.</strong> Type the millilitres of bacteriostatic water used to reconstitute the powder. More water means a weaker solution and more units per dose.</li>
+    <li><strong>Enter your dose.</strong> Type the amount prescribed or planned for one injection, in mcg or mg.</li>
+    <li><strong>Pick your syringe.</strong> The calculator warns you if the draw does not fit, or if it is too small to measure well.</li>
+    <li><strong>Read the result.</strong> The large number is how many units to pull on the syringe. The drawing shows roughly where the plunger should sit.</li>
+  </ol>
+  <p>Have not mixed the vial yet? Plan the water first with the <a href="/peptide-reconstitution-calculator/">peptide reconstitution calculator</a>, which works backwards from the units you want to draw.</p>
+
+  <h2>Peptide Calculator Formula</h2>
+  <p>The arithmetic takes three steps. Knowing it lets you double-check any result on paper.</p>
+  <h3>1. Peptide concentration</h3>
+  <p class="formula">concentration (mg/mL) = peptide in vial (mg) ÷ water added (mL)</p>
+  <h3>2. Peptide volume per dose</h3>
+  <p class="formula">volume (mL) = dose (mg) ÷ concentration (mg/mL)</p>
+  <h3>3. Peptide dose in syringe units</h3>
+  <p class="formula">units = volume (mL) × 100</p>
+  <p>The factor of 100 comes from the U-100 insulin syringe: one millilitre is divided into 100 units, so each unit holds 0.01 mL. It is the standard syringe for small subcutaneous volumes, and the one this page assumes.</p>
+
+  <h2>Peptide Calculator Example: 5 mg Vial</h2>
+  <p>Say you have a 5 mg vial, you add 2 mL of bacteriostatic water, and your dose is 250 mcg. Here is the working:</p>
+  <ul>
+    <li>Concentration: 5 mg ÷ 2 mL = 2.5 mg/mL, which is 2,500 mcg per mL.</li>
+    <li>Volume: 0.25 mg ÷ 2.5 mg/mL = 0.10 mL.</li>
+    <li>Units: 0.10 mL × 100 = <strong>10 units</strong> on a U-100 syringe.</li>
+    <li>Doses per vial: 5 mg ÷ 0.25 mg = 20 doses.</li>
+  </ul>
+  <p>If you had added 1 mL instead, the same 250 mcg dose would be 5 units. Less water gives a stronger solution and a smaller draw. With 3 mL it would be 15 units. The peptide dose is identical in all three cases — only the volume changes.</p>
+
+  <h2>Peptide Calculator mg and mcg Conversions</h2>
+  <p>Most mistakes happen when a vial is labelled in mg but the dose is written in mcg. The calculator handles the switch automatically, but this quick table helps you sanity-check it:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>mg</th><th>mcg</th><th>Units at 2.5 mg/mL</th><th>Units at 5 mg/mL</th></tr></thead>
+      <tbody>
+        <tr><td>0.1 mg</td><td>100 mcg</td><td>4 units</td><td>2 units</td></tr>
+        <tr><td>0.25 mg</td><td>250 mcg</td><td>10 units</td><td>5 units</td></tr>
+        <tr><td>0.5 mg</td><td>500 mcg</td><td>20 units</td><td>10 units</td></tr>
+        <tr><td>1 mg</td><td>1,000 mcg</td><td>40 units</td><td>20 units</td></tr>
+        <tr><td>2.5 mg</td><td>2,500 mcg</td><td>100 units</td><td>50 units</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A 2.5 mg/mL solution is a 5 mg vial with 2 mL of water; 5 mg/mL is a 10 mg vial with 2 mL. For anything outside this table, use the tool above — it accepts any mg or mcg value.</p>
+
+  <h2>Peptide Calculator Syringe Units Chart</h2>
+  <figure>
+    <img src="/assets/img/u100-syringe-units.svg" width="800" height="260" loading="lazy" decoding="async" alt="Peptide calculator syringe chart showing a U-100 insulin syringe filled to 20 units, which equals 0.20 mL">
+    <figcaption>On a 1 mL U-100 syringe each small line is 2 units; on 0.3 mL and 0.5 mL syringes each line is 1 unit.</figcaption>
+  </figure>
+  <p>Units are a volume mark on the syringe, not a measure of peptide. Ten units always means 0.10 mL, whatever is in the vial. That is why the concentration matters: the same 10 units can hold 250 mcg in one vial and 500 mcg in another. For a refresher on handling an insulin syringe, MedlinePlus has a clear guide to <a href="https://medlineplus.gov/ency/patientinstructions/000660.htm" rel="noopener" target="_blank">giving an insulin injection</a>.</p>
+
+  <h2>Peptide Calculator Accuracy Tips</h2>
+  <p>The math is exact, but the draw is only as good as the inputs. A few habits keep results meaningful in practice:</p>
+  <ul>
+    <li><strong>Aim for 5–50 units per dose.</strong> Draws under 2–3 units are hard to read. If your result is tiny, add more water when you next reconstitute.</li>
+    <li><strong>Match the syringe to the draw.</strong> A 0.3 mL syringe has 1-unit lines, so small doses are easier to measure than on a 1 mL barrel.</li>
+    <li><strong>Write the concentration on the vial.</strong> Once mixed, label the vial with mg/mL so you never have to remember how much water went in.</li>
+    <li><strong>Re-check the label.</strong> Some vials state total content per vial and others per pack. Enter the amount in the vial you are actually using.</li>
+  </ul>
+  <p>Planning a weekly schedule? The <a href="/peptide-dosage-calculator/">peptide dosage calculator</a> adds dosing frequency and shows how many days a vial will last.</p>
+
+  <h2>Other Peptide Calculators on This Site</h2>
+  <div class="cards">
+    <div class="card">
+      <h3><a href="/peptide-reconstitution-calculator/">Peptide reconstitution calculator</a></h3>
+      <p>Works out how much bacteriostatic water to add so each dose lands on a round, easy-to-read number of units.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/peptide-dosage-calculator/">Peptide dosage calculator</a></h3>
+      <p>Converts a dose into units and mL, then shows doses per vial, days of supply and a dose-to-units table.</p>
+    </div>
+  </div>
+
+  <section id="faq">
+    <h2>Peptide Calculator FAQ</h2>
+    <h3>How does a peptide calculator convert mg to units?</h3>
+    <p>It divides the vial's mg by the water added to get mg per mL, divides your dose by that concentration to get mL, then multiplies by 100 because a U-100 syringe has 100 units per mL.</p>
+    <h3>Is this peptide calculator free?</h3>
+    <p>Yes. It is free, needs no account, and runs entirely in your browser, so the numbers you enter are never sent to a server.</p>
+    <h3>Does more water change the peptide dose?</h3>
+    <p>No. Water only changes the concentration. With more water you draw more units for the same peptide dose; with less water you draw fewer units.</p>
+    <h3>Can the peptide calculator handle blends?</h3>
+    <p>Yes, if you calculate one component at a time. Enter that component's mg in the vial and its dose; the units you get also deliver the other components in the same ratio as the blend.</p>
+    <h3>Which syringe does the peptide calculator assume?</h3>
+    <p>A U-100 insulin syringe, where 1 mL equals 100 units. If you use a different syringe, convert the mL result shown instead of the unit figure.</p>
+    <h3>Is a peptides calculator the same as a dosage calculator?</h3>
+    <p>They use the same formula. A peptides calculator usually focuses on units per injection, while a dosage calculator also adds frequency and vial supply.</p>
+  </section>
+
+  <p class="note">This peptide calculator performs arithmetic only and is provided for educational purposes. It does not recommend any peptide, dose or protocol. Confirm every dose with a licensed healthcare professional, and read our <a href="/disclaimer/">medical disclaimer</a> and <a href="/about/">how the formulas are checked</a>. Compounded products are not FDA-approved; see the <a href="https://www.fda.gov/drugs/guidance-compliance-regulatory-information/human-drug-compounding" rel="noopener" target="_blank">FDA's guidance on drug compounding</a>.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="/">Peptide Calculator</a>
+      <a href="/peptide-reconstitution-calculator/">Peptide Reconstitution Calculator</a>
+      <a href="/peptide-dosage-calculator/">Peptide Dosage Calculator</a>
+      <a href="/about/">About</a>
+      <a href="/disclaimer/">Medical Disclaimer</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+    <p>Educational tool only — not medical advice. Always confirm doses with a licensed healthcare professional. Last reviewed 2026-10-01.</p>
+  </div>
+</footer>
+<script src="/assets/calc.js?v=eb52f064" defer></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" width="800" height="260" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="260" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="44" font-size="22" font-weight="700" fill="#15232b">U-100 insulin syringe: 1 mL = 100 units</text>
+  <text x="40" y="70" font-size="15" fill="#546570">Each small line on a 1 mL syringe is 2 units (0.02 mL). On 0.3 and 0.5 mL syringes each line is 1 unit.</text>
+  <rect x="60" y="110" width="560" height="56" rx="8" fill="#ffffff" stroke="#546570" stroke-width="2"/>
+  <rect x="62" y="112" width="112" height="52" fill="#0b7a75" opacity=".7"/>
+  <rect x="174" y="104" width="8" height="68" fill="#546570"/>
+  <rect x="182" y="132" width="490" height="12" fill="#c5d2d7"/>
+  <rect x="672" y="112" width="14" height="52" rx="3" fill="#546570"/>
+  <rect x="20" y="134" width="40" height="8" fill="#9db0ba"/>
+  <g stroke="#546570" stroke-width="1.5">
+    <line x1="62" y1="112" x2="62" y2="134"/><line x1="118" y1="112" x2="118" y2="126"/>
+    <line x1="174" y1="112" x2="174" y2="134"/><line x1="230" y1="112" x2="230" y2="126"/>
+    <line x1="286" y1="112" x2="286" y2="134"/><line x1="342" y1="112" x2="342" y2="126"/>
+    <line x1="398" y1="112" x2="398" y2="134"/><line x1="454" y1="112" x2="454" y2="126"/>
+    <line x1="510" y1="112" x2="510" y2="134"/><line x1="566" y1="112" x2="566" y2="126"/>
+    <line x1="618" y1="112" x2="618" y2="134"/>
+  </g>
+  <g font-size="13" fill="#15232b" text-anchor="middle">
+    <text x="62" y="190">0</text><text x="174" y="190">20</text><text x="286" y="190">40</text>
+    <text x="398" y="190">60</text><text x="510" y="190">80</text><text x="618" y="190">100</text>
+  </g>
+  <text x="60" y="226" font-size="15" fill="#0b7a75" font-weight="700">Filled to 20 units = 0.20 mL</text>
+  <text x="330" y="226" font-size="15" fill="#546570">units ÷ 100 = mL   ·   mL × 100 = units</text>
+</svg>

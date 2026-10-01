@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="800" height="280" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="280" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="44" font-size="22" font-weight="700" fill="#15232b">From dose to syringe units in three numbers</text>
+  <g font-size="15" fill="#15232b">
+    <rect x="40" y="80" width="210" height="130" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="60" y="112" font-weight="700">Concentration</text>
+    <text x="60" y="142" fill="#546570">vial mg ÷ water mL</text>
+    <text x="60" y="182" font-size="22" font-weight="700" fill="#0b7a75">5 mg/mL</text>
+    <rect x="295" y="80" width="210" height="130" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="315" y="112" font-weight="700">Volume per dose</text>
+    <text x="315" y="142" fill="#546570">dose mg ÷ mg/mL</text>
+    <text x="315" y="182" font-size="22" font-weight="700" fill="#0b7a75">0.1 mL</text>
+    <rect x="550" y="80" width="210" height="130" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="570" y="112" font-weight="700">Syringe units</text>
+    <text x="570" y="142" fill="#546570">mL × 100 (U-100)</text>
+    <text x="570" y="182" font-size="22" font-weight="700" fill="#0b7a75">10 units</text>
+  </g>
+  <path d="M254 145 h36 M509 145 h36" stroke="#0b7a75" stroke-width="3"/>
+  <text x="40" y="248" font-size="14" fill="#546570">Example: 10 mg vial + 2 mL water, 500 mcg (0.5 mg) dose.</text>
+</svg>

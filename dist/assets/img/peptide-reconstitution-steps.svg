@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="300" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="44" font-size="22" font-weight="700" fill="#15232b">Reconstituting a lyophilized peptide vial</text>
+  <g transform="translate(70,80)">
+    <rect x="20" y="0" width="60" height="18" rx="4" fill="#9db0ba"/>
+    <rect x="10" y="18" width="80" height="130" rx="14" fill="#ffffff" stroke="#546570" stroke-width="2"/>
+    <rect x="12" y="118" width="76" height="28" rx="10" fill="#e9e2cf"/>
+    <text x="50" y="80" font-size="14" text-anchor="middle" fill="#15232b">5 mg</text>
+    <text x="50" y="180" font-size="15" text-anchor="middle" font-weight="700" fill="#15232b">1. Powder vial</text>
+  </g>
+  <path d="M200 150 h60" stroke="#0b7a75" stroke-width="3" marker-end="url(#a)"/>
+  <g transform="translate(280,80)">
+    <rect x="0" y="50" width="150" height="34" rx="6" fill="#ffffff" stroke="#546570" stroke-width="2"/>
+    <rect x="2" y="52" width="80" height="30" fill="#7fc8e8" opacity=".8"/>
+    <rect x="150" y="62" width="40" height="10" fill="#9db0ba"/>
+    <text x="95" y="180" font-size="15" text-anchor="middle" font-weight="700" fill="#15232b">2. Add BAC water</text>
+    <text x="95" y="120" font-size="14" text-anchor="middle" fill="#546570">e.g. 2 mL, down the glass</text>
+  </g>
+  <path d="M500 150 h60" stroke="#0b7a75" stroke-width="3" marker-end="url(#a)"/>
+  <g transform="translate(590,80)">
+    <rect x="20" y="0" width="60" height="18" rx="4" fill="#9db0ba"/>
+    <rect x="10" y="18" width="80" height="130" rx="14" fill="#ffffff" stroke="#546570" stroke-width="2"/>
+    <rect x="12" y="60" width="76" height="86" rx="10" fill="#7fc8e8" opacity=".55"/>
+    <text x="50" y="100" font-size="14" text-anchor="middle" fill="#15232b">2.5 mg/mL</text>
+    <text x="50" y="180" font-size="15" text-anchor="middle" font-weight="700" fill="#15232b">3. Swirl, don’t shake</text>
+  </g>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#0b7a75"/></marker></defs>
+</svg>

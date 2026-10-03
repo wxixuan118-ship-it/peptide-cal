@@ -66,12 +66,15 @@ a { color: var(--accent); text-underline-offset: 2px; }
 .hint { font-size: 13px; color: var(--muted); margin: 4px 0 0; }
 .input-row { display: flex; gap: 8px; }
 .input-row input { flex: 1; min-width: 0; }
-input[type="number"], select {
+input[type="number"], select, textarea {
   width: 100%; font: inherit; color: var(--text); background: var(--surface-2);
   border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; min-height: 46px;
 }
 select { width: auto; max-width: 100%; }
-input:focus, select:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+textarea { resize: vertical; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .05em; word-break: break-all; }
+.stats .wide { grid-column: 1 / -1; }
+.stats .wide b { font-size: 15px; font-weight: 500; }
+input:focus, select:focus, textarea:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .chip { font: inherit; font-size: 14px; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; padding: 4px 12px; cursor: pointer; min-height: 32px; }
 .chip:hover { border-color: var(--accent); }

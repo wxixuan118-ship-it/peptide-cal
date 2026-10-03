@@ -31,6 +31,9 @@
       <label for="b-c">Peptide C in the vial (mg, optional)</label>
       <input id="b-c" type="number" inputmode="decimal" min="0" step="any" value="0">
       <p class="hint">Leave at 0 for a two-peptide blend.</p>
+      <div class="chips">
+        <button type="button" class="chip" data-preset="b-a=50,b-b=10,b-c=10,b-water=3">GLOW 50 / 10 / 10 mg preset</button>
+      </div>
     </div>
 
     <div class="field">
@@ -118,8 +121,11 @@
   <p>Switch the calculator to measure by Peptide B at 250 mcg and the answer is still 10 units. Both inputs describe the same draw from the same vial.</p>
 
   <h2>Three-Peptide Blends</h2>
-  <p>Some blends combine three peptides in very different amounts, for example 50 mg + 10 mg + 10 mg. This peptide calculator for blends handles them the same way: enter all three, choose the one your plan is written around, and read the other two from the table. With 3 mL of water and a 2 mg dose of the 50 mg component, you draw 12 units and receive 400 mcg of each 10 mg component.</p>
+  <p>Some blends, often called peptide stacks or mixes, combine three peptides in very different amounts, for example 50 mg + 10 mg + 10 mg. This peptide calculator for blends handles them the same way: enter all three, choose the one your plan is written around, and read the other two from the table. With 3 mL of water and a 2 mg dose of the 50 mg component, you draw 12 units and receive 400 mcg of each 10 mg component.</p>
   <p>The total blend strength (all peptides added together, per mL) is useful for one thing: checking the label. Many blend vials state only the total mg, so compare that figure against the sum of the components before you rely on the numbers.</p>
+
+  <h2>GLOW Peptide Blend Calculator Preset</h2>
+  <p>A GLOW vial is a common three-peptide blend, usually labelled 70 mg in total: 50 mg GHK-Cu, 10 mg BPC-157 and 10 mg TB-500. The GLOW preset button above fills those amounts with 3 mL of water. Always check your own label, as vendors vary the split. The preset is an input shortcut, not a dosing suggestion; set the dose of the component your prescriber names.</p>
 
   <h2>Peptide Blend Ratio Chart</h2>
   <p>For a two-peptide blend reconstituted with 2 mL of water, here is what a 10 unit (0.1 mL) draw delivers:</p>

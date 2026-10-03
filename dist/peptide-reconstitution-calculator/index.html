@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0b7a75">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/style.css?v=6c7e2677">
+<link rel="stylesheet" href="/assets/style.css?v=068fae15">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -117,6 +117,14 @@
         },
         {
           "@type": "Question",
+          "name": "Is this the same as a peptide mixing calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Mixing, reconstituting and adding BAC water all describe the same step: dissolving the powder in a set volume of bacteriostatic water. The calculator gives that volume."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Is the reconstitution calculator free to use?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -149,7 +157,7 @@
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Peptide Calculator</a> &rsaquo; <span>Peptide Reconstitution Calculator</span></nav>
 <section class="hero">
   <h1>Peptide Reconstitution Calculator</h1>
-  <p class="lead">Use this peptide reconstitution calculator before you mix a vial. Enter the peptide amount, your planned dose and how many syringe units you would like each dose to be. The peptide reconstitution calculator returns exactly how much bacteriostatic water to add.</p>
+  <p class="lead">Use this peptide reconstitution calculator before you mix a vial. Enter the peptide amount, your planned dose and how many syringe units you would like each dose to be. The peptide reconstitution calculator returns exactly how much bacteriostatic water to add, so it doubles as a peptide mixing calculator and BAC water calculator.</p>
 </section>
 
 <section class="tool" data-calc="recon" aria-labelledby="tool-title">
@@ -231,7 +239,7 @@
 
 <article class="content">
   <h2>How the Peptide Reconstitution Calculator Works</h2>
-  <p>Freeze-dried (lyophilized) peptides arrive as a powder, and the amount of water you add decides how strong the solution is. Most tools ask you to guess a water volume and then tell you the units. This one works in the opposite direction: you choose the units you want to draw, and it solves for the water.</p>
+  <p>Freeze-dried (lyophilized) peptides arrive as a powder, and the amount of water you add decides how strong the solution is. Most tools ask you to guess a water volume and then tell you the units. This one is a reverse peptide calculator: you choose the units you want to draw, and it solves for the water.</p>
   <p class="formula">water (mL) = vial (mg) × target units ÷ (100 × dose (mg))</p>
   <p>The 100 is the number of units in one millilitre on a U-100 insulin syringe. Once the vial is mixed, you can confirm any dose on the main <a href="/">peptide calculator</a>, which takes the water volume as an input instead.</p>
 
@@ -261,7 +269,7 @@
   </ul>
   <p>Wanted 10 units instead? Halve the water to 2 mL. Every time you double the target units, the water doubles too, so you can trade a stronger solution for a smaller injection volume.</p>
 
-  <h2>Choosing a Reconstitution Water Volume</h2>
+  <h2>Peptide BAC Water Calculator: Choosing a Volume</h2>
   <p>There is no single correct amount of water. The best volume is the one that makes your dose easy and accurate to measure. These rules of thumb help:</p>
   <div class="cards">
     <div class="card">
@@ -313,6 +321,8 @@
     <p>Yes. Enter any amount in mg or mcg. The formula works for 1 mg vials and 30 mg vials alike, as long as the result fits your vial and syringe.</p>
     <h3>What if the peptide reconstitution result is an awkward number?</h3>
     <p>Round the water to a volume you can measure, such as 2.5 mL, then confirm the exact units on the main <a href="/">peptide calculator</a> using that water volume.</p>
+    <h3>Is this the same as a peptide mixing calculator?</h3>
+    <p>Yes. Mixing, reconstituting and adding BAC water all describe the same step: dissolving the powder in a set volume of bacteriostatic water. The calculator gives that volume.</p>
     <h3>Is the reconstitution calculator free to use?</h3>
     <p>Yes. It is free, needs no sign-up, and runs only in your browser.</p>
   </section>
@@ -329,6 +339,8 @@
       <a href="/peptide-blend-calculator/">Peptide Blend Calculator</a>
       <a href="/peptide-dilution-calculator/">Peptide Dilution Calculator</a>
       <a href="/peptide-concentration-calculator/">Peptide Concentration Calculator</a>
+      <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
+      <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
       <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
       <a href="/tdee-calculator/">TDEE Calculator</a>
       <a href="/about/">About</a>
@@ -338,6 +350,6 @@
     <p>Educational tool only — not medical advice. Always confirm doses with a licensed healthcare professional. Last reviewed 2026-10-03.</p>
   </div>
 </footer>
-<script src="/assets/calc.js?v=071f97fc" defer></script>
+<script src="/assets/calc.js?v=57ec6be8" defer></script>
 </body>
 </html>

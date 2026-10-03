@@ -94,6 +94,28 @@ PAGES = [
         "priority": "0.8",
     },
     {
+        "path": "/peptide-molecular-weight-calculator/",
+        "src": "molecular-weight.html",
+        "title": "Peptide Molecular Weight Calculator: MW, Mass & m/z",
+        "description": ("Peptide molecular weight calculator: paste a sequence to get average MW, monoisotopic "
+                        "mass, formula and m/z ions, with acetyl, amide and disulfide options."),
+        "crumb": "Peptide Molecular Weight Calculator",
+        "app": "Peptide Molecular Weight Calculator",
+        "category": "ScientificApplication",
+        "priority": "0.8",
+    },
+    {
+        "path": "/peptide-net-charge-calculator/",
+        "src": "net-charge.html",
+        "title": "Peptide Net Charge Calculator: pI, Charge at pH",
+        "description": ("Peptide net charge calculator: enter a sequence and pH to get net charge, isoelectric "
+                        "point (pI), GRAVY hydrophobicity and a solubility starting point."),
+        "crumb": "Peptide Net Charge Calculator",
+        "app": "Peptide Net Charge Calculator",
+        "category": "ScientificApplication",
+        "priority": "0.8",
+    },
+    {
         "path": "/retatrutide-peptide-calculator/",
         "src": "retatrutide.html",
         "title": "Retatrutide Peptide Calculator: mg to Syringe Units",
@@ -180,6 +202,8 @@ TEMPLATE = """<!doctype html>
       <a href="/peptide-blend-calculator/">Peptide Blend Calculator</a>
       <a href="/peptide-dilution-calculator/">Peptide Dilution Calculator</a>
       <a href="/peptide-concentration-calculator/">Peptide Concentration Calculator</a>
+      <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
+      <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
       <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
       <a href="/tdee-calculator/">TDEE Calculator</a>
       <a href="/about/">About</a>
@@ -245,7 +269,7 @@ def build_schema(page, body, url):
     if page.get("app"):
         graph.append({
             "@type": "WebApplication", "@id": url + "#app", "name": page["app"], "url": url,
-            "applicationCategory": "HealthApplication", "operatingSystem": "Any (web browser)",
+            "applicationCategory": page.get("category", "HealthApplication"), "operatingSystem": "Any (web browser)",
             "browserRequirements": "Requires JavaScript for live recalculation",
             "isAccessibleForFree": True,
             "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},

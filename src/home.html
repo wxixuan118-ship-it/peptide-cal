@@ -11,7 +11,7 @@
       <label for="vial">Peptide amount in the vial</label>
       <div class="input-row">
         <input id="vial" type="number" inputmode="decimal" min="0" step="any" value="5">
-        <select id="vial-unit" aria-label="Vial amount unit"><option value="mg" selected>mg</option><option value="mcg">mcg</option></select>
+        <select id="vial-unit" aria-label="Vial amount unit"><option value="mg" selected>mg</option><option value="mcg">mcg</option><option value="iu">IU</option></select>
       </div>
       <div class="chips">
         <button type="button" class="chip" data-target="vial" data-value="2">2 mg</button>
@@ -37,9 +37,9 @@
       <label for="dose">Desired dose per injection</label>
       <div class="input-row">
         <input id="dose" type="number" inputmode="decimal" min="0" step="any" value="250">
-        <select id="dose-unit" aria-label="Dose unit"><option value="mcg" selected>mcg</option><option value="mg">mg</option></select>
+        <select id="dose-unit" aria-label="Dose unit"><option value="mcg" selected>mcg</option><option value="mg">mg</option><option value="iu">IU</option></select>
       </div>
-      <p class="hint">1 mg = 1,000 mcg. Switch the unit if your dose is written in mg.</p>
+      <p class="hint">1 mg = 1,000 mcg. For a vial labelled in IU, choose IU for both the vial and the dose.</p>
     </div>
 
     <div class="field">
@@ -75,7 +75,7 @@
     <li><strong>Pick your syringe.</strong> The calculator warns you if the draw does not fit, or if it is too small to measure well.</li>
     <li><strong>Read the result.</strong> The large number is how many units to pull on the syringe. The drawing shows roughly where the plunger should sit.</li>
   </ol>
-  <p>Have not mixed the vial yet? Plan the water first with the <a href="/peptide-reconstitution-calculator/">peptide reconstitution calculator</a>, which works backwards from the units you want to draw.</p>
+  <p>Have not mixed the vial yet? Plan the water first with the <a href="/peptide-reconstitution-calculator/">peptide reconstitution calculator</a>, a reverse peptide calculator that works backwards from the units you want to draw.</p>
 
   <h2>Peptide Calculator Formula</h2>
   <p>The arithmetic takes three steps. Knowing it lets you double-check any result on paper.</p>
@@ -120,6 +120,25 @@
   </figure>
   <p>Units are a volume mark on the syringe, not a measure of peptide. Ten units always means 0.10 mL, whatever is in the vial. That is why the concentration matters: the same 10 units can hold 250 mcg in one vial and 500 mcg in another. For a refresher on handling an insulin syringe, MedlinePlus has a clear guide to <a href="https://medlineplus.gov/ency/patientinstructions/000660.htm" rel="noopener" target="_blank">giving an insulin injection</a>.</p>
 
+  <h3>Syringe sizes: 30, 50 and 100 units, or 3 mL</h3>
+  <p>Every U-100 insulin syringe uses the same scale, so the peptide calculator result applies to all of them. Pick the smallest barrel that holds your draw; finer lines mean a more accurate dose.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Syringe</th><th>Holds</th><th>Smallest line</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td>0.3 mL insulin</td><td>30 units</td><td>1 unit (some ½ unit)</td><td>Draws under 30 units</td></tr>
+        <tr><td>0.5 mL insulin</td><td>50 units</td><td>1 unit</td><td>Draws of 30–50 units</td></tr>
+        <tr><td>1 mL insulin</td><td>100 units</td><td>2 units</td><td>Draws of 50–100 units</td></tr>
+        <tr><td>3 mL standard</td><td>3 mL (no unit marks)</td><td>0.1 mL</td><td>Measuring bacteriostatic water, not doses</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A 3 mL syringe is marked in mL, so divide the units by 100 to read it (20 units = 0.2 mL). Its 0.1 mL lines are too coarse for most peptide doses but ideal for adding water to a vial.</p>
+
+  <h2>Peptide Calculator Units vs IU</h2>
+  <p>Syringe "units" and IU (international units) sound alike but measure different things. Syringe units are volume: 100 units is 1 mL on a U-100 syringe. IU measure biological activity, and the conversion to mg is different for every substance, so there is no universal mg-to-IU factor.</p>
+  <p>If your vial is labelled in IU, select <strong>IU for both the vial and the dose</strong> in the peptide calculator above. The math is identical: a 10 IU vial with 1 mL of water is 10 IU/mL, so a 2 IU dose is 0.2 mL, or 20 units on the syringe. Mixing IU with mg is blocked, because it needs the product's own IU-per-mg figure from the label.</p>
+
   <h2>Peptide Calculator Accuracy Tips</h2>
   <p>The math is exact, but the draw is only as good as the inputs. A few habits keep results meaningful in practice:</p>
   <ul>
@@ -153,6 +172,14 @@
       <p>Converts mg and mL into mg/mL, mcg/mL, mcg per unit, % w/v and molarity for lab solutions.</p>
     </div>
     <div class="card">
+      <h3><a href="/peptide-molecular-weight-calculator/">Peptide molecular weight calculator</a></h3>
+      <p>Paste a sequence for average MW, monoisotopic mass, formula and mass-spec m/z values.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/peptide-net-charge-calculator/">Peptide net charge calculator</a></h3>
+      <p>Net charge at any pH, isoelectric point, hydrophobicity and a solubility starting point.</p>
+    </div>
+    <div class="card">
       <h3><a href="/retatrutide-peptide-calculator/">Retatrutide peptide calculator</a></h3>
       <p>The same math with retatrutide vial presets, plus a units-per-mg chart. Arithmetic only, no dose advice.</p>
     </div>
@@ -172,6 +199,8 @@
     <p>No. Water only changes the concentration. With more water you draw more units for the same peptide dose; with less water you draw fewer units.</p>
     <h3>Can the peptide calculator handle blends?</h3>
     <p>Yes, if you calculate one component at a time. Enter that component's mg in the vial and its dose; the units you get also deliver the other components in the same ratio as the blend. The <a href="/peptide-blend-calculator/">peptide blend calculator</a> shows every component at once.</p>
+    <h3>Does the peptide calculator work with IU?</h3>
+    <p>Yes. Choose IU for both the vial amount and the dose. Syringe units are still volume, so a 2 IU dose from a 10 IU/mL solution is 20 units.</p>
     <h3>Which syringe does the peptide calculator assume?</h3>
     <p>A U-100 insulin syringe, where 1 mL equals 100 units. If you use a different syringe, convert the mL result shown instead of the unit figure.</p>
     <h3>Is a peptides calculator the same as a dosage calculator?</h3>

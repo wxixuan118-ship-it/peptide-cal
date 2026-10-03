@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peptide Net Charge Calculator: pI, Charge at pH</title>
+<meta name="description" content="Peptide net charge calculator: enter a sequence and pH to get net charge, isoelectric point (pI), GRAVY hydrophobicity and a solubility starting point.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://peptidecalculatorpro.org/peptide-net-charge-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Peptide Calculator">
+<meta property="og:title" content="Peptide Net Charge Calculator: pI, Charge at pH">
+<meta property="og:description" content="Peptide net charge calculator: enter a sequence and pH to get net charge, isoelectric point (pI), GRAVY hydrophobicity and a solubility starting point.">
+<meta property="og:url" content="https://peptidecalculatorpro.org/peptide-net-charge-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0b7a75">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css?v=068fae15">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://peptidecalculatorpro.org/#website",
+      "url": "https://peptidecalculatorpro.org/",
+      "name": "Peptide Calculator",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://peptidecalculatorpro.org/peptide-net-charge-calculator/#webpage",
+      "url": "https://peptidecalculatorpro.org/peptide-net-charge-calculator/",
+      "name": "Peptide Net Charge Calculator: pI, Charge at pH",
+      "description": "Peptide net charge calculator: enter a sequence and pH to get net charge, isoelectric point (pI), GRAVY hydrophobicity and a solubility starting point.",
+      "isPartOf": {
+        "@id": "https://peptidecalculatorpro.org/#website"
+      },
+      "dateModified": "2026-10-03",
+      "inLanguage": "en",
+      "mainEntity": {
+        "@id": "https://peptidecalculatorpro.org/peptide-net-charge-calculator/#app"
+      },
+      "breadcrumb": {
+        "@id": "https://peptidecalculatorpro.org/peptide-net-charge-calculator/#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://peptidecalculatorpro.org/peptide-net-charge-calculator/#app",
+      "name": "Peptide Net Charge Calculator",
+      "url": "https://peptidecalculatorpro.org/peptide-net-charge-calculator/",
+      "applicationCategory": "ScientificApplication",
+      "operatingSystem": "Any (web browser)",
+      "browserRequirements": "Requires JavaScript for live recalculation",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Peptide net charge calculator: enter a sequence and pH to get net charge, isoelectric point (pI), GRAVY hydrophobicity and a solubility starting point."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://peptidecalculatorpro.org/peptide-net-charge-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Peptide Calculator",
+          "item": "https://peptidecalculatorpro.org/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Peptide Net Charge Calculator",
+          "item": "https://peptidecalculatorpro.org/peptide-net-charge-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://peptidecalculatorpro.org/peptide-net-charge-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate the net charge of a peptide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Count the ionizable groups (termini plus K, R, H, D, E, C, Y), work out each group's fractional charge at your pH from its pKa, and add them. A peptide charge calculator does this for every group at once."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the net charge of a peptide at pH 7?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the sequence. Roughly, add +1 for each K and R and −1 for each D and E, then include the termini (+1 and −1 if free) and a small fraction for histidine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate the isoelectric point of a peptide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Find the pH where the net charge is zero. For two groups, average their pKa values; for real peptides, use this calculator, which solves for it numerically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does another tool give a different pI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Calculators use different pKa sets. This one uses EMBOSS values; others use ExPASy, Lehninger or Sillero values. Differences of 0.5 pH units are normal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the peptide net charge calculator free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. It is free, needs no account, and your sequence never leaves the browser."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">P</span>Peptide Calculator</a>
+    <nav class="site-nav" aria-label="Calculators">
+      <a href="/">Peptide Calculator</a>
+      <a href="/peptide-reconstitution-calculator/">Reconstitution Calculator</a>
+      <a href="/peptide-dosage-calculator/">Dosage Calculator</a>
+      <a href="/peptide-blend-calculator/">Blend Calculator</a>
+      <a href="/peptide-dilution-calculator/">Dilution Calculator</a>
+      <a href="/peptide-concentration-calculator/">Concentration Calculator</a>
+      <a href="/retatrutide-peptide-calculator/">Retatrutide</a>
+      <a href="/tdee-calculator/">TDEE</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Peptide Calculator</a> &rsaquo; <span>Peptide Net Charge Calculator</span></nav>
+<section class="hero">
+  <h1>Peptide Net Charge Calculator</h1>
+  <p class="lead">This peptide net charge calculator takes an amino acid sequence and a pH and returns the net charge, the isoelectric point (pI), a hydrophobicity score and a solubility starting point. Run it before you choose a buffer, a purification method or a solvent.</p>
+</section>
+
+<section class="tool" data-calc="charge" aria-labelledby="tool-title">
+  <form onsubmit="return false">
+    <h2 id="tool-title">Net charge calculator inputs</h2>
+
+    <div class="field">
+      <label for="q-seq">Peptide sequence (one-letter codes)</label>
+      <textarea id="q-seq" rows="4" spellcheck="false" autocomplete="off">DRVYIHPF</textarea>
+      <p class="hint">Spaces, numbers and dashes are ignored. Example: angiotensin II.</p>
+      <div class="chips">
+        <button type="button" class="chip" data-preset="q-seq=DRVYIHPF,q-nterm=h,q-cterm=oh,q-ss=0">Angiotensin II</button>
+        <button type="button" class="chip" data-preset="q-seq=CYIQNCPLG,q-nterm=h,q-cterm=nh2,q-ss=1">Oxytocin</button>
+        <button type="button" class="chip" data-preset="q-seq=RPKPQQFFGLM,q-nterm=h,q-cterm=nh2,q-ss=0">Substance P</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="q-ph">pH</label>
+      <input id="q-ph" type="number" inputmode="decimal" min="0" max="14" step="0.1" value="7">
+      <div class="chips">
+        <button type="button" class="chip" data-target="q-ph" data-value="2">pH 2</button>
+        <button type="button" class="chip" data-target="q-ph" data-value="5">pH 5</button>
+        <button type="button" class="chip" data-target="q-ph" data-value="7">pH 7</button>
+        <button type="button" class="chip" data-target="q-ph" data-value="7.4">pH 7.4</button>
+        <button type="button" class="chip" data-target="q-ph" data-value="9">pH 9</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="q-nterm">N-terminus</label>
+      <select id="q-nterm">
+        <option value="h" selected>Free amine (H–)</option>
+        <option value="ac">Acetylated (Ac–)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="q-cterm">C-terminus</label>
+      <select id="q-cterm">
+        <option value="oh" selected>Free acid (–OH)</option>
+        <option value="nh2">Amidated (–NH₂)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="q-ss">Disulfide bonds</label>
+      <input id="q-ss" type="number" inputmode="numeric" min="0" step="1" value="0">
+      <p class="hint">Cysteines in a disulfide bond cannot ionize, so they are left out of the charge.</p>
+    </div>
+  </form>
+
+  <div class="results" aria-live="polite">
+    <p class="big">Net charge at pH <span data-out="ph">7</span> <strong data-out="charge">+0.22</strong></p>
+    <ul class="stats">
+      <li>Isoelectric point (pI)<b data-out="pi">7.54</b></li>
+      <li>Charge at pH 7<b data-out="charge7">+0.22</b></li>
+      <li>Hydrophobicity (GRAVY)<b data-out="gravy">-0.325</b></li>
+      <li>Ionizable groups<b data-out="groups">3 basic / 2 acidic</b></li>
+      <li class="wide">Solubility starting point<b data-out="solubility">Near-neutral: try water first; if it stays cloudy, add a little organic solvent such as acetonitrile.</b></li>
+    </ul>
+    <p class="alert" data-out="alert" hidden></p>
+    <div class="table-wrap">
+      <table>
+        <caption class="hint">Net charge across pH</caption>
+        <thead><tr><th>pH</th><th>Net charge</th></tr></thead>
+        <tbody id="q-table">
+          <tr><td>pH 2</td><td>+2.96</td></tr>
+          <tr><td>pH 4</td><td>+1.72</td></tr>
+          <tr><td>pH 6</td><td>+0.77</td></tr>
+          <tr><td>pH 7</td><td>+0.22</td></tr>
+          <tr><td>pH 7.4</td><td>+0.05</td></tr>
+          <tr><td>pH 8</td><td>−0.18</td></tr>
+          <tr><td>pH 10</td><td>−1.41</td></tr>
+          <tr><td>pH 12</td><td>−2.23</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<article class="content">
+  <h2>How the Peptide Net Charge Calculator Works</h2>
+  <p>Only a few groups in a peptide carry charge: the free N-terminus, the free C-terminus and the side chains of seven amino acids. Each one is charged a fraction of the time, depending on how the pH compares with its pKa. The calculator applies the Henderson–Hasselbalch equation to every group and adds the results.</p>
+  <p class="formula">positive group (N-term, K, R, H): +1 ÷ (1 + 10^(pH − pKa))<br>negative group (C-term, D, E, C, Y): −1 ÷ (1 + 10^(pKa − pH))<br>net charge = Σ positive + Σ negative</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Group</th><th>pKa used</th><th>Charge when protonated</th></tr></thead>
+      <tbody>
+        <tr><td>N-terminus</td><td>8.6</td><td>+1</td></tr>
+        <tr><td>C-terminus</td><td>3.6</td><td>0 (−1 when deprotonated)</td></tr>
+        <tr><td>Lysine (K)</td><td>10.8</td><td>+1</td></tr>
+        <tr><td>Arginine (R)</td><td>12.5</td><td>+1</td></tr>
+        <tr><td>Histidine (H)</td><td>6.5</td><td>+1</td></tr>
+        <tr><td>Aspartic acid (D)</td><td>3.9</td><td>0 (−1 when deprotonated)</td></tr>
+        <tr><td>Glutamic acid (E)</td><td>4.1</td><td>0 (−1 when deprotonated)</td></tr>
+        <tr><td>Cysteine (C)</td><td>8.5</td><td>0 (−1 when deprotonated)</td></tr>
+        <tr><td>Tyrosine (Y)</td><td>10.1</td><td>0 (−1 when deprotonated)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>These are the EMBOSS pKa values. Other tools use other published sets, so a pI from another calculator can differ by 0.5 or more for the same peptide. Neither is wrong; they are estimates for an unfolded peptide in water.</p>
+
+  <h2>How to Calculate the pI of a Peptide</h2>
+  <p>The isoelectric point is the pH at which the net charge is exactly zero. There is no single formula for it once a peptide has more than two ionizable groups, so the calculator finds it numerically: it evaluates the charge, halves the pH range on the side where the sign changes, and repeats until the answer is stable to well under 0.01 pH units.</p>
+  <figure>
+    <img src="/assets/img/peptide-net-charge-ph.svg" width="800" height="300" loading="lazy" decoding="async" alt="Peptide net charge calculator curve for DRVYIHPF: charge falls from +3 at pH 0 to −3 at pH 14, crossing zero at pI 7.54">
+    <figcaption>Angiotensin II carries a positive charge below pH 7.54 and a negative charge above it.</figcaption>
+  </figure>
+  <p>For a simple peptide by hand, list the pKa values in order, find the two that bracket the neutral form, and average them. Glycylglycine (GG) has only the two termini, so its pI is (3.6 + 8.6) ÷ 2 = 6.1, which matches the calculator.</p>
+
+  <h2>Peptide Net Charge Calculator Example</h2>
+  <p>Angiotensin II (DRVYIHPF) at pH 7 has five groups that matter:</p>
+  <ul>
+    <li>N-terminus (pKa 8.6): +0.98. Arginine (12.5): +1.00. Histidine (6.5): +0.24.</li>
+    <li>C-terminus (3.6): −1.00. Aspartic acid (3.9): −1.00. Tyrosine (10.1): −0.001.</li>
+    <li>Net charge: <strong>+0.22</strong>. The pI, where these balance exactly, is <strong>7.54</strong>.</li>
+  </ul>
+  <p>Amidating the C-terminus removes its −1, so the same peptide as an amide would carry about +1.2 at pH 7 and have a much higher pI.</p>
+
+  <h2>Peptide Charge and Solubility</h2>
+  <p>Net charge is the best quick predictor of how a peptide will dissolve. Peptides dissolve most easily at a pH far from their pI and least easily at it, where molecules have no net charge to repel each other. The calculator gives a starting point based on the charge at pH 7 and the share of hydrophobic residues (A, I, L, M, F, W, V, C):</p>
+  <div class="cards">
+    <div class="card">
+      <h3>Basic peptides</h3>
+      <p>Positive at pH 7. Try sterile water first; if needed, add a small amount of 10% acetic acid.</p>
+    </div>
+    <div class="card">
+      <h3>Acidic peptides</h3>
+      <p>Negative at pH 7. Try water first; if needed, add a small amount of dilute ammonium bicarbonate.</p>
+    </div>
+    <div class="card">
+      <h3>Hydrophobic, neutral peptides</h3>
+      <p>Over half hydrophobic and near zero charge. Dissolve in a little DMSO or acetonitrile, then dilute.</p>
+    </div>
+  </div>
+  <p>Always test a small portion before dissolving the whole sample, and follow the supplier's instructions when they differ. Avoid DMSO for peptides with free cysteine or methionine, which it can oxidize.</p>
+
+  <h2>Peptide Hydrophobicity (GRAVY)</h2>
+  <p>The GRAVY score is the average <a href="https://pubmed.ncbi.nlm.nih.gov/7108955/" rel="noopener" target="_blank">Kyte–Doolittle hydropathy</a> (J Mol Biol, 1982) of all residues. Positive values mean a hydrophobic peptide, negative values a hydrophilic one. Most water-soluble peptides score below zero; above about +0.5, expect to need an organic co-solvent.</p>
+  <p>To convert the weighed peptide into molar concentration, get the molecular weight from the <a href="/peptide-molecular-weight-calculator/">peptide molecular weight calculator</a>, then use the <a href="/peptide-concentration-calculator/">peptide concentration calculator</a>.</p>
+
+  <section id="faq">
+    <h2>Peptide Net Charge Calculator FAQ</h2>
+    <h3>How do you calculate the net charge of a peptide?</h3>
+    <p>Count the ionizable groups (termini plus K, R, H, D, E, C, Y), work out each group's fractional charge at your pH from its pKa, and add them. A peptide charge calculator does this for every group at once.</p>
+    <h3>What is the net charge of a peptide at pH 7?</h3>
+    <p>It depends on the sequence. Roughly, add +1 for each K and R and −1 for each D and E, then include the termini (+1 and −1 if free) and a small fraction for histidine.</p>
+    <h3>How do I calculate the isoelectric point of a peptide?</h3>
+    <p>Find the pH where the net charge is zero. For two groups, average their pKa values; for real peptides, use this calculator, which solves for it numerically.</p>
+    <h3>Why does another tool give a different pI?</h3>
+    <p>Calculators use different pKa sets. This one uses EMBOSS values; others use ExPASy, Lehninger or Sillero values. Differences of 0.5 pH units are normal.</p>
+    <h3>Is the peptide net charge calculator free?</h3>
+    <p>Yes. It is free, needs no account, and your sequence never leaves the browser.</p>
+  </section>
+
+  <p class="note">This calculator is a research and educational tool. Charge and pI are estimates for unfolded peptides in dilute aqueous solution; folding, salts and modifications can shift real values. Solubility suggestions are general starting points, not a protocol. See <a href="/about/">how the formulas are checked</a>. To make a weaker working solution once the peptide is dissolved, use the <a href="/peptide-dilution-calculator/">peptide dilution calculator</a>; for syringe units from a reconstituted vial, use the main <a href="/">peptide calculator</a>.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="/">Peptide Calculator</a>
+      <a href="/peptide-reconstitution-calculator/">Peptide Reconstitution Calculator</a>
+      <a href="/peptide-dosage-calculator/">Peptide Dosage Calculator</a>
+      <a href="/peptide-blend-calculator/">Peptide Blend Calculator</a>
+      <a href="/peptide-dilution-calculator/">Peptide Dilution Calculator</a>
+      <a href="/peptide-concentration-calculator/">Peptide Concentration Calculator</a>
+      <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
+      <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
+      <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
+      <a href="/tdee-calculator/">TDEE Calculator</a>
+      <a href="/about/">About</a>
+      <a href="/disclaimer/">Medical Disclaimer</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+    <p>Educational tool only — not medical advice. Always confirm doses with a licensed healthcare professional. Last reviewed 2026-10-03.</p>
+  </div>
+</footer>
+<script src="/assets/calc.js?v=57ec6be8" defer></script>
+</body>
+</html>

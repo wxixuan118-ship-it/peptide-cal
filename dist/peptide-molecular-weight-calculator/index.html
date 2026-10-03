@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peptide Molecular Weight Calculator: MW, Mass &amp; m/z</title>
+<meta name="description" content="Peptide molecular weight calculator: paste a sequence to get average MW, monoisotopic mass, formula and m/z ions, with acetyl, amide and disulfide options.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Peptide Calculator">
+<meta property="og:title" content="Peptide Molecular Weight Calculator: MW, Mass &amp; m/z">
+<meta property="og:description" content="Peptide molecular weight calculator: paste a sequence to get average MW, monoisotopic mass, formula and m/z ions, with acetyl, amide and disulfide options.">
+<meta property="og:url" content="https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0b7a75">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css?v=068fae15">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://peptidecalculatorpro.org/#website",
+      "url": "https://peptidecalculatorpro.org/",
+      "name": "Peptide Calculator",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/#webpage",
+      "url": "https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/",
+      "name": "Peptide Molecular Weight Calculator: MW, Mass & m/z",
+      "description": "Peptide molecular weight calculator: paste a sequence to get average MW, monoisotopic mass, formula and m/z ions, with acetyl, amide and disulfide options.",
+      "isPartOf": {
+        "@id": "https://peptidecalculatorpro.org/#website"
+      },
+      "dateModified": "2026-10-03",
+      "inLanguage": "en",
+      "mainEntity": {
+        "@id": "https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/#app"
+      },
+      "breadcrumb": {
+        "@id": "https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/#app",
+      "name": "Peptide Molecular Weight Calculator",
+      "url": "https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/",
+      "applicationCategory": "ScientificApplication",
+      "operatingSystem": "Any (web browser)",
+      "browserRequirements": "Requires JavaScript for live recalculation",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Peptide molecular weight calculator: paste a sequence to get average MW, monoisotopic mass, formula and m/z ions, with acetyl, amide and disulfide options."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Peptide Calculator",
+          "item": "https://peptidecalculatorpro.org/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Peptide Molecular Weight Calculator",
+          "item": "https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://peptidecalculatorpro.org/peptide-molecular-weight-calculator/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate the molecular weight of a peptide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add the residue mass of every amino acid in the sequence, then add 18.02 g/mol for one water molecule. Adjust for terminal modifications and subtract 2.016 for each disulfide bond."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a peptide MW calculator the same as a peptide mass calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Molecular weight usually means the average mass in g/mol. Peptide mass in mass spectrometry usually means the monoisotopic mass in Da. This calculator reports both."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my vial heavier than the calculated molecular weight suggests?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lyophilized peptides contain counter-ions such as TFA or acetate and some water. The molecular weight here is for the free peptide; the certificate of analysis gives the net peptide content."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I enter three-letter amino acid codes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Use one-letter codes (A, R, N, D…). Spaces, numbers and dashes are ignored, and any other letter is flagged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the peptide molecular weight calculator free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. It is free, needs no account, and the sequence you enter never leaves your browser."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">P</span>Peptide Calculator</a>
+    <nav class="site-nav" aria-label="Calculators">
+      <a href="/">Peptide Calculator</a>
+      <a href="/peptide-reconstitution-calculator/">Reconstitution Calculator</a>
+      <a href="/peptide-dosage-calculator/">Dosage Calculator</a>
+      <a href="/peptide-blend-calculator/">Blend Calculator</a>
+      <a href="/peptide-dilution-calculator/">Dilution Calculator</a>
+      <a href="/peptide-concentration-calculator/">Concentration Calculator</a>
+      <a href="/retatrutide-peptide-calculator/">Retatrutide</a>
+      <a href="/tdee-calculator/">TDEE</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Peptide Calculator</a> &rsaquo; <span>Peptide Molecular Weight Calculator</span></nav>
+<section class="hero">
+  <h1>Peptide Molecular Weight Calculator</h1>
+  <p class="lead">This peptide molecular weight calculator reads an amino acid sequence and returns the average molecular weight, the monoisotopic mass, the molecular formula and the m/z values for mass spectrometry. It handles acetylated and amidated ends and disulfide bonds, and runs entirely in your browser.</p>
+</section>
+
+<section class="tool" data-calc="mw" aria-labelledby="tool-title">
+  <form onsubmit="return false">
+    <h2 id="tool-title">Molecular weight calculator inputs</h2>
+
+    <div class="field">
+      <label for="m-seq">Peptide sequence (one-letter codes)</label>
+      <textarea id="m-seq" rows="4" spellcheck="false" autocomplete="off">DRVYIHPF</textarea>
+      <p class="hint">Paste with or without spaces or numbers; they are ignored. Example: angiotensin II.</p>
+      <div class="chips">
+        <button type="button" class="chip" data-preset="m-seq=DRVYIHPF,m-nterm=h,m-cterm=oh,m-ss=0">Angiotensin II</button>
+        <button type="button" class="chip" data-preset="m-seq=CYIQNCPLG,m-nterm=h,m-cterm=nh2,m-ss=1">Oxytocin</button>
+        <button type="button" class="chip" data-preset="m-seq=RPKPQQFFGLM,m-nterm=h,m-cterm=nh2,m-ss=0">Substance P</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="m-nterm">N-terminus</label>
+      <select id="m-nterm">
+        <option value="h" selected>Free amine (H–)</option>
+        <option value="ac">Acetylated (Ac–)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="m-cterm">C-terminus</label>
+      <select id="m-cterm">
+        <option value="oh" selected>Free acid (–OH)</option>
+        <option value="nh2">Amidated (–NH₂)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="m-ss">Disulfide bonds</label>
+      <input id="m-ss" type="number" inputmode="numeric" min="0" step="1" value="0">
+      <p class="hint">Each bond joins two cysteines and removes two hydrogens (−2.016 g/mol).</p>
+    </div>
+  </form>
+
+  <div class="results" aria-live="polite">
+    <p class="big">Average molecular weight <strong><span data-out="avg">1046.18</span> g/mol</strong></p>
+    <ul class="stats">
+      <li>Monoisotopic mass<b data-out="mono">1045.5345 Da</b></li>
+      <li>Length<b data-out="length">8 residues</b></li>
+      <li class="wide">Molecular formula<b data-out="formula">C50H71N13O12</b></li>
+    </ul>
+    <p class="alert" data-out="alert" hidden></p>
+    <div class="table-wrap">
+      <table>
+        <caption class="hint">Monoisotopic m/z for mass spectrometry</caption>
+        <thead><tr><th>Ion</th><th>m/z</th></tr></thead>
+        <tbody id="m-mz">
+          <tr><td>[M+H]+</td><td>1046.5418</td></tr>
+          <tr><td>[M+2H]2+</td><td>523.7745</td></tr>
+          <tr><td>[M+3H]3+</td><td>349.5188</td></tr>
+          <tr><td>[M+4H]4+</td><td>262.3909</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<article class="content">
+  <h2>How the Peptide Molecular Weight Calculator Works</h2>
+  <p>Each peptide bond joins two amino acids and releases one water molecule. A peptide is therefore the sum of its residues (each amino acid minus water) plus one water for the two free ends. The calculator adds up the elemental formula first, then converts it to mass, so the formula and both masses always agree.</p>
+  <p class="formula">MW = Σ residue masses + H₂O (18.02)<br>acetyl N-terminus: + C₂H₂O (+42.04)<br>amide C-terminus: −OH +NH₂ (−0.98)<br>each disulfide bond: −2H (−2.016)</p>
+  <figure>
+    <img src="/assets/img/peptide-molecular-weight.svg" width="800" height="280" loading="lazy" decoding="async" alt="Peptide molecular weight calculator diagram: eight residue masses of DRVYIHPF plus water sum to 1046.18 g/mol">
+    <figcaption>Angiotensin II: eight residues plus one water give 1,046.18 g/mol.</figcaption>
+  </figure>
+
+  <h2>Average vs Monoisotopic Peptide Mass</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Average molecular weight</h3>
+      <p>Uses the natural mix of isotopes for each element. Use it for weighing powder, molarity and anything done by mass on a balance.</p>
+    </div>
+    <div class="card">
+      <h3>Monoisotopic mass</h3>
+      <p>Uses only the most common isotope (¹²C, ¹H, ¹⁴N, ¹⁶O, ³²S). Use it to match the first peak in a high-resolution mass spectrum.</p>
+    </div>
+  </div>
+  <p>For small peptides the two differ by less than 1 Da; for a 50-residue peptide the gap grows to about 3 Da. A peptide mass calculator that reports only one of them can mislead you in the other setting, so this one shows both.</p>
+
+  <h2>Peptide Molecular Weight Calculator Example</h2>
+  <p>Angiotensin II has the sequence DRVYIHPF with free ends:</p>
+  <ul>
+    <li>Residue sum (average): 115.09 + 156.19 + 99.13 + 163.17 + 113.16 + 137.14 + 97.12 + 147.17 = 1,028.17.</li>
+    <li>Add one water: 1,028.17 + 18.02 = <strong>1,046.18 g/mol</strong> (rounding of the shown values aside).</li>
+    <li>Formula: C50H71N13O12. Monoisotopic mass: <strong>1,045.5345 Da</strong>, so [M+H]+ appears at m/z 1,046.54.</li>
+  </ul>
+  <p>Oxytocin (CYIQNCPLG) shows the modifications at work: with its C-terminal amide and one disulfide bond, the result is C43H66N12O12S2 at 1,007.19 g/mol. Click the presets above to check both.</p>
+
+  <h2>Calculate MW of a Peptide with Modifications</h2>
+  <ul>
+    <li><strong>N-terminal acetylation</strong> caps the free amine and adds 42.04 g/mol. It also removes a positive charge.</li>
+    <li><strong>C-terminal amidation</strong> swaps –OH for –NH₂, lowering the mass by 0.98 g/mol and removing a negative charge.</li>
+    <li><strong>Disulfide bonds</strong> each remove two hydrogens. The calculator caps the count at half the cysteines in the sequence.</li>
+  </ul>
+  <p>Other modifications (phosphorylation, PEG, fluorescent labels, unnatural amino acids) are not included. Add their mass change by hand: phosphorylation is +79.97 Da per site, for example.</p>
+
+  <h2>Amino Acid Residue Masses</h2>
+  <p>The values the calculator uses, as residues (amino acid minus water):</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Amino acid</th><th>Code</th><th>Residue formula</th><th>Average</th><th>Monoisotopic</th></tr></thead>
+      <tbody>
+        <tr><td>Alanine</td><td>A</td><td>C3H5NO</td><td>71.08</td><td>71.0371</td></tr>
+        <tr><td>Arginine</td><td>R</td><td>C6H12N4O</td><td>156.19</td><td>156.1011</td></tr>
+        <tr><td>Asparagine</td><td>N</td><td>C4H6N2O2</td><td>114.10</td><td>114.0429</td></tr>
+        <tr><td>Aspartic acid</td><td>D</td><td>C4H5NO3</td><td>115.09</td><td>115.0269</td></tr>
+        <tr><td>Cysteine</td><td>C</td><td>C3H5NOS</td><td>103.14</td><td>103.0092</td></tr>
+        <tr><td>Glutamic acid</td><td>E</td><td>C5H7NO3</td><td>129.11</td><td>129.0426</td></tr>
+        <tr><td>Glutamine</td><td>Q</td><td>C5H8N2O2</td><td>128.13</td><td>128.0586</td></tr>
+        <tr><td>Glycine</td><td>G</td><td>C2H3NO</td><td>57.05</td><td>57.0215</td></tr>
+        <tr><td>Histidine</td><td>H</td><td>C6H7N3O</td><td>137.14</td><td>137.0589</td></tr>
+        <tr><td>Isoleucine</td><td>I</td><td>C6H11NO</td><td>113.16</td><td>113.0841</td></tr>
+        <tr><td>Leucine</td><td>L</td><td>C6H11NO</td><td>113.16</td><td>113.0841</td></tr>
+        <tr><td>Lysine</td><td>K</td><td>C6H12N2O</td><td>128.17</td><td>128.0950</td></tr>
+        <tr><td>Methionine</td><td>M</td><td>C5H9NOS</td><td>131.20</td><td>131.0405</td></tr>
+        <tr><td>Phenylalanine</td><td>F</td><td>C9H9NO</td><td>147.17</td><td>147.0684</td></tr>
+        <tr><td>Proline</td><td>P</td><td>C5H7NO</td><td>97.12</td><td>97.0528</td></tr>
+        <tr><td>Serine</td><td>S</td><td>C3H5NO2</td><td>87.08</td><td>87.0320</td></tr>
+        <tr><td>Threonine</td><td>T</td><td>C4H7NO2</td><td>101.10</td><td>101.0477</td></tr>
+        <tr><td>Tryptophan</td><td>W</td><td>C11H10N2O</td><td>186.21</td><td>186.0793</td></tr>
+        <tr><td>Tyrosine</td><td>Y</td><td>C9H9NO2</td><td>163.17</td><td>163.0633</td></tr>
+        <tr><td>Valine</td><td>V</td><td>C5H9NO</td><td>99.13</td><td>99.0684</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Element masses follow IUPAC standard atomic weights for the average values and the most abundant isotope for the monoisotopic values. You can cross-check published peptides in the <a href="https://pubchem.ncbi.nlm.nih.gov/" rel="noopener" target="_blank">PubChem database (NIH)</a>.</p>
+
+  <h2>Using Molecular Weight in the Lab</h2>
+  <p>Once you have the molecular weight, the <a href="/peptide-concentration-calculator/">peptide concentration calculator</a> converts mg/mL into millimolar and micromolar. To find the net charge, isoelectric point and a solubility starting point for the same sequence, use the <a href="/peptide-net-charge-calculator/">peptide net charge calculator</a>.</p>
+
+  <section id="faq">
+    <h2>Peptide Molecular Weight Calculator FAQ</h2>
+    <h3>How do you calculate the molecular weight of a peptide?</h3>
+    <p>Add the residue mass of every amino acid in the sequence, then add 18.02 g/mol for one water molecule. Adjust for terminal modifications and subtract 2.016 for each disulfide bond.</p>
+    <h3>Is a peptide MW calculator the same as a peptide mass calculator?</h3>
+    <p>Molecular weight usually means the average mass in g/mol. Peptide mass in mass spectrometry usually means the monoisotopic mass in Da. This calculator reports both.</p>
+    <h3>Why is my vial heavier than the calculated molecular weight suggests?</h3>
+    <p>Lyophilized peptides contain counter-ions such as TFA or acetate and some water. The molecular weight here is for the free peptide; the certificate of analysis gives the net peptide content.</p>
+    <h3>Can I enter three-letter amino acid codes?</h3>
+    <p>No. Use one-letter codes (A, R, N, D…). Spaces, numbers and dashes are ignored, and any other letter is flagged.</p>
+    <h3>Is the peptide molecular weight calculator free?</h3>
+    <p>Yes. It is free, needs no account, and the sequence you enter never leaves your browser.</p>
+  </section>
+
+  <p class="note">This calculator is a research and educational tool. Results assume standard L-amino acids and the modifications listed; confirm critical values against your certificate of analysis. See <a href="/about/">how the formulas are checked</a>. Working with a reconstituted vial instead? The main <a href="/">peptide calculator</a> converts doses into syringe units, and the <a href="/peptide-dilution-calculator/">peptide dilution calculator</a> makes working solutions from a stock.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer">
+      <a href="/">Peptide Calculator</a>
+      <a href="/peptide-reconstitution-calculator/">Peptide Reconstitution Calculator</a>
+      <a href="/peptide-dosage-calculator/">Peptide Dosage Calculator</a>
+      <a href="/peptide-blend-calculator/">Peptide Blend Calculator</a>
+      <a href="/peptide-dilution-calculator/">Peptide Dilution Calculator</a>
+      <a href="/peptide-concentration-calculator/">Peptide Concentration Calculator</a>
+      <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
+      <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
+      <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
+      <a href="/tdee-calculator/">TDEE Calculator</a>
+      <a href="/about/">About</a>
+      <a href="/disclaimer/">Medical Disclaimer</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+    <p>Educational tool only — not medical advice. Always confirm doses with a licensed healthcare professional. Last reviewed 2026-10-03.</p>
+  </div>
+</footer>
+<script src="/assets/calc.js?v=57ec6be8" defer></script>
+</body>
+</html>

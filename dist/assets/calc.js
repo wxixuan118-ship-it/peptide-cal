@@ -47,7 +47,7 @@
   }
 
   function wire(root, compute) {
-    $$("input, select", root).forEach(function (el) {
+    $$("input, select, textarea", root).forEach(function (el) {
       el.addEventListener("input", function () { pressChips(root); compute(root); });
       el.addEventListener("change", function () { pressChips(root); compute(root); });
     });
@@ -56,6 +56,17 @@
         var target = $("#" + chip.getAttribute("data-target"), root);
         if (!target) return;
         target.value = chip.getAttribute("data-value");
+        pressChips(root);
+        compute(root);
+      });
+    });
+    // Preset chips fill several fields at once: data-preset="id=value,id=value"
+    $$("[data-preset]", root).forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        chip.getAttribute("data-preset").split(",").forEach(function (pair) {
+          var kv = pair.split("="), el = $("#" + kv[0], root);
+          if (el) el.value = kv[1];
+        });
         pressChips(root);
         compute(root);
       });
@@ -76,21 +87,28 @@
 
   /* Home: all-in-one peptide calculator */
   function computeMain(root) {
-    var vialMg = toMg(num($("#vial", root)), $("#vial-unit", root).value);
+    // IU vials (e.g. labelled 10 IU) work in IU end to end; mg and mcg are interchangeable.
+    var vialUnit = $("#vial-unit", root).value, doseUnit = $("#dose-unit", root).value;
+    var iu = vialUnit === "iu", mixed = iu !== (doseUnit === "iu");
+    var vialMg = toMg(num($("#vial", root)), vialUnit);
     var water = num($("#water", root));
-    var doseMg = toMg(num($("#dose", root)), $("#dose-unit", root).value);
+    var doseMg = mixed ? 0 : toMg(num($("#dose", root)), doseUnit);
     var cap = parseInt($("#syringe", root).value, 10);
-    var conc = water > 0 ? vialMg / water : 0;          // mg per mL
+    var conc = water > 0 ? vialMg / water : 0;          // mg (or IU) per mL
     var ml = conc > 0 ? doseMg / conc : 0;              // mL per dose
     var units = ml * U100;
     set(root, "units", fmt(units, 1));
     set(root, "ml", fmt(ml, 3) + " mL");
-    set(root, "conc", fmt(conc, 3) + " mg/mL");
-    set(root, "per-unit", fmt(conc * 1000 / U100, 2) + " mcg");
+    set(root, "conc", fmt(conc, 3) + (iu ? " IU/mL" : " mg/mL"));
+    set(root, "per-unit", iu ? fmt(conc / U100, 3) + " IU" : fmt(conc * 1000 / U100, 2) + " mcg");
     set(root, "doses", doseMg > 0 ? fmt(Math.floor(vialMg / doseMg + 1e-9), 0) : "–");
     set(root, "dose-mcg", fmt(doseMg * 1000, 1) + " mcg");
     drawSyringe(root, units, cap);
     syringeWarning(root, units, cap);
+    if (mixed) {
+      var alert = $('[data-out="alert"]', root);
+      if (alert) { alert.textContent = "IU cannot be converted to mg without the product's own IU-per-mg figure. Use IU for both the vial and the dose, or mg/mcg for both."; alert.hidden = false; }
+    }
   }
 
   /* Reconstitution: how much bacteriostatic water to add */
@@ -251,6 +269,123 @@
     }
   }
 
+  /* Sequence tools: residue formulas (amino acid minus H2O) as [C, H, N, O, S] */
+  var RES = {
+    G: [2, 3, 1, 1, 0], A: [3, 5, 1, 1, 0], S: [3, 5, 1, 2, 0], P: [5, 7, 1, 1, 0], V: [5, 9, 1, 1, 0],
+    T: [4, 7, 1, 2, 0], C: [3, 5, 1, 1, 1], L: [6, 11, 1, 1, 0], I: [6, 11, 1, 1, 0], N: [4, 6, 2, 2, 0],
+    D: [4, 5, 1, 3, 0], Q: [5, 8, 2, 2, 0], K: [6, 12, 2, 1, 0], E: [5, 7, 1, 3, 0], M: [5, 9, 1, 1, 1],
+    H: [6, 7, 3, 1, 0], F: [9, 9, 1, 1, 0], R: [6, 12, 4, 1, 0], Y: [9, 9, 1, 2, 0], W: [11, 10, 2, 1, 0]
+  };
+  var AVG = [12.0107, 1.00794, 14.0067, 15.9994, 32.065];
+  var MONO = [12, 1.00782503207, 14.0030740048, 15.99491461956, 31.97207100];
+  var PROTON = 1.007276466812;
+  // EMBOSS pKa set
+  var PKA = { nterm: 8.6, cterm: 3.6, K: 10.8, R: 12.5, H: 6.5, D: 3.9, E: 4.1, C: 8.5, Y: 10.1 };
+  // Kyte-Doolittle hydropathy
+  var KD = { A: 1.8, R: -4.5, N: -3.5, D: -3.5, C: 2.5, Q: -3.5, E: -3.5, G: -0.4, H: -3.2, I: 4.5,
+             L: 3.8, K: -3.9, M: 1.9, F: 2.8, P: -1.6, S: -0.8, T: -0.7, W: -0.9, Y: -1.3, V: 4.2 };
+
+  function readSeq(root, id) {
+    var raw = ($("#" + id, root).value || "").toUpperCase().replace(/[\s\d\-]/g, "");
+    var bad = raw.replace(/[ACDEFGHIKLMNPQRSTVWY]/g, "");
+    return { seq: raw.replace(/[^ACDEFGHIKLMNPQRSTVWY]/g, ""), bad: bad };
+  }
+  function counts(seq) {
+    var c = {};
+    for (var i = 0; i < seq.length; i++) c[seq[i]] = (c[seq[i]] || 0) + 1;
+    return c;
+  }
+  function seqAlert(root, parsed, extra) {
+    var alert = $('[data-out="alert"]', root), msg = "";
+    if (parsed.bad) msg = "Ignored characters that are not standard one-letter amino acid codes: " + parsed.bad.slice(0, 20) + ".";
+    else if (extra) msg = extra;
+    alert.textContent = msg; alert.hidden = !msg;
+  }
+
+  /* Molecular weight: sum of residue formulas + water, adjusted for termini and disulfides */
+  function computeMw(root) {
+    var p = readSeq(root, "m-seq"), seq = p.seq, c = counts(seq);
+    var nAc = $("#m-nterm", root).value === "ac", cAm = $("#m-cterm", root).value === "nh2";
+    var ss = Math.floor(num($("#m-ss", root)));
+    var f = [0, 2, 0, 1, 0];                                  // H2O for the free termini
+    Object.keys(c).forEach(function (aa) { for (var k = 0; k < 5; k++) f[k] += RES[aa][k] * c[aa]; });
+    if (nAc) { f[0] += 2; f[1] += 2; f[3] += 1; }             // acetyl: + C2H2O
+    if (cAm) { f[1] += 1; f[2] += 1; f[3] -= 1; }             // amide: OH -> NH2
+    var maxSs = Math.floor((c.C || 0) / 2);
+    ss = Math.max(0, Math.min(ss, maxSs));
+    f[1] -= 2 * ss;                                           // each disulfide loses 2 H
+    var ok = seq.length > 0;
+    var mass = function (tbl) { return f.reduce(function (s, n, k) { return s + n * tbl[k]; }, 0); };
+    var avg = ok ? mass(AVG) : 0, mono = ok ? mass(MONO) : 0;
+    var formula = ok ? ["C", "H", "N", "O", "S"].map(function (el, k) { return f[k] ? el + (f[k] > 1 ? f[k] : "") : ""; }).join("") : "–";
+    set(root, "avg", ok ? fmt(avg, 2) : "–");
+    set(root, "mono", ok ? fmt(mono, 4) + " Da" : "–");
+    set(root, "length", ok ? seq.length + " residues" : "–");
+    set(root, "formula", formula);
+    var mz = $("#m-mz", root);
+    if (mz) {
+      var rows = "";
+      [1, 2, 3, 4].forEach(function (z) {
+        rows += "<tr><td>[M+" + (z > 1 ? z : "") + "H]" + (z > 1 ? z : "") + "+</td><td>" + (ok ? fmt((mono + z * PROTON) / z, 4) : "–") + "</td></tr>";
+      });
+      mz.innerHTML = rows;
+    }
+    seqAlert(root, p, (Math.floor(num($("#m-ss", root))) > maxSs) ? "A sequence with " + (c.C || 0) + " cysteines can form at most " + maxSs + " disulfide bond(s)." : "");
+  }
+
+  /* Net charge (Henderson-Hasselbalch) and pI by bisection */
+  function chargeAt(c, pH, nFree, cFree, freeCys) {
+    var pos = function (pka) { return 1 / (1 + Math.pow(10, pH - pka)); };
+    var neg = function (pka) { return -1 / (1 + Math.pow(10, pka - pH)); };
+    var q = (c.K || 0) * pos(PKA.K) + (c.R || 0) * pos(PKA.R) + (c.H || 0) * pos(PKA.H) +
+            (c.D || 0) * neg(PKA.D) + (c.E || 0) * neg(PKA.E) + freeCys * neg(PKA.C) + (c.Y || 0) * neg(PKA.Y);
+    if (nFree) q += pos(PKA.nterm);
+    if (cFree) q += neg(PKA.cterm);
+    return q;
+  }
+  function computeCharge(root) {
+    var p = readSeq(root, "q-seq"), seq = p.seq, c = counts(seq);
+    var nFree = $("#q-nterm", root).value !== "ac", cFree = $("#q-cterm", root).value !== "nh2";
+    var pH = num($("#q-ph", root));
+    var ss = Math.max(0, Math.min(Math.floor(num($("#q-ss", root))), Math.floor((c.C || 0) / 2)));
+    var freeCys = (c.C || 0) - 2 * ss;
+    var ok = seq.length > 0;
+    var q = ok ? chargeAt(c, pH, nFree, cFree, freeCys) : 0;
+    var q7 = ok ? chargeAt(c, 7, nFree, cFree, freeCys) : 0;
+    var lo = 0, hi = 14, pI = 0;
+    if (ok) {
+      for (var i = 0; i < 60; i++) { pI = (lo + hi) / 2; if (chargeAt(c, pI, nFree, cFree, freeCys) > 0) lo = pI; else hi = pI; }
+    }
+    var gravy = ok ? seq.split("").reduce(function (s, aa) { return s + KD[aa]; }, 0) / seq.length : 0;
+    var hyd = ok ? seq.replace(/[^AILMFWVC]/g, "").length / seq.length : 0;
+    var basic = (c.K || 0) + (c.R || 0) + (c.H || 0) + (nFree ? 1 : 0);
+    var acidic = (c.D || 0) + (c.E || 0) + (cFree ? 1 : 0);
+    var sign = function (v) { return (v > 0.005 ? "+" : v < -0.005 ? "−" : "") + fmt(Math.abs(v), 2); };
+    set(root, "charge", ok ? sign(q) : "–");
+    set(root, "ph", fmt(pH, 2));
+    set(root, "pi", ok ? fmt(pI, 2) : "–");
+    set(root, "charge7", ok ? sign(q7) : "–");
+    set(root, "gravy", ok ? (gravy > 0 ? "+" : "") + fmt(gravy, 3) : "–");
+    set(root, "groups", ok ? basic + " basic / " + acidic + " acidic" : "–");
+    var tip = "–";
+    if (ok) {
+      if (hyd > 0.5 && Math.abs(q7) < 0.5) tip = "Hydrophobic and near-neutral: dissolve in a little DMSO or acetonitrile, then dilute with water.";
+      else if (q7 >= 0.5) tip = "Basic (positive at pH 7): try water first, then a small amount of 10% acetic acid.";
+      else if (q7 <= -0.5) tip = "Acidic (negative at pH 7): try water first, then a small amount of dilute ammonium bicarbonate.";
+      else tip = "Near-neutral: try water first; if it stays cloudy, add a little organic solvent such as acetonitrile.";
+    }
+    set(root, "solubility", tip);
+    var tb = $("#q-table", root);
+    if (tb) {
+      var rows = "";
+      [2, 4, 6, 7, 7.4, 8, 10, 12].forEach(function (ph) {
+        rows += "<tr><td>pH " + ph + "</td><td>" + (ok ? sign(chargeAt(c, ph, nFree, cFree, freeCys)) : "–") + "</td></tr>";
+      });
+      tb.innerHTML = rows;
+    }
+    seqAlert(root, p, pH < 0 || pH > 14 ? "pH must be between 0 and 14." : "");
+  }
+
   /* TDEE: Mifflin-St Jeor BMR x activity factor */
   function computeTdee(root) {
     var sex = $("#t-sex", root).value;
@@ -309,7 +444,7 @@
     alert.textContent = msg; alert.hidden = !msg;
   }
 
-  var map = { main: computeMain, recon: computeRecon, dose: computeDose, blend: computeBlend, dilution: computeDilution, conc: computeConc, tdee: computeTdee, adaptive: computeAdaptive };
+  var map = { main: computeMain, recon: computeRecon, dose: computeDose, blend: computeBlend, dilution: computeDilution, conc: computeConc, mw: computeMw, charge: computeCharge, tdee: computeTdee, adaptive: computeAdaptive };
   $$("[data-calc]").forEach(function (root) {
     var fn = map[root.getAttribute("data-calc")];
     if (fn) wire(root, fn);

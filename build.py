@@ -210,6 +210,7 @@ TEMPLATE = """<!doctype html>
       <a href="/disclaimer/">Medical Disclaimer</a>
       <a href="/privacy/">Privacy</a>
     </nav>
+{partners}
     <p>Educational tool only — not medical advice. Always confirm doses with a licensed healthcare professional. Last reviewed {updated}.</p>
   </div>
 </footer>
@@ -296,6 +297,25 @@ def asset_version(name):
     return hashlib.md5((ROOT / "assets" / name).read_bytes()).hexdigest()[:8]
 
 
+# Partner badges, shown in one horizontal row in the home-page footer only.
+PARTNERS = [
+    ('https://smollaunch.com', 'https://smollaunch.com/badges/featured.svg',
+     'Peptide Calculator \u2014 Featured on Smol Launch', 250, 60),
+    ('https://fazier.com/launches/peptidecalculatorpro.org',
+     'https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light',
+     'Peptide Calculator \u2014 Launched on Fazier', 120, 51),
+]
+
+
+def partners_html():
+    links = "\n".join(
+        '      <a href="%s" target="_blank" rel="noopener">'
+        '<img src="%s" alt="%s" loading="lazy" width="%d" height="%d"></a>' % (href, html.escape(src), html.escape(alt), w, h)
+        for href, src, alt, w, h in PARTNERS
+    )
+    return '    <div class="partners" aria-label="Partners">\n%s\n    </div>' % links
+
+
 def render(page):
     body = (SRC / page["src"]).read_text(encoding="utf-8")
     body = re.sub(r"\{\{SYRINGE (\d+(?:\.\d+)?)\}\}", lambda m: syringe_svg(float(m.group(1))), body)
@@ -311,7 +331,8 @@ def render(page):
     return TEMPLATE.format(
         title=html.escape(page["title"]), description=html.escape(page["description"]),
         url=url, site_name=SITE_NAME, schema=build_schema(page, body, url), nav=nav,
-        crumbs=crumbs, body=body.strip(), updated=UPDATED, css_v=asset_version("style.css"),
+        crumbs=crumbs, body=body.strip(), updated=UPDATED,
+        partners=partners_html() if page["path"] == "/" else "", css_v=asset_version("style.css"),
         script='<script src="/assets/calc.js?v=%s" defer></script>' % asset_version("calc.js") if page.get("app") else "",
     )
 

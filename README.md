@@ -1,12 +1,17 @@
 # Peptide Calculator Pro
 
-Static site for [peptidecalculatorpro.org](https://peptidecalculatorpro.org): three free, browser-based peptide calculators with supporting copy.
+Static site for [peptidecalculatorpro.org](https://peptidecalculatorpro.org): free, browser-based peptide calculators with supporting copy.
 
 | Page | Path |
 |---|---|
 | Peptide Calculator | `/` |
 | Peptide Reconstitution Calculator | `/peptide-reconstitution-calculator/` |
 | Peptide Dosage Calculator | `/peptide-dosage-calculator/` |
+| Peptide Blend Calculator | `/peptide-blend-calculator/` |
+| Peptide Dilution Calculator | `/peptide-dilution-calculator/` |
+| Peptide Concentration Calculator | `/peptide-concentration-calculator/` |
+| Retatrutide Peptide Calculator | `/retatrutide-peptide-calculator/` |
+| TDEE Calculator | `/tdee-calculator/` |
 
 ## Build
 

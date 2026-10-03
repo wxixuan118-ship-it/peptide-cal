@@ -1,0 +1,164 @@
+<section class="hero">
+  <h1>Peptide Blend Calculator</h1>
+  <p class="lead">This peptide blend calculator handles vials that contain two or three peptides mixed together. Enter the mg of each peptide, the bacteriostatic water added and the dose of the peptide you measure by. The peptide blend calculator shows the syringe units to draw and how much of every other peptide comes along in that same draw.</p>
+</section>
+
+<section class="tool" data-calc="blend" aria-labelledby="tool-title">
+  <form onsubmit="return false">
+    <h2 id="tool-title">Blend calculator inputs</h2>
+
+    <div class="field">
+      <label for="b-a">Peptide A in the vial (mg)</label>
+      <input id="b-a" type="number" inputmode="decimal" min="0" step="any" value="10">
+      <div class="chips">
+        <button type="button" class="chip" data-target="b-a" data-value="5">5 mg</button>
+        <button type="button" class="chip" data-target="b-a" data-value="10">10 mg</button>
+        <button type="button" class="chip" data-target="b-a" data-value="20">20 mg</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="b-b">Peptide B in the vial (mg)</label>
+      <input id="b-b" type="number" inputmode="decimal" min="0" step="any" value="5">
+      <div class="chips">
+        <button type="button" class="chip" data-target="b-b" data-value="2">2 mg</button>
+        <button type="button" class="chip" data-target="b-b" data-value="5">5 mg</button>
+        <button type="button" class="chip" data-target="b-b" data-value="10">10 mg</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="b-c">Peptide C in the vial (mg, optional)</label>
+      <input id="b-c" type="number" inputmode="decimal" min="0" step="any" value="0">
+      <p class="hint">Leave at 0 for a two-peptide blend.</p>
+    </div>
+
+    <div class="field">
+      <label for="b-water">Bacteriostatic water added (mL)</label>
+      <input id="b-water" type="number" inputmode="decimal" min="0" step="any" value="2">
+      <div class="chips">
+        <button type="button" class="chip" data-target="b-water" data-value="1">1 mL</button>
+        <button type="button" class="chip" data-target="b-water" data-value="2">2 mL</button>
+        <button type="button" class="chip" data-target="b-water" data-value="3">3 mL</button>
+        <button type="button" class="chip" data-target="b-water" data-value="5">5 mL</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="b-base">Measure the dose by</label>
+      <select id="b-base">
+        <option value="0" selected>Peptide A</option>
+        <option value="1">Peptide B</option>
+        <option value="2">Peptide C</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="b-dose">Dose of that peptide per injection</label>
+      <div class="input-row">
+        <input id="b-dose" type="number" inputmode="decimal" min="0" step="any" value="500">
+        <select id="b-dose-unit" aria-label="Dose unit"><option value="mcg" selected>mcg</option><option value="mg">mg</option></select>
+      </div>
+      <p class="hint">The default values are example inputs, not a recommended dose.</p>
+    </div>
+
+    <div class="field">
+      <label for="b-syringe">Syringe size</label>
+      <select id="b-syringe">
+        <option value="30">0.3 mL (30 units)</option>
+        <option value="50">0.5 mL (50 units)</option>
+        <option value="100" selected>1.0 mL (100 units)</option>
+      </select>
+    </div>
+  </form>
+
+  <div class="results" aria-live="polite">
+    <p class="big">Draw <strong><span data-out="units">10</span> units</strong> on a U-100 syringe</p>
+    {{SYRINGE 10}}
+    <ul class="stats">
+      <li>Volume per dose<b data-out="ml">0.1 mL</b></li>
+      <li>Total blend strength<b data-out="total-conc">7.5 mg/mL</b></li>
+      <li>Doses per vial<b data-out="doses">20</b></li>
+    </ul>
+    <p class="alert" data-out="alert" hidden></p>
+    <div class="table-wrap">
+      <table>
+        <caption class="hint">What each draw delivers</caption>
+        <thead><tr><th>Component</th><th>In vial</th><th>Concentration</th><th>Per dose</th><th>Per unit</th></tr></thead>
+        <tbody id="b-table">
+          <tr><td>Peptide A (dosed by)</td><td>10 mg</td><td>5 mg/mL</td><td>500 mcg</td><td>50 mcg</td></tr>
+          <tr><td>Peptide B</td><td>5 mg</td><td>2.5 mg/mL</td><td>250 mcg</td><td>25 mcg</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<article class="content">
+  <h2>How the Peptide Blend Calculator Works</h2>
+  <p>A blend vial holds two or more peptides as one powder. Once you add water, every peptide dissolves into the same liquid, so each has its own concentration but they always travel together. You cannot draw one without the others. That is why a peptide blend calculator asks you to pick a single component to measure by, then reports what the rest add up to.</p>
+  <p class="formula">mL per dose = dose of chosen peptide (mg) × water (mL) ÷ chosen peptide in vial (mg)<br>other peptide per dose = its mg in vial ÷ water (mL) × mL per dose</p>
+  <p>Units on a U-100 insulin syringe are the mL figure times 100. Doses per vial come from the chosen peptide alone, because every component runs out at the same moment.</p>
+
+  <h2>Why a Blend Keeps Its Ratio</h2>
+  <figure>
+    <img src="/assets/img/peptide-blend-ratio.svg" width="800" height="280" loading="lazy" decoding="async" alt="Peptide blend calculator diagram: a 10 mg + 5 mg blend vial with 2 mL water delivers 500 mcg and 250 mcg in a 10 unit draw">
+    <figcaption>A 10 mg + 5 mg blend keeps a 2 : 1 ratio in every draw, whatever the water volume.</figcaption>
+  </figure>
+  <p>Adding more or less water changes how many units you draw, but never the ratio between peptides. A 10 mg + 5 mg vial always gives two parts of Peptide A to one part of Peptide B. If you need a different ratio, a blend cannot provide it; separate vials can.</p>
+
+  <h2>Peptide Blend Calculator Example</h2>
+  <p>Take the default inputs: a vial with 10 mg of Peptide A and 5 mg of Peptide B, reconstituted with 2 mL of bacteriostatic water, measured by a 500 mcg dose of Peptide A.</p>
+  <ul>
+    <li>Peptide A concentration: 10 mg ÷ 2 mL = 5 mg/mL.</li>
+    <li>Volume per dose: 0.5 mg ÷ 5 mg/mL = 0.1 mL, which is <strong>10 units</strong>.</li>
+    <li>Peptide B in that draw: 5 mg ÷ 2 mL × 0.1 mL = <strong>0.25 mg (250 mcg)</strong>.</li>
+    <li>Doses per vial: 10 mg ÷ 0.5 mg = 20, and Peptide B runs out at the same time.</li>
+  </ul>
+  <p>Switch the calculator to measure by Peptide B at 250 mcg and the answer is still 10 units. Both inputs describe the same draw from the same vial.</p>
+
+  <h2>Three-Peptide Blends</h2>
+  <p>Some blends combine three peptides in very different amounts, for example 50 mg + 10 mg + 10 mg. This peptide calculator for blends handles them the same way: enter all three, choose the one your plan is written around, and read the other two from the table. With 3 mL of water and a 2 mg dose of the 50 mg component, you draw 12 units and receive 400 mcg of each 10 mg component.</p>
+  <p>The total blend strength (all peptides added together, per mL) is useful for one thing: checking the label. Many blend vials state only the total mg, so compare that figure against the sum of the components before you rely on the numbers.</p>
+
+  <h2>Peptide Blend Ratio Chart</h2>
+  <p>For a two-peptide blend reconstituted with 2 mL of water, here is what a 10 unit (0.1 mL) draw delivers:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Blend</th><th>Ratio</th><th>Peptide A per 10 units</th><th>Peptide B per 10 units</th></tr></thead>
+      <tbody>
+        <tr><td>5 mg + 5 mg</td><td>1 : 1</td><td>250 mcg</td><td>250 mcg</td></tr>
+        <tr><td>10 mg + 10 mg</td><td>1 : 1</td><td>500 mcg</td><td>500 mcg</td></tr>
+        <tr><td>10 mg + 5 mg</td><td>2 : 1</td><td>500 mcg</td><td>250 mcg</td></tr>
+        <tr><td>5 mg + 2 mg</td><td>5 : 2</td><td>250 mcg</td><td>100 mcg</td></tr>
+        <tr><td>20 mg + 10 mg</td><td>2 : 1</td><td>1,000 mcg</td><td>500 mcg</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Using a different water volume? Scale the columns: with 4 mL instead of 2 mL, each 10 unit draw holds half as much. To plan a water volume that puts your dose on a round number of units, use the <a href="/peptide-reconstitution-calculator/">peptide reconstitution calculator</a> with the amount of the component you measure by.</p>
+
+  <h2>Common Peptide Blend Mistakes</h2>
+  <ul>
+    <li><strong>Using the total mg as one peptide.</strong> A 10 mg blend vial may hold 5 mg of each peptide. Entering 10 mg for the one you dose by doubles its assumed strength and halves the units you draw.</li>
+    <li><strong>Dosing by the wrong component.</strong> Your plan names a dose for a specific peptide. Make sure the "measure by" selector matches it.</li>
+    <li><strong>Expecting to adjust one peptide alone.</strong> Raising the units raises every component. Changing one peptide's dose without the others needs separate vials.</li>
+    <li><strong>Mixing up mg and mcg.</strong> A 250 mcg dose is 0.25 mg; check the unit selector before you read the result.</li>
+  </ul>
+  <p>For single-peptide vials, the main <a href="/">peptide calculator</a> is quicker, and the <a href="/peptide-dosage-calculator/">peptide dosage calculator</a> adds dosing frequency and days of supply. To express a component in mcg/mL or molarity, use the <a href="/peptide-concentration-calculator/">peptide concentration calculator</a>.</p>
+
+  <section id="faq">
+    <h2>Peptide Blend Calculator FAQ</h2>
+    <h3>How do you calculate the dose of a peptide blend?</h3>
+    <p>Pick the peptide your plan is based on. Divide its dose by its concentration (its mg in the vial divided by the water) to get mL, then multiply by 100 for U-100 units. Every other peptide arrives in the same draw at the vial ratio.</p>
+    <h3>Can I dose each peptide in a blend separately?</h3>
+    <p>No. All peptides in a blend are dissolved in the same liquid, so any draw contains all of them in a fixed ratio. Separate doses require separate vials.</p>
+    <h3>Does adding more water change the blend ratio?</h3>
+    <p>No. Water changes every concentration by the same factor, so the ratio between peptides stays the same. Only the units you draw for a given dose change.</p>
+    <h3>Which peptide should the blend calculator measure by?</h3>
+    <p>Measure by the component your prescriber or protocol gives a dose for. If several doses are listed, check that the vial ratio actually matches them before mixing.</p>
+    <h3>Is the peptide blend calculator free?</h3>
+    <p>Yes. It is free, needs no account, and runs entirely in your browser, so nothing you enter is sent to a server.</p>
+  </section>
+
+  <p class="note">This peptide blend calculator performs arithmetic only and is provided for educational purposes. It does not recommend any peptide, blend, dose or protocol. Confirm every dose with a licensed healthcare professional, and read our <a href="/disclaimer/">medical disclaimer</a> and <a href="/about/">how the formulas are checked</a>. Compounded products are not FDA-approved; see the <a href="https://www.fda.gov/drugs/guidance-compliance-regulatory-information/human-drug-compounding" rel="noopener" target="_blank">FDA's guidance on drug compounding</a>.</p>
+</article>

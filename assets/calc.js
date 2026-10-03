@@ -157,6 +157,100 @@
     }
   }
 
+  /* Blend: several peptides share one vial, so one draw delivers all of them in the vial ratio */
+  function computeBlend(root) {
+    var names = ["A", "B", "C"];
+    var mgs = names.map(function (n) { return num($("#b-" + n.toLowerCase(), root)); });
+    var water = num($("#b-water", root));
+    var base = parseInt($("#b-base", root).value, 10);
+    var doseMg = toMg(num($("#b-dose", root)), $("#b-dose-unit", root).value);
+    var cap = parseInt($("#b-syringe", root).value, 10);
+    var baseMg = mgs[base];
+    var total = mgs.reduce(function (s, v) { return s + v; }, 0);
+    var ml = water > 0 && baseMg > 0 ? doseMg * water / baseMg : 0;
+    var units = ml * U100;
+    set(root, "units", fmt(units, 1));
+    set(root, "ml", fmt(ml, 3) + " mL");
+    set(root, "total-conc", water > 0 ? fmt(total / water, 3) + " mg/mL" : "–");
+    set(root, "doses", doseMg > 0 && baseMg > 0 ? fmt(Math.floor(baseMg / doseMg + 1e-9), 0) : "–");
+    drawSyringe(root, units, cap);
+
+    var body = $("#b-table", root);
+    if (body) {
+      var rows = "";
+      names.forEach(function (n, i) {
+        if (mgs[i] <= 0) return;
+        var c = water > 0 ? mgs[i] / water : 0;
+        rows += "<tr><td>Peptide " + n + (i === base ? " (dosed by)" : "") + "</td><td>" + fmt(mgs[i], 2) + " mg</td><td>" +
+          fmt(c, 3) + " mg/mL</td><td>" + fmt(c * ml * 1000, 1) + " mcg</td><td>" + fmt(c * 10, 2) + " mcg</td></tr>";
+      });
+      body.innerHTML = rows;
+    }
+    var alert = $('[data-out="alert"]', root), msg = "";
+    if (baseMg <= 0) msg = "The peptide you dose by has 0 mg in the vial. Enter its amount or choose another component.";
+    else if (units > cap) msg = "This draw (" + fmt(units, 1) + " units) is larger than the selected syringe. Use a larger syringe or add less water.";
+    else if (units > 0 && units < 2) msg = "Under 2 units is hard to measure accurately. Adding more bacteriostatic water makes small doses easier to draw.";
+    alert.textContent = msg; alert.hidden = !msg;
+  }
+
+  /* Dilution: C1 x V1 = C2 x V2 */
+  function computeDilution(root) {
+    var perMg = function (unit) { return unit === "mcg" ? 0.001 : 1; };
+    var c1 = num($("#x-stock", root)) * perMg($("#x-stock-unit", root).value);
+    var c2 = num($("#x-target", root)) * perMg($("#x-target-unit", root).value);
+    var v2 = num($("#x-final", root));
+    var doseMg = toMg(num($("#x-dose", root)), $("#x-dose-unit", root).value);
+    var cap = parseInt($("#x-syringe", root).value, 10);
+    var ok = c1 > 0 && c2 > 0 && c2 <= c1;
+    var v1 = ok ? c2 * v2 / c1 : 0;
+    var before = c1 > 0 ? doseMg / c1 * U100 : 0, after = ok ? doseMg / c2 * U100 : 0;
+    set(root, "stock-ml", ok ? fmt(v1, 3) : "–");
+    set(root, "diluent", ok ? fmt(v2 - v1, 3) + " mL" : "–");
+    set(root, "factor", ok ? fmt(c1 / c2, 2) + "×" : "–");
+    set(root, "before", fmt(before, 1) + " units");
+    set(root, "after", ok ? fmt(after, 1) + " units" : "–");
+    drawSyringe(root, after, cap);
+
+    var body = $("#x-table", root);
+    if (body) {
+      var rows = "";
+      [1, 2, 3, 5, 10].forEach(function (v) {
+        var s = ok ? c2 * v / c1 : 0;
+        rows += "<tr><td>" + fmt(v, 1) + " mL</td><td>" + (ok ? fmt(s, 3) + " mL" : "–") + "</td><td>" + (ok ? fmt(v - s, 3) + " mL" : "–") + "</td></tr>";
+      });
+      body.innerHTML = rows;
+    }
+    var alert = $('[data-out="alert"]', root), msg = "";
+    if (c1 > 0 && c2 > c1) msg = "The target is stronger than the stock. Dilution can only lower a concentration; reconstitute a new vial with less water instead.";
+    else if (ok && v1 < 0.02) msg = "Less than 0.02 mL (2 units) of stock is hard to measure. Make a larger final volume or dilute in two steps.";
+    else if (after > cap) msg = "After dilution the dose (" + fmt(after, 1) + " units) is larger than the selected syringe.";
+    alert.textContent = msg; alert.hidden = !msg;
+  }
+
+  /* Concentration: amount / volume in every unit, plus molarity from molecular weight */
+  function computeConc(root) {
+    var mg = toMg(num($("#c-amount", root)), $("#c-amount-unit", root).value);
+    var ml = num($("#c-volume", root));
+    var mw = num($("#c-mw", root));                      // g/mol (Da)
+    var c = ml > 0 ? mg / ml : 0;                         // mg/mL = g/L
+    var ok = ml > 0 && mg > 0;
+    set(root, "conc", ok ? fmt(c, 3) : "–");
+    set(root, "mcg-ml", ok ? fmt(c * 1000, 1).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " mcg/mL" : "–");
+    set(root, "per-unit", ok ? fmt(c * 1000 / U100, 2) + " mcg" : "–");
+    set(root, "pct", ok ? fmt(c / 10, 3) + "% w/v" : "–");
+    set(root, "mm", ok && mw > 0 ? fmt(c / mw * 1000, 3) + " mM" : "–");
+    set(root, "um", ok && mw > 0 ? fmt(c / mw * 1e6, 1).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " µM" : "–");
+
+    var body = $("#c-table", root);
+    if (body) {
+      var rows = "";
+      [1, 5, 10, 20, 25, 50].forEach(function (u) {
+        rows += "<tr><td>" + u + (u === 1 ? " unit" : " units") + "</td><td>" + fmt(u / U100, 2) + " mL</td><td>" + (ok ? fmt(c * u * 10, 1) + " mcg" : "–") + "</td></tr>";
+      });
+      body.innerHTML = rows;
+    }
+  }
+
   /* TDEE: Mifflin-St Jeor BMR x activity factor */
   function computeTdee(root) {
     var sex = $("#t-sex", root).value;
@@ -215,7 +309,7 @@
     alert.textContent = msg; alert.hidden = !msg;
   }
 
-  var map = { main: computeMain, recon: computeRecon, dose: computeDose, tdee: computeTdee, adaptive: computeAdaptive };
+  var map = { main: computeMain, recon: computeRecon, dose: computeDose, blend: computeBlend, dilution: computeDilution, conc: computeConc, tdee: computeTdee, adaptive: computeAdaptive };
   $$("[data-calc]").forEach(function (root) {
     var fn = map[root.getAttribute("data-calc")];
     if (fn) wire(root, fn);

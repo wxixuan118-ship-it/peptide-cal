@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="800" height="280" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="280" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="44" font-size="22" font-weight="700" fill="#15232b">One peptide concentration, four ways to write it</text>
+  <g font-size="15" fill="#15232b">
+    <rect x="40" y="80" width="160" height="130" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="58" y="112" font-weight="700">mg/mL</text>
+    <text x="58" y="142" fill="#546570">mg ÷ mL</text>
+    <text x="58" y="182" font-size="22" font-weight="700" fill="#0b7a75">2.5</text>
+    <rect x="230" y="80" width="160" height="130" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="248" y="112" font-weight="700">mcg/mL</text>
+    <text x="248" y="142" fill="#546570">mg/mL × 1,000</text>
+    <text x="248" y="182" font-size="22" font-weight="700" fill="#0b7a75">2,500</text>
+    <rect x="420" y="80" width="160" height="130" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="438" y="112" font-weight="700">mcg per unit</text>
+    <text x="438" y="142" fill="#546570">mcg/mL ÷ 100</text>
+    <text x="438" y="182" font-size="22" font-weight="700" fill="#0b7a75">25</text>
+    <rect x="610" y="80" width="150" height="130" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="628" y="112" font-weight="700">Molarity</text>
+    <text x="628" y="142" fill="#546570">g/L ÷ MW</text>
+    <text x="628" y="182" font-size="22" font-weight="700" fill="#0b7a75">1.667 mM</text>
+  </g>
+  <text x="40" y="248" font-size="14" fill="#546570">Example: 5 mg of peptide in 2 mL, molecular weight 1,500 g/mol.</text>
+</svg>

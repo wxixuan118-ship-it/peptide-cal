@@ -1,0 +1,173 @@
+<section class="hero">
+  <h1>Peptide Dilution Calculator</h1>
+  <p class="lead">This peptide dilution calculator tells you how much of an already-mixed peptide solution to take and how much diluent to add to reach a weaker concentration. Enter the stock strength, the target strength and the final volume you want. The peptide dilution calculator also shows how a dose's syringe units change after diluting.</p>
+</section>
+
+<section class="tool" data-calc="dilution" aria-labelledby="tool-title">
+  <form onsubmit="return false">
+    <h2 id="tool-title">Dilution calculator inputs</h2>
+
+    <div class="field">
+      <label for="x-stock">Current (stock) concentration</label>
+      <div class="input-row">
+        <input id="x-stock" type="number" inputmode="decimal" min="0" step="any" value="5">
+        <select id="x-stock-unit" aria-label="Stock concentration unit"><option value="mg" selected>mg/mL</option><option value="mcg">mcg/mL</option></select>
+      </div>
+      <div class="chips">
+        <button type="button" class="chip" data-target="x-stock" data-value="2.5">2.5 mg/mL</button>
+        <button type="button" class="chip" data-target="x-stock" data-value="5">5 mg/mL</button>
+        <button type="button" class="chip" data-target="x-stock" data-value="10">10 mg/mL</button>
+      </div>
+      <p class="hint">Not sure? Divide the vial's mg by the mL of water you added.</p>
+    </div>
+
+    <div class="field">
+      <label for="x-target">Target concentration</label>
+      <div class="input-row">
+        <input id="x-target" type="number" inputmode="decimal" min="0" step="any" value="1">
+        <select id="x-target-unit" aria-label="Target concentration unit"><option value="mg" selected>mg/mL</option><option value="mcg">mcg/mL</option></select>
+      </div>
+      <div class="chips">
+        <button type="button" class="chip" data-target="x-target" data-value="0.5">0.5 mg/mL</button>
+        <button type="button" class="chip" data-target="x-target" data-value="1">1 mg/mL</button>
+        <button type="button" class="chip" data-target="x-target" data-value="2">2 mg/mL</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="x-final">Final volume you want (mL)</label>
+      <input id="x-final" type="number" inputmode="decimal" min="0" step="any" value="2">
+      <div class="chips">
+        <button type="button" class="chip" data-target="x-final" data-value="1">1 mL</button>
+        <button type="button" class="chip" data-target="x-final" data-value="2">2 mL</button>
+        <button type="button" class="chip" data-target="x-final" data-value="5">5 mL</button>
+        <button type="button" class="chip" data-target="x-final" data-value="10">10 mL</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="x-dose">Dose to check (optional)</label>
+      <div class="input-row">
+        <input id="x-dose" type="number" inputmode="decimal" min="0" step="any" value="250">
+        <select id="x-dose-unit" aria-label="Dose unit"><option value="mcg" selected>mcg</option><option value="mg">mg</option></select>
+      </div>
+      <p class="hint">Shows the syringe units for this dose before and after diluting. Example input only.</p>
+    </div>
+
+    <div class="field">
+      <label for="x-syringe">Syringe size</label>
+      <select id="x-syringe">
+        <option value="30">0.3 mL (30 units)</option>
+        <option value="50">0.5 mL (50 units)</option>
+        <option value="100" selected>1.0 mL (100 units)</option>
+      </select>
+    </div>
+  </form>
+
+  <div class="results" aria-live="polite">
+    <p class="big">Take <strong><span data-out="stock-ml">0.4</span> mL</strong> of stock solution</p>
+    {{SYRINGE 25}}
+    <ul class="stats">
+      <li>Diluent to add<b data-out="diluent">1.6 mL</b></li>
+      <li>Dilution factor<b data-out="factor">5×</b></li>
+      <li>Dose before<b data-out="before">5 units</b></li>
+      <li>Dose after<b data-out="after">25 units</b></li>
+    </ul>
+    <p class="alert" data-out="alert" hidden></p>
+    <div class="table-wrap">
+      <table>
+        <caption class="hint">Same dilution at other final volumes</caption>
+        <thead><tr><th>Final volume</th><th>Stock</th><th>Diluent</th></tr></thead>
+        <tbody id="x-table">
+          <tr><td>1 mL</td><td>0.2 mL</td><td>0.8 mL</td></tr>
+          <tr><td>2 mL</td><td>0.4 mL</td><td>1.6 mL</td></tr>
+          <tr><td>3 mL</td><td>0.6 mL</td><td>2.4 mL</td></tr>
+          <tr><td>5 mL</td><td>1 mL</td><td>4 mL</td></tr>
+          <tr><td>10 mL</td><td>2 mL</td><td>8 mL</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<article class="content">
+  <h2>How the Peptide Dilution Calculator Works</h2>
+  <p>Diluting does not change how much peptide you have; it spreads the same peptide through more liquid. The amount of peptide in the stock you take must equal the amount in the final solution. That gives the standard dilution equation the peptide dilution calculator solves:</p>
+  <p class="formula">C1 × V1 = C2 × V2<br>V1 (stock to take) = C2 × V2 ÷ C1<br>diluent to add = V2 − V1</p>
+  <p>C1 is the stock concentration, C2 the target, and V2 the final volume. The dilution factor is C1 ÷ C2: a 5× dilution means one part stock to four parts diluent.</p>
+
+  <figure>
+    <img src="/assets/img/peptide-dilution-c1v1.svg" width="800" height="280" loading="lazy" decoding="async" alt="Peptide dilution calculator diagram: 0.4 mL of 5 mg/mL stock plus 1.6 mL diluent gives 2 mL at 1 mg/mL">
+    <figcaption>0.4 mL of a 5 mg/mL stock made up to 2 mL gives 1 mg/mL, a 5× dilution.</figcaption>
+  </figure>
+
+  <h2>When to Use Peptide Dilution</h2>
+  <p>The usual reason is a dose that is too small to measure. If 250 mcg from a 5 mg/mL vial is only 5 units, a slight misread is a large error. Diluting the solution 5× moves the same dose to 25 units, where each line on the syringe is a much smaller share of the dose.</p>
+  <div class="cards">
+    <div class="card">
+      <h3>Dose under 5 units</h3>
+      <p>Dilute so the dose lands between 10 and 50 units, where syringe marks are easiest to read.</p>
+    </div>
+    <div class="card">
+      <h3>Lab working solutions</h3>
+      <p>Make a weaker working solution from a concentrated stock, in mg/mL or mcg/mL, for assays or standards.</p>
+    </div>
+    <div class="card">
+      <h3>Before the next vial</h3>
+      <p>If you have not mixed the vial yet, add more water from the start with the <a href="/peptide-reconstitution-calculator/">peptide reconstitution calculator</a> instead.</p>
+    </div>
+  </div>
+
+  <h2>Peptide Dilution Calculator Example</h2>
+  <p>A 10 mg vial was mixed with 2 mL of bacteriostatic water, so the stock is 5 mg/mL. You want 2 mL of a 1 mg/mL solution.</p>
+  <ul>
+    <li>Stock to take: 1 mg/mL × 2 mL ÷ 5 mg/mL = <strong>0.4 mL</strong>.</li>
+    <li>Diluent to add: 2 mL − 0.4 mL = <strong>1.6 mL</strong>.</li>
+    <li>Check: 0.4 mL × 5 mg/mL = 2 mg of peptide, and 2 mg ÷ 2 mL = 1 mg/mL.</li>
+    <li>A 250 mcg dose goes from 0.05 mL (5 units) to 0.25 mL (25 units).</li>
+  </ul>
+  <p>Once diluted, the new concentration is what you enter in the main <a href="/">peptide calculator</a>: put the peptide mg in the new vial (2 mg here) and its total volume (2 mL) as the water.</p>
+
+  <h2>Peptide Dilution Chart</h2>
+  <p>Stock and diluent needed for 2 mL of final solution at common strengths:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Stock</th><th>Target</th><th>Factor</th><th>Stock</th><th>Diluent</th></tr></thead>
+      <tbody>
+        <tr><td>10 mg/mL</td><td>2 mg/mL</td><td>5×</td><td>0.4 mL</td><td>1.6 mL</td></tr>
+        <tr><td>10 mg/mL</td><td>1 mg/mL</td><td>10×</td><td>0.2 mL</td><td>1.8 mL</td></tr>
+        <tr><td>5 mg/mL</td><td>2.5 mg/mL</td><td>2×</td><td>1 mL</td><td>1 mL</td></tr>
+        <tr><td>5 mg/mL</td><td>1 mg/mL</td><td>5×</td><td>0.4 mL</td><td>1.6 mL</td></tr>
+        <tr><td>2.5 mg/mL</td><td>0.5 mg/mL</td><td>5×</td><td>0.4 mL</td><td>1.6 mL</td></tr>
+        <tr><td>1 mg/mL</td><td>100 mcg/mL</td><td>10×</td><td>0.2 mL</td><td>1.8 mL</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Large Peptide Dilutions in Two Steps</h2>
+  <p>A 100× dilution into 2 mL needs only 0.02 mL of stock, which is 2 units and hard to measure precisely. Split it into two 10× steps instead: dilute 0.2 mL of stock to 2 mL, then take 0.2 mL of that and dilute it to 2 mL again. Each step uses a volume you can measure, and the errors stay small. Run each step through the calculator separately.</p>
+
+  <h2>Peptide Dilution Tips</h2>
+  <ul>
+    <li><strong>Use the same diluent as the stock.</strong> Bacteriostatic water stays bacteriostatic water unless the product label says otherwise.</li>
+    <li><strong>Dilute into a clean, sterile vial.</strong> Mixing extra liquid into a vial that is already near capacity can overflow it.</li>
+    <li><strong>Label the new strength.</strong> Write the new mg/mL and the date on the vial so later doses use the right concentration.</li>
+    <li><strong>Remember the dose does not change.</strong> Diluting only changes the units you draw. Re-check every dose with the new concentration.</li>
+  </ul>
+
+  <section id="faq">
+    <h2>Peptide Dilution Calculator FAQ</h2>
+    <h3>How do you dilute a peptide to a lower concentration?</h3>
+    <p>Use C1 × V1 = C2 × V2. Multiply the target concentration by the final volume, divide by the stock concentration to get the stock volume, then add diluent up to the final volume.</p>
+    <h3>Does diluting a peptide change the dose?</h3>
+    <p>No. The peptide amount in each dose stays the same; you simply draw more units of a weaker solution to deliver it.</p>
+    <h3>Can I dilute a peptide in the same vial?</h3>
+    <p>Only if the vial has room for the added liquid and you account for what is already inside. This calculator assumes you make the final volume in a clean vial, which is easier to track.</p>
+    <h3>Can I make a peptide stronger with this calculator?</h3>
+    <p>No. Dilution only lowers concentration. For a stronger solution, reconstitute a new vial with less water.</p>
+    <h3>Does the dilution calculator work in mcg/mL?</h3>
+    <p>Yes. Set either concentration to mcg/mL and the calculator converts units for you.</p>
+  </section>
+
+  <p class="note">This peptide dilution calculator performs arithmetic only and is provided for educational purposes. It does not recommend any peptide, dose or protocol. Follow the product label and the instructions of a licensed healthcare professional, and read our <a href="/disclaimer/">medical disclaimer</a> and <a href="/about/">how the formulas are checked</a>. For product labelling of bacteriostatic water, search <a href="https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=bacteriostatic+water" rel="noopener" target="_blank">DailyMed (U.S. National Library of Medicine)</a>.</p>
+</article>

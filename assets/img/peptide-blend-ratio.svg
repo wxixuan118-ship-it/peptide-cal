@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="800" height="280" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="280" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="44" font-size="22" font-weight="700" fill="#15232b">One draw from a blend delivers every peptide in the vial</text>
+  <g font-size="15" fill="#15232b">
+    <rect x="40" y="80" width="210" height="130" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="60" y="112" font-weight="700">Blend vial</text>
+    <text x="60" y="142" fill="#546570">10 mg A + 5 mg B</text>
+    <text x="60" y="182" font-size="22" font-weight="700" fill="#0b7a75">+ 2 mL water</text>
+    <rect x="295" y="80" width="210" height="130" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="315" y="112" font-weight="700">Each concentration</text>
+    <text x="315" y="142" fill="#546570">A: 5 mg/mL</text>
+    <text x="315" y="167" fill="#546570">B: 2.5 mg/mL</text>
+    <text x="315" y="194" font-size="15" font-weight="700" fill="#0b7a75">ratio stays 2 : 1</text>
+    <rect x="550" y="80" width="210" height="130" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="570" y="112" font-weight="700">10 units (0.1 mL)</text>
+    <text x="570" y="142" fill="#546570">A: 500 mcg</text>
+    <text x="570" y="167" fill="#546570">B: 250 mcg</text>
+    <text x="570" y="194" font-size="15" font-weight="700" fill="#0b7a75">both in one draw</text>
+  </g>
+  <path d="M254 145 h36 M509 145 h36" stroke="#0b7a75" stroke-width="3"/>
+  <text x="40" y="248" font-size="14" fill="#546570">Example: dosing by Peptide A at 500 mcg; Peptide B follows at the vial ratio.</text>
+</svg>

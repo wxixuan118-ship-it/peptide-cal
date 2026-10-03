@@ -16,7 +16,7 @@ from pathlib import Path
 
 SITE_URL = "https://peptidecalculatorpro.org"   # <- your production domain, no trailing slash
 SITE_NAME = "Peptide Calculator"
-UPDATED = "2026-10-01"
+UPDATED = "2026-10-03"
 
 ROOT = Path(__file__).parent
 SRC, DIST = ROOT / "src", ROOT / "dist"
@@ -25,6 +25,9 @@ NAV = [
     ("/", "Peptide Calculator"),
     ("/peptide-reconstitution-calculator/", "Reconstitution Calculator"),
     ("/peptide-dosage-calculator/", "Dosage Calculator"),
+    ("/peptide-blend-calculator/", "Blend Calculator"),
+    ("/peptide-dilution-calculator/", "Dilution Calculator"),
+    ("/peptide-concentration-calculator/", "Concentration Calculator"),
     ("/retatrutide-peptide-calculator/", "Retatrutide"),
     ("/tdee-calculator/", "TDEE"),
 ]
@@ -59,6 +62,36 @@ PAGES = [
         "crumb": "Peptide Dosage Calculator",
         "app": "Peptide Dosage Calculator",
         "priority": "0.9",
+    },
+    {
+        "path": "/peptide-blend-calculator/",
+        "src": "blend.html",
+        "title": "Peptide Blend Calculator: Units for 2–3 Peptide Vials",
+        "description": ("Peptide blend calculator for vials with two or three peptides: get the syringe units "
+                        "for your dose and exactly how much of each peptide every draw delivers."),
+        "crumb": "Peptide Blend Calculator",
+        "app": "Peptide Blend Calculator",
+        "priority": "0.9",
+    },
+    {
+        "path": "/peptide-dilution-calculator/",
+        "src": "dilution.html",
+        "title": "Peptide Dilution Calculator: C1V1 = C2V2 for Vials",
+        "description": ("Peptide dilution calculator: find how much stock solution and diluent to mix for "
+                        "a weaker mg/mL or mcg/mL strength, and see your dose in units before and after."),
+        "crumb": "Peptide Dilution Calculator",
+        "app": "Peptide Dilution Calculator",
+        "priority": "0.8",
+    },
+    {
+        "path": "/peptide-concentration-calculator/",
+        "src": "concentration.html",
+        "title": "Peptide Concentration Calculator: mg/mL, mcg & Molarity",
+        "description": ("Peptide concentration calculator: convert peptide mg and mL into mg/mL, mcg/mL, "
+                        "mcg per syringe unit, % w/v and mM or µM from the molecular weight."),
+        "crumb": "Peptide Concentration Calculator",
+        "app": "Peptide Concentration Calculator",
+        "priority": "0.8",
     },
     {
         "path": "/retatrutide-peptide-calculator/",
@@ -144,6 +177,9 @@ TEMPLATE = """<!doctype html>
       <a href="/">Peptide Calculator</a>
       <a href="/peptide-reconstitution-calculator/">Peptide Reconstitution Calculator</a>
       <a href="/peptide-dosage-calculator/">Peptide Dosage Calculator</a>
+      <a href="/peptide-blend-calculator/">Peptide Blend Calculator</a>
+      <a href="/peptide-dilution-calculator/">Peptide Dilution Calculator</a>
+      <a href="/peptide-concentration-calculator/">Peptide Concentration Calculator</a>
       <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
       <a href="/tdee-calculator/">TDEE Calculator</a>
       <a href="/about/">About</a>

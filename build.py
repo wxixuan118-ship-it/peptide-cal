@@ -315,13 +315,17 @@ PARTNERS = [
      'AI Clothes Changer', 230, 54),
     ('https://twelve.tools', 'https://twelve.tools/badge0-white.svg',
      'Featured on Twelve Tools', 148, 40),
+    ('https://unitelist.com/product/peptidecalculatorpro',
+     'https://unitelist.com/assets/images/badge.png', 'Unite List', None, 54),
 ]
 
 
 def partners_html():
     links = "\n".join(
         '      <a href="%s" target="_blank" rel="noopener">'
-        '<img src="%s" alt="%s" loading="lazy" width="%d" height="%d"></a>' % (href, html.escape(src), html.escape(alt), w, h)
+        '<img src="%s" alt="%s" loading="lazy"%s height="%d"></a>' % (
+            href, html.escape(src), html.escape(alt),
+            ' width="%d"' % w if w is not None else '', h)
         for href, src, alt, w, h in PARTNERS
     )
     return '    <div class="partners" aria-label="Partners">\n%s\n    </div>' % links

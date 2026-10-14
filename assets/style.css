@@ -122,4 +122,4 @@ th { background: var(--surface-2); font-weight: 600; }
 .site-footer a { color: var(--muted); }
 .site-footer .partners { display: flex; flex-wrap: nowrap; align-items: center; gap: 16px; margin: 14px 0 12px; overflow-x: auto; }
 .site-footer .partners a { flex: none; }
-.site-footer .partners img { display: block; max-width: none; height: auto; }
+.site-footer .partners img { display: block; max-width: none; }

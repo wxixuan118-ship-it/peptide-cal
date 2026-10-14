@@ -136,6 +136,12 @@ PAGES = [
         "priority": "0.8",
     },
     {
+        "path": "/partners/", "src": "partners.html", "crumb": "Partners",
+        "title": "Partners | Peptide Calculator",
+        "description": "Partner websites and useful online tools recommended by Peptide Calculator.",
+        "priority": "0.3",
+    },
+    {
         "path": "/about/", "src": "about.html", "crumb": "About",
         "title": "About Peptide Calculator | How Our Math Is Checked",
         "description": ("Who builds Peptide Calculator, how every formula is checked, and what the "
@@ -209,6 +215,7 @@ TEMPLATE = """<!doctype html>
       <a href="/about/">About</a>
       <a href="/disclaimer/">Medical Disclaimer</a>
       <a href="/privacy/">Privacy</a>
+      <a href="/partners/">Partners</a>
     </nav>
 {partners}
     <p>Educational tool only — not medical advice. Always confirm doses with a licensed healthcare professional. Last reviewed {updated}.</p>
@@ -304,6 +311,10 @@ PARTNERS = [
     ('https://fazier.com/launches/peptidecalculatorpro.org',
      'https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light',
      'Peptide Calculator \u2014 Launched on Fazier', 120, 51),
+    ('https://stylemirrorai.com/', '/assets/img/stylemirror-ai-badge.svg',
+     'AI Clothes Changer', 230, 54),
+    ('https://twelve.tools', 'https://twelve.tools/badge0-white.svg',
+     'Featured on Twelve Tools', 148, 40),
 ]
 
 

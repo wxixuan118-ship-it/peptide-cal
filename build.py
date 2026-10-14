@@ -317,6 +317,11 @@ PARTNERS = [
      'Featured on Twelve Tools', 148, 40),
     ('https://unitelist.com/product/peptidecalculatorpro',
      'https://unitelist.com/assets/images/badge.png', 'Unite List', None, 54),
+    ('https://www.freeai.run', 'https://www.freeai.run/badge/badge_light.svg',
+     'Featured on FreeAI', 200, 54),
+    ('https://findly.tools/peptide-calculator-pro?utm_source=peptide-calculator-pro',
+     'https://findly.tools/badges/findly-tools-badge-light.svg',
+     'Featured on Findly.tools', 175, 55),
 ]
 
 

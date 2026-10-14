@@ -322,6 +322,8 @@ PARTNERS = [
     ('https://findly.tools/peptide-calculator-pro?utm_source=peptide-calculator-pro',
      'https://findly.tools/badges/findly-tools-badge-light.svg',
      'Featured on Findly.tools', 175, 55),
+    ('https://saascity.io', 'https://saascity.io/badges/featured-dark.svg',
+     'Featured on SaaSCity', 150, 54),
 ]
 
 

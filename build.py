@@ -330,6 +330,10 @@ PARTNERS = [
     ('https://prolaunch.net', 'https://prolaunch.net/images/badges/featured-light.svg',
      'Pro Launch Featured Badge (light theme)', 240, None,
      ' title="Pro Launch Featured Badge"'),
+    ('https://shinylaunch.com/product/peptidecalculatorpro',
+     'https://shinylaunch.com/assets/images/badge.png', 'ShinyLaunch', None, 54),
+    ('https://thekeytools.com/ai/peptidecalculatorpro',
+     'https://thekeytools.com/assets/images/badge.png', 'The Key Tools', None, 54),
 ]
 
 

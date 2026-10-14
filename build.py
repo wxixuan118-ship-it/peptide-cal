@@ -324,16 +324,21 @@ PARTNERS = [
      'Featured on Findly.tools', 175, 55),
     ('https://saascity.io', 'https://saascity.io/badges/featured-dark.svg',
      'Featured on SaaSCity', 150, 54),
+    ('https://newname.ai/badge?ref=peptide-calculator-pro',
+     'https://newname.ai/badge/listed.svg', 'Listed on NewName.ai',
+     200, 54, ' data-newname-badge="peptide-calculator-pro"'),
 ]
 
 
 def partners_html():
     links = "\n".join(
-        '      <a href="%s" target="_blank" rel="noopener">'
+        '      <a href="%s" target="_blank" rel="noopener"%s>'
         '<img src="%s" alt="%s" loading="lazy"%s height="%d"></a>' % (
-            href, html.escape(src), html.escape(alt),
-            ' width="%d"' % w if w is not None else '', h)
-        for href, src, alt, w, h in PARTNERS
+            partner[0], partner[5] if len(partner) > 5 else '',
+            html.escape(partner[1]), html.escape(partner[2]),
+            ' width="%d"' % partner[3] if partner[3] is not None else '',
+            partner[4])
+        for partner in PARTNERS
     )
     return '    <div class="partners" aria-label="Partners">\n%s\n    </div>' % links
 

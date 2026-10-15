@@ -341,6 +341,8 @@ PARTNERS = [
      'Featured on DodoDirectory', 200, 54),
     ('https://huntfortools.com/tool/peptidecalculatorpro',
      'https://huntfortools.com/assets/images/badge.png', 'Hunt for Tools', None, 54),
+    ('https://productwing.com/product/peptidecalculatorpro',
+     'https://productwing.com/assets/images/badge.png', 'Product Wing', None, 54),
 ]
 
 

@@ -346,6 +346,9 @@ PARTNERS = [
     ('https://indielineup.com/product/peptide-calculator?ref=badge',
      'https://indielineup.com/badge/peptide-calculator.svg',
      'Featured on IndieLineup', 160, 44),
+    ('https://startupbenchmarks.com/product/peptidecalculatorpro',
+     'https://startupbenchmarks.com/assets/images/badge.png',
+     'Startup Benchmarks', None, 54),
 ]
 
 

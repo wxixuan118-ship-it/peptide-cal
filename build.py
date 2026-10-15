@@ -337,6 +337,8 @@ PARTNERS = [
     ('https://devhub.best/projects/peptide-calculator?utm_source=badge',
      'https://r2.direasy-multi-tenant.focusapps.app/uploads/616d0b1a-3979-4b8c-94d1-b4f1fedd3ead/1783239702078/53yqmim54zv/featured-on-light.svg',
      'Featured on DevHub', None, 44),
+    ('https://dododirectory.com', 'https://dododirectory.com/badge-light.png',
+     'Featured on DodoDirectory', 200, 54),
 ]
 
 

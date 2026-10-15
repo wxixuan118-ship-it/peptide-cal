@@ -334,6 +334,9 @@ PARTNERS = [
      'https://shinylaunch.com/assets/images/badge.png', 'ShinyLaunch', None, 54),
     ('https://thekeytools.com/ai/peptidecalculatorpro',
      'https://thekeytools.com/assets/images/badge.png', 'The Key Tools', None, 54),
+    ('https://devhub.best/projects/peptide-calculator?utm_source=badge',
+     'https://r2.direasy-multi-tenant.focusapps.app/uploads/616d0b1a-3979-4b8c-94d1-b4f1fedd3ead/1783239702078/53yqmim54zv/featured-on-light.svg',
+     'Featured on DevHub', None, 44),
 ]
 
 

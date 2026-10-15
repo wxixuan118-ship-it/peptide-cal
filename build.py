@@ -343,6 +343,9 @@ PARTNERS = [
      'https://huntfortools.com/assets/images/badge.png', 'Hunt for Tools', None, 54),
     ('https://productwing.com/product/peptidecalculatorpro',
      'https://productwing.com/assets/images/badge.png', 'Product Wing', None, 54),
+    ('https://indielineup.com/product/peptide-calculator?ref=badge',
+     'https://indielineup.com/badge/peptide-calculator.svg',
+     'Featured on IndieLineup', 160, 44),
 ]
 
 

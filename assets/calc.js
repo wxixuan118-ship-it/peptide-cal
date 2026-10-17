@@ -269,6 +269,57 @@
     }
   }
 
+  function molVolume(value, unit) { return value * (unit === "L" ? 1 : unit === "uL" ? 1e-6 : 1e-3); }
+  function molMass(value, unit) { return value * (unit === "g" ? 1 : unit === "mcg" ? 1e-6 : 1e-3); }
+  function molAmount(value, unit) { return value * (unit === "mmol" ? 1e-3 : unit === "umol" ? 1e-6 : 1); }
+  function molFmt(value, digits) { return Number(value.toPrecision(digits || 6)).toLocaleString("en-US", { maximumFractionDigits: 12 }); }
+  function molAlert(root, valid, purity) {
+    var alert = $('[data-out="alert"]', root);
+    alert.textContent = purity > 100 ? "Net solute content cannot exceed 100%." : valid ? "" : "Enter positive values for mass or target concentration, molecular weight, final volume and net solute content.";
+    alert.hidden = !alert.textContent;
+  }
+  function computeMolarity(root) {
+    var mass = molMass(num($("#mol-mass", root)), $("#mol-mass-unit", root).value);
+    var mw = num($("#mol-mw", root));
+    var volume = molVolume(num($("#mol-volume", root)), $("#mol-volume-unit", root).value);
+    var purity = num($("#mol-purity", root));
+    var ok = mass > 0 && mw > 0 && volume > 0 && purity > 0 && purity <= 100;
+    var moles = ok ? mass * purity / 100 / mw : 0;
+    var molarity = ok ? moles / volume : 0;
+    set(root, "molarity", ok ? molFmt(molarity * 1000) : "–");
+    set(root, "molar", ok ? molFmt(molarity) + " M" : "–");
+    set(root, "micromolar", ok ? molFmt(molarity * 1e6) + " µM" : "–");
+    set(root, "moles", ok ? molFmt(moles * 1e6) + " µmol" : "–");
+    set(root, "mass-conc", ok ? molFmt(mass * purity / 100 / volume) + " mg/mL" : "–");
+    molAlert(root, ok, purity);
+  }
+  function computeMolesToMolarity(root) {
+    var moles = molAmount(num($("#input-moles", root)), $("#input-moles-unit", root).value);
+    var volume = molVolume(num($("#moles-volume", root)), $("#moles-volume-unit", root).value);
+    var ok = moles > 0 && volume > 0;
+    var molarity = ok ? moles / volume : 0;
+    set(root, "molarity", ok ? molFmt(molarity * 1000) : "–");
+    set(root, "molar", ok ? molFmt(molarity) + " M" : "–");
+    set(root, "micromolar", ok ? molFmt(molarity * 1e6) + " µM" : "–");
+    var alert = $('[data-out="alert"]', root);
+    alert.textContent = ok ? "" : "Enter positive values for both the amount of solute and final solution volume.";
+    alert.hidden = ok;
+  }
+  function computeMolarityToMoles(root) {
+    var target = num($("#target-conc", root));
+    var unit = $("#target-unit", root).value;
+    var molarity = target * (unit === "mM" ? 1e-3 : unit === "uM" ? 1e-6 : 1);
+    var volume = molVolume(num($("#target-volume", root)), $("#target-volume-unit", root).value);
+    var ok = target > 0 && volume > 0;
+    var moles = ok ? molarity * volume : 0;
+    set(root, "target-moles", ok ? molFmt(moles * 1e6) : "–");
+    set(root, "target-mol", ok ? molFmt(moles) + " mol" : "–");
+    set(root, "target-mmol", ok ? molFmt(moles * 1000) + " mmol" : "–");
+    var alert = $('[data-out="alert"]', root);
+    alert.textContent = ok ? "" : "Enter positive values for target molarity and final solution volume.";
+    alert.hidden = ok;
+  }
+
   /* Sequence tools: residue formulas (amino acid minus H2O) as [C, H, N, O, S] */
   var RES = {
     G: [2, 3, 1, 1, 0], A: [3, 5, 1, 1, 0], S: [3, 5, 1, 2, 0], P: [5, 7, 1, 1, 0], V: [5, 9, 1, 1, 0],
@@ -444,7 +495,7 @@
     alert.textContent = msg; alert.hidden = !msg;
   }
 
-  var map = { main: computeMain, recon: computeRecon, dose: computeDose, blend: computeBlend, dilution: computeDilution, conc: computeConc, mw: computeMw, charge: computeCharge, tdee: computeTdee, adaptive: computeAdaptive };
+  var map = { main: computeMain, recon: computeRecon, dose: computeDose, blend: computeBlend, dilution: computeDilution, conc: computeConc, molarity: computeMolarity, "moles-to-molarity": computeMolesToMolarity, "molarity-to-moles": computeMolarityToMoles, mw: computeMw, charge: computeCharge, tdee: computeTdee, adaptive: computeAdaptive };
   $$("[data-calc]").forEach(function (root) {
     var fn = map[root.getAttribute("data-calc")];
     if (fn) wire(root, fn);

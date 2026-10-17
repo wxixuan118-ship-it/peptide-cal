@@ -10,6 +10,7 @@ Static site for [peptidecalculatorpro.org](https://peptidecalculatorpro.org): fr
 | Peptide Blend Calculator | `/peptide-blend-calculator/` |
 | Peptide Dilution Calculator | `/peptide-dilution-calculator/` |
 | Peptide Concentration Calculator | `/peptide-concentration-calculator/` |
+| Molarity Calculator | `/molarity-calculator/` |
 | BAC Water Calculator | `/bac-water-calculator/` |
 | Peptide Molecular Weight Calculator | `/peptide-molecular-weight-calculator/` |
 | Peptide Net Charge Calculator | `/peptide-net-charge-calculator/` |

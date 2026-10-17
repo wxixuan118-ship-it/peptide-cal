@@ -28,6 +28,7 @@ NAV = [
     ("/peptide-blend-calculator/", "Blend Calculator"),
     ("/peptide-dilution-calculator/", "Dilution Calculator"),
     ("/peptide-concentration-calculator/", "Concentration Calculator"),
+    ("/molarity-calculator/", "Molarity Calculator"),
     ("/bac-water-calculator/", "BAC Water Calculator"),
     ("/retatrutide-peptide-calculator/", "Retatrutide"),
     ("/tdee-calculator/", "TDEE"),
@@ -102,6 +103,16 @@ PAGES = [
         "crumb": "BAC Water Calculator",
         "app": "BAC Water Calculator",
         "category": "EducationalApplication",
+        "priority": "0.8",
+    },
+    {
+        "path": "/molarity-calculator/",
+        "src": "molarity.html",
+        "title": "Molarity Calculator: Mass, Molecular Weight & Volume",
+        "description": ("Free molarity calculator and molar concentration calculator. Convert mass or moles plus final volume to M, mM and µM, or calculate moles needed."),
+        "crumb": "Molarity Calculator",
+        "app": "Molarity Calculator",
+        "category": "ScientificApplication",
         "priority": "0.8",
     },
     {
@@ -219,6 +230,7 @@ TEMPLATE = """<!doctype html>
       <a href="/peptide-blend-calculator/">Peptide Blend Calculator</a>
       <a href="/peptide-dilution-calculator/">Peptide Dilution Calculator</a>
       <a href="/peptide-concentration-calculator/">Peptide Concentration Calculator</a>
+      <a href="/molarity-calculator/">Molarity Calculator</a>
       <a href="/bac-water-calculator/">BAC Water Calculator</a>
       <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
       <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>

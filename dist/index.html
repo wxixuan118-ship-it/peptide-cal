@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0b7a75">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/style.css?v=8ec41f49">
+<link rel="stylesheet" href="/assets/style.css?v=ebf55bca">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -143,17 +143,25 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">P</span>Peptide Calculator</a>
-    <nav class="site-nav" aria-label="Calculators">
-      <a href="/" aria-current="page">Peptide Calculator</a>
-      <a href="/peptide-reconstitution-calculator/">Reconstitution Calculator</a>
-      <a href="/peptide-dosage-calculator/">Dosage Calculator</a>
-      <a href="/peptide-blend-calculator/">Blend Calculator</a>
-      <a href="/peptide-dilution-calculator/">Dilution Calculator</a>
-      <a href="/peptide-concentration-calculator/">Concentration Calculator</a>
-      <a href="/molarity-calculator/">Molarity Calculator</a>
-      <a href="/bac-water-calculator/">BAC Water Calculator</a>
-      <a href="/retatrutide-peptide-calculator/">Retatrutide</a>
-      <a href="/tdee-calculator/">TDEE</a>
+    <nav class="site-nav" aria-label="Primary">
+      <details class="nav-menu">
+        <summary>Calculators</summary>
+        <div class="nav-menu-links">
+        <a href="/" aria-current="page">Peptide Calculator</a>
+        <a href="/peptide-reconstitution-calculator/">Reconstitution Calculator</a>
+        <a href="/peptide-dosage-calculator/">Dosage Calculator</a>
+        <a href="/peptide-blend-calculator/">Blend Calculator</a>
+        <a href="/peptide-dilution-calculator/">Dilution Calculator</a>
+        <a href="/peptide-concentration-calculator/">Concentration Calculator</a>
+        <a href="/molarity-calculator/">Molarity Calculator</a>
+        <a href="/bac-water-calculator/">BAC Water Calculator</a>
+        <a href="/peptide-molecular-weight-calculator/">Molecular Weight Calculator</a>
+        <a href="/peptide-net-charge-calculator/">Net Charge Calculator</a>
+        <a href="/retatrutide-peptide-calculator/">Retatrutide</a>
+        <a href="/tdee-calculator/">TDEE</a>
+        </div>
+      </details>
+      <a href="/blog/">Blogs</a>
     </nav>
   </div>
 </header>
@@ -166,7 +174,7 @@
 
 <section class="tool" data-calc="main" aria-labelledby="tool-title">
   <form onsubmit="return false">
-    <h2 id="tool-title">Peptide calculator inputs</h2>
+    <h2 id="tool-title">Peptide Syringe Calculator Inputs</h2>
 
     <div class="field">
       <label for="vial">Peptide amount in the vial</label>
@@ -227,8 +235,8 @@
 </section>
 
 <article class="content">
-  <h2>How to Use the Peptide Calculator</h2>
-  <p>You need three numbers from your vial label and your plan. The tool handles the unit conversions, so you never have to move a decimal point by hand.</p>
+  <h2>How Much Peptide to Inject? Start With Your Prescribed Dose</h2>
+  <p>Use a dose provided by your licensed healthcare professional; this calculator does not determine how much peptide you should inject. You need three numbers from your vial label and your plan. The tool handles the unit conversions, so you never have to move a decimal point by hand.</p>
   <ol>
     <li><strong>Enter the vial amount.</strong> This is the total peptide printed on the label, usually in mg (for example 5 mg or 10 mg). Use the mcg option if the label lists micrograms.</li>
     <li><strong>Enter the water you added.</strong> Type the millilitres of bacteriostatic water used to reconstitute the powder. More water means a weaker solution and more units per dose.</li>
@@ -238,7 +246,7 @@
   </ol>
   <p>Have not mixed the vial yet? Plan the water first with the <a href="/peptide-reconstitution-calculator/">peptide reconstitution calculator</a>, a reverse peptide calculator that works backwards from the units you want to draw.</p>
 
-  <h2>Peptide Calculator Formula</h2>
+  <h2>Peptide Calculator in Units: The Formula</h2>
   <p>The arithmetic takes three steps. Knowing it lets you double-check any result on paper.</p>
   <h3>1. Peptide concentration</h3>
   <p class="formula">concentration (mg/mL) = peptide in vial (mg) ÷ water added (mL)</p>
@@ -248,7 +256,7 @@
   <p class="formula">units = volume (mL) × 100</p>
   <p>The factor of 100 comes from the U-100 insulin syringe: one millilitre is divided into 100 units, so each unit holds 0.01 mL. It is the standard syringe for small subcutaneous volumes, and the one this page assumes.</p>
 
-  <h2>Peptide Calculator Example: 5 mg Vial</h2>
+  <h2>Syringe Calculator Peptide Example: 5 mg Vial</h2>
   <p>Say you have a 5 mg vial, you add 2 mL of bacteriostatic water, and your dose is 250 mcg. Here is the working:</p>
   <ul>
     <li>Concentration: 5 mg ÷ 2 mL = 2.5 mg/mL, which is 2,500 mcg per mL.</li>
@@ -258,7 +266,9 @@
   </ul>
   <p>If you had added 1 mL instead, the same 250 mcg dose would be 5 units. Less water gives a stronger solution and a smaller draw. With 3 mL it would be 15 units. The peptide dose is identical in all three cases — only the volume changes.</p>
 
-  <h2>Peptide Calculator mg and mcg Conversions</h2>
+  <h2>Peptide Calculator in mg</h2>
+  <p>Enter the total mg printed on your vial, then choose mg for the dose if your prescribed amount is also in milligrams. The calculator converts that dose to mL and U-100 syringe units using the water you added.</p>
+  <h2>mcg Peptide Calculator Conversions</h2>
   <p>Most mistakes happen when a vial is labelled in mg but the dose is written in mcg. The calculator handles the switch automatically, but this quick table helps you sanity-check it:</p>
   <div class="table-wrap">
     <table>
@@ -274,7 +284,7 @@
   </div>
   <p>A 2.5 mg/mL solution is a 5 mg vial with 2 mL of water; 5 mg/mL is a 10 mg vial with 2 mL. For anything outside this table, use the tool above — it accepts any mg or mcg value.</p>
 
-  <h2>Peptide Calculator Syringe Units Chart</h2>
+  <h2>Peptide Calculator in Units: Syringe Chart</h2>
   <figure>
     <img src="/assets/img/u100-syringe-units.svg" width="800" height="260" loading="lazy" decoding="async" alt="Peptide calculator syringe chart showing a U-100 insulin syringe filled to 20 units, which equals 0.20 mL">
     <figcaption>On a 1 mL U-100 syringe each small line is 2 units; on 0.3 mL and 0.5 mL syringes each line is 1 unit.</figcaption>
@@ -296,7 +306,7 @@
   </div>
   <p>A 3 mL syringe is marked in mL, so divide the units by 100 to read it (20 units = 0.2 mL). Its 0.1 mL lines are too coarse for most peptide doses but ideal for adding water to a vial.</p>
 
-  <h2>Peptide Calculator Units vs IU</h2>
+  <h2>Peptide Calculator IU vs Syringe Units</h2>
   <p>Syringe "units" and IU (international units) sound alike but measure different things. Syringe units are volume: 100 units is 1 mL on a U-100 syringe. IU measure biological activity, and the conversion to mg is different for every substance, so there is no universal mg-to-IU factor.</p>
   <p>If your vial is labelled in IU, select <strong>IU for both the vial and the dose</strong> in the peptide calculator above. The math is identical: a 10 IU vial with 1 mL of water is 10 IU/mL, so a 2 IU dose is 0.2 mL, or 20 units on the syringe. Mixing IU with mg is blocked, because it needs the product's own IU-per-mg figure from the label.</p>
 
@@ -392,6 +402,8 @@
       <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
       <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
       <a href="/tdee-calculator/">TDEE Calculator</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/bac-water/">BAC Water Guide</a>
       <a href="/about/">About</a>
       <a href="/disclaimer/">Medical Disclaimer</a>
       <a href="/privacy/">Privacy</a>

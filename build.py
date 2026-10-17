@@ -17,11 +17,12 @@ from pathlib import Path
 SITE_URL = "https://peptidecalculatorpro.org"   # <- your production domain, no trailing slash
 SITE_NAME = "Peptide Calculator"
 UPDATED = "2026-10-03"
+BLOG_PUBLISHED = "2026-10-17"
 
 ROOT = Path(__file__).parent
 SRC, DIST = ROOT / "src", ROOT / "dist"
 
-NAV = [
+CALCULATOR_NAV = [
     ("/", "Peptide Calculator"),
     ("/peptide-reconstitution-calculator/", "Reconstitution Calculator"),
     ("/peptide-dosage-calculator/", "Dosage Calculator"),
@@ -30,6 +31,8 @@ NAV = [
     ("/peptide-concentration-calculator/", "Concentration Calculator"),
     ("/molarity-calculator/", "Molarity Calculator"),
     ("/bac-water-calculator/", "BAC Water Calculator"),
+    ("/peptide-molecular-weight-calculator/", "Molecular Weight Calculator"),
+    ("/peptide-net-charge-calculator/", "Net Charge Calculator"),
     ("/retatrutide-peptide-calculator/", "Retatrutide"),
     ("/tdee-calculator/", "TDEE"),
 ]
@@ -158,6 +161,21 @@ PAGES = [
         "priority": "0.8",
     },
     {
+        "path": "/blog/", "src": "blog.html", "crumb": "Blog",
+        "title": "Blog | Peptide Calculator Guides",
+        "description": "Read clear, sourced guides to BAC water, peptide calculation terms, and unit conversions alongside our free calculators.",
+        "updated": BLOG_PUBLISHED,
+        "priority": "0.6",
+    },
+    {
+        "path": "/blog/bac-water/", "src": "blog-bac-water.html", "crumb": "BAC Water",
+        "parent_crumb": ("Blog", "/blog/"),
+        "title": "BAC Water: Uses, Storage, Safety & Sterile Water Differences",
+        "description": "What is BAC water? Learn what bacteriostatic water contains, how it differs from sterile water, what product labels say about storage, and key safety limits.",
+        "article": True, "published": BLOG_PUBLISHED, "updated": BLOG_PUBLISHED,
+        "priority": "0.7",
+    },
+    {
         "path": "/partners/", "src": "partners.html", "crumb": "Partners",
         "title": "Partners | Peptide Calculator",
         "description": "Partner websites and useful online tools recommended by Peptide Calculator.",
@@ -195,7 +213,7 @@ TEMPLATE = """<!doctype html>
 <meta name="description" content="{description}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{url}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{site_name}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
@@ -212,7 +230,7 @@ TEMPLATE = """<!doctype html>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">P</span>{site_name}</a>
-    <nav class="site-nav" aria-label="Calculators">
+    <nav class="site-nav" aria-label="Primary">
 {nav}
     </nav>
   </div>
@@ -236,6 +254,8 @@ TEMPLATE = """<!doctype html>
       <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
       <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
       <a href="/tdee-calculator/">TDEE Calculator</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/bac-water/">BAC Water Guide</a>
       <a href="/about/">About</a>
       <a href="/disclaimer/">Medical Disclaimer</a>
       <a href="/privacy/">Privacy</a>
@@ -295,7 +315,7 @@ def build_schema(page, body, url):
     page_node = {
         "@type": "WebPage", "@id": url + "#webpage", "url": url, "name": page["title"],
         "description": page["description"], "isPartOf": {"@id": SITE_URL + "/#website"},
-        "dateModified": UPDATED, "inLanguage": "en",
+        "dateModified": page.get("updated", UPDATED), "inLanguage": "en",
     }
     graph.append(page_node)
     if page.get("app"):
@@ -308,9 +328,24 @@ def build_schema(page, body, url):
             "description": page["description"],
         })
         page_node["mainEntity"] = {"@id": url + "#app"}
+    if page.get("article"):
+        graph.append({
+            "@type": "Article", "@id": url + "#article", "headline": page["title"],
+            "description": page["description"], "url": url,
+            "datePublished": page["published"], "dateModified": page.get("updated", UPDATED),
+            "author": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL + "/"},
+            "publisher": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL + "/"},
+            "mainEntityOfPage": {"@id": url + "#webpage"},
+        })
+        page_node["mainEntity"] = {"@id": url + "#article"}
     crumbs = [{"@type": "ListItem", "position": 1, "name": SITE_NAME, "item": SITE_URL + "/"}]
+    if page.get("parent_crumb"):
+        label, path = page["parent_crumb"]
+        crumbs.append({"@type": "ListItem", "position": len(crumbs) + 1,
+                       "name": label, "item": SITE_URL + path})
     if page.get("crumb"):
-        crumbs.append({"@type": "ListItem", "position": 2, "name": page["crumb"], "item": url})
+        crumbs.append({"@type": "ListItem", "position": len(crumbs) + 1,
+                       "name": page["crumb"], "item": url})
     graph.append({"@type": "BreadcrumbList", "@id": url + "#breadcrumb", "itemListElement": crumbs})
     page_node["breadcrumb"] = {"@id": url + "#breadcrumb"}
     faqs = faq_items(body)
@@ -393,18 +428,31 @@ def render(page):
     body = (SRC / page["src"]).read_text(encoding="utf-8")
     body = re.sub(r"\{\{SYRINGE (\d+(?:\.\d+)?)\}\}", lambda m: syringe_svg(float(m.group(1))), body)
     url = SITE_URL + page["path"]
-    nav = "\n".join(
-        '      <a href="%s"%s>%s</a>' % (href, ' aria-current="page"' if href == page["path"] else "", label)
-        for href, label in NAV
+    calculator_links = "\n".join(
+        '        <a href="%s"%s>%s</a>' % (
+            href, ' aria-current="page"' if href == page["path"] else "", label)
+        for href, label in CALCULATOR_NAV
     )
+    nav = ('      <details class="nav-menu">\n'
+           '        <summary>Calculators</summary>\n'
+           '        <div class="nav-menu-links">\n%s\n        </div>\n'
+           '      </details>\n'
+           '      <a href="/blog/"%s>Blogs</a>' % (
+               calculator_links,
+               ' aria-current="page"' if page["path"].startswith("/blog/") else ""))
     crumbs = ""
     if page.get("crumb"):
-        crumbs = ('<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Peptide Calculator</a> '
-                  "&rsaquo; <span>%s</span></nav>" % page["crumb"])
+        parent = ""
+        if page.get("parent_crumb"):
+            label, path = page["parent_crumb"]
+            parent = ' &rsaquo; <a href="%s">%s</a>' % (path, html.escape(label))
+        crumbs = ('<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Peptide Calculator</a>%s '
+                  '&rsaquo; <span>%s</span></nav>' % (parent, html.escape(page["crumb"])))
     return TEMPLATE.format(
         title=html.escape(page["title"]), description=html.escape(page["description"]),
-        url=url, site_name=SITE_NAME, schema=build_schema(page, body, url), nav=nav,
-        crumbs=crumbs, body=body.strip(), updated=UPDATED,
+        url=url, site_name=SITE_NAME, og_type="article" if page.get("article") else "website",
+        schema=build_schema(page, body, url), nav=nav,
+        crumbs=crumbs, body=body.strip(), updated=page.get("updated", UPDATED),
         partners=partners_html() if page["path"] == "/" else "", css_v=asset_version("style.css"),
         script=('<script type="module" src="/assets/bac-water.mjs?v=%s"></script>' % asset_version("bac-water.mjs")
                 if page["path"] == "/bac-water-calculator/" else
@@ -425,7 +473,7 @@ def main():
         "User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % SITE_URL, encoding="utf-8")
     urls = "".join(
         "  <url><loc>%s%s</loc><lastmod>%s</lastmod><priority>%s</priority></url>\n"
-        % (SITE_URL, p["path"], UPDATED, p["priority"]) for p in PAGES)
+        % (SITE_URL, p["path"], p.get("updated", UPDATED), p["priority"]) for p in PAGES)
     (DIST / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n%s</urlset>\n' % urls,

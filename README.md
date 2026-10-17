@@ -16,6 +16,8 @@ Static site for [peptidecalculatorpro.org](https://peptidecalculatorpro.org): fr
 | Peptide Net Charge Calculator | `/peptide-net-charge-calculator/` |
 | Retatrutide Peptide Calculator | `/retatrutide-peptide-calculator/` |
 | TDEE Calculator | `/tdee-calculator/` |
+| Blog index | `/blog/` |
+| BAC Water guide | `/blog/bac-water/` |
 
 ## Build
 

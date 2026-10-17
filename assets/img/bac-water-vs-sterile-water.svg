@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" role="img" aria-labelledby="title desc">
+  <title id="title">BAC water and sterile water comparison</title>
+  <desc id="desc">Two labeled product cards compare preservative and container type. Both point to the medicine label for compatibility.</desc>
+  <rect width="800" height="340" rx="18" fill="#eef3f4"/>
+  <rect x="28" y="28" width="355" height="216" rx="16" fill="#fff" stroke="#b4d6d2" stroke-width="2"/>
+  <rect x="417" y="28" width="355" height="216" rx="16" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <text x="52" y="70" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#0b655f">BAC water</text>
+  <text x="441" y="70" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#15232b">Sterile water</text>
+  <text x="52" y="117" font-family="Arial,sans-serif" font-size="18" fill="#15232b">Preservative: benzyl alcohol</text>
+  <text x="52" y="160" font-family="Arial,sans-serif" font-size="18" fill="#15232b">Cited product: multi-dose vial</text>
+  <text x="52" y="203" font-family="Arial,sans-serif" font-size="17" fill="#546570">Check actual product label</text>
+  <text x="441" y="117" font-family="Arial,sans-serif" font-size="18" fill="#15232b">Preservative: none</text>
+  <text x="441" y="160" font-family="Arial,sans-serif" font-size="18" fill="#15232b">Cited product: single-dose vial</text>
+  <text x="441" y="203" font-family="Arial,sans-serif" font-size="17" fill="#546570">Check actual product label</text>
+  <rect x="118" y="266" width="564" height="48" rx="12" fill="#0b7a75"/>
+  <text x="400" y="297" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">Drug label decides which diluent is appropriate</text>
+</svg>

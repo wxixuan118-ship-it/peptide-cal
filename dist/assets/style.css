@@ -40,15 +40,23 @@ a { color: var(--accent); text-underline-offset: 2px; }
 
 /* header */
 .site-header { background: var(--surface); border-bottom: 1px solid var(--border); }
-.site-header .wrap { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+.site-header .wrap { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
 .brand { font-weight: 700; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-.site-header .brand { align-self: flex-start; min-height: 60px; }
+.site-header .brand { flex: 0 0 auto; min-height: 60px; }
 .brand-mark { width: 26px; height: 26px; border-radius: 8px; background: var(--accent); display: inline-grid; place-items: center; color: var(--accent-ink); font-size: 14px; }
-.site-nav { display: flex; flex-wrap: nowrap; gap: 4px; overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; padding: 0 0 8px; }
-.site-nav a { flex: 0 0 auto; white-space: nowrap; }
+.site-nav { display: flex; align-items: center; gap: 4px; }
 .site-nav a, .site-nav summary { color: var(--muted); text-decoration: none; padding: 6px 10px; border-radius: 8px; font-size: 15px; }
 .site-nav a:hover, .site-nav a[aria-current="page"], .site-nav summary:hover, .site-nav summary:focus-visible, .site-nav details[open] > summary { color: var(--text); background: var(--surface-2); }
 .site-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.site-nav summary { cursor: pointer; list-style: none; }
+.site-nav summary::-webkit-details-marker { display: none; }
+.site-nav summary::after { content: " ▾"; font-size: 12px; }
+.nav-menu-panel { position: absolute; z-index: 20; top: calc(100% - 1px); left: 16px; right: 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); }
+.nav-group h2 { margin: 0 0 10px; color: var(--accent); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+.site-nav .nav-group a { display: block; padding: 8px 10px; font-size: 16px; }
+@media (max-width: 700px) {
+  .nav-menu-panel { grid-template-columns: 1fr; gap: 18px; max-height: min(75vh, 620px); overflow-y: auto; padding: 18px; }
+}
 
 /* breadcrumb */
 .crumbs { font-size: 14px; color: var(--muted); margin: 18px 0 0; }

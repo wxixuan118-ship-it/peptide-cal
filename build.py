@@ -38,6 +38,12 @@ CALCULATOR_NAV = [
     ("/tdee-calculator/", "TDEE"),
 ]
 
+CALCULATOR_GROUPS = [
+    ("Peptide Calculators", CALCULATOR_NAV[:6]),
+    ("Solutions & Conversions", CALCULATOR_NAV[6:9]),
+    ("Research & Other Tools", CALCULATOR_NAV[9:]),
+]
+
 PAGES = [
     {
         "path": "/",
@@ -441,14 +447,20 @@ def render(page):
     body = (SRC / page["src"]).read_text(encoding="utf-8")
     body = re.sub(r"\{\{SYRINGE (\d+(?:\.\d+)?)\}\}", lambda m: syringe_svg(float(m.group(1))), body)
     url = SITE_URL + page["path"]
-    calculator_links = "\n".join(
-        '        <a href="%s"%s>%s</a>' % (
-            href, ' aria-current="page"' if href == page["path"] else "", label)
-        for href, label in CALCULATOR_NAV
+    calculator_groups = "\n".join(
+        '          <div class="nav-group"><h2>%s</h2>%s</div>' % (
+            html.escape(heading), "".join(
+                '<a href="%s"%s>%s</a>' % (
+                    href, ' aria-current="page"' if href == page["path"] else "", html.escape(label))
+                for href, label in links))
+        for heading, links in CALCULATOR_GROUPS
     )
-    nav = ('%s\n'
+    nav = ('      <details class="nav-menu">\n'
+           '        <summary>Calculators</summary>\n'
+           '        <div class="nav-menu-panel">\n%s\n        </div>\n'
+           '      </details>\n'
            '      <a href="/blog/"%s>Blogs</a>' % (
-               calculator_links,
+               calculator_groups,
                ' aria-current="page"' if page["path"].startswith("/blog/") else ""))
     crumbs = ""
     if page.get("crumb"):

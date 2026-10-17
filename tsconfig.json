@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES2020",
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "lib": ["ES2020", "DOM"],
+    "outDir": "assets",
+    "rootDir": "ts",
+    "skipLibCheck": true,
+    "noEmitOnError": true
+  },
+  "include": ["ts/**/*.ts"]
+}

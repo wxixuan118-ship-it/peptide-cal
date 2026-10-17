@@ -28,6 +28,7 @@ NAV = [
     ("/peptide-blend-calculator/", "Blend Calculator"),
     ("/peptide-dilution-calculator/", "Dilution Calculator"),
     ("/peptide-concentration-calculator/", "Concentration Calculator"),
+    ("/bac-water-calculator/", "BAC Water Calculator"),
     ("/retatrutide-peptide-calculator/", "Retatrutide"),
     ("/tdee-calculator/", "TDEE"),
 ]
@@ -91,6 +92,16 @@ PAGES = [
                         "mcg per syringe unit, % w/v and mM or µM from the molecular weight."),
         "crumb": "Peptide Concentration Calculator",
         "app": "Peptide Concentration Calculator",
+        "priority": "0.8",
+    },
+    {
+        "path": "/bac-water-calculator/",
+        "src": "bac-water.html",
+        "title": "BAC Water Calculator – Concentration & Dilution Math",
+        "description": "Free BAC water calculator for concentration and volume math. Convert mg, mcg, and mL with clear formulas and instant results.",
+        "crumb": "BAC Water Calculator",
+        "app": "BAC Water Calculator",
+        "category": "EducationalApplication",
         "priority": "0.8",
     },
     {
@@ -208,6 +219,7 @@ TEMPLATE = """<!doctype html>
       <a href="/peptide-blend-calculator/">Peptide Blend Calculator</a>
       <a href="/peptide-dilution-calculator/">Peptide Dilution Calculator</a>
       <a href="/peptide-concentration-calculator/">Peptide Concentration Calculator</a>
+      <a href="/bac-water-calculator/">BAC Water Calculator</a>
       <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
       <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
       <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
@@ -382,7 +394,9 @@ def render(page):
         url=url, site_name=SITE_NAME, schema=build_schema(page, body, url), nav=nav,
         crumbs=crumbs, body=body.strip(), updated=UPDATED,
         partners=partners_html() if page["path"] == "/" else "", css_v=asset_version("style.css"),
-        script='<script src="/assets/calc.js?v=%s" defer></script>' % asset_version("calc.js") if page.get("app") else "",
+        script=('<script type="module" src="/assets/bac-water.mjs?v=%s"></script>' % asset_version("bac-water.mjs")
+                if page["path"] == "/bac-water-calculator/" else
+                '<script src="/assets/calc.js?v=%s" defer></script>' % asset_version("calc.js") if page.get("app") else ""),
     )
 
 

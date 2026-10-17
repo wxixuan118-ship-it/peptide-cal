@@ -10,6 +10,7 @@ Static site for [peptidecalculatorpro.org](https://peptidecalculatorpro.org): fr
 | Peptide Blend Calculator | `/peptide-blend-calculator/` |
 | Peptide Dilution Calculator | `/peptide-dilution-calculator/` |
 | Peptide Concentration Calculator | `/peptide-concentration-calculator/` |
+| BAC Water Calculator | `/bac-water-calculator/` |
 | Peptide Molecular Weight Calculator | `/peptide-molecular-weight-calculator/` |
 | Peptide Net Charge Calculator | `/peptide-net-charge-calculator/` |
 | Retatrutide Peptide Calculator | `/retatrutide-peptide-calculator/` |
@@ -18,10 +19,11 @@ Static site for [peptidecalculatorpro.org](https://peptidecalculatorpro.org): fr
 ## Build
 
 ```bash
-python3 build.py
+npm install
+npm run build
 ```
 
-Writes the site to `dist/` (no dependencies). Page bodies live in `src/`, shared CSS/JS/images in `assets/`, and the domain is set by `SITE_URL` in `build.py`.
+Writes the site to `dist/`. Page bodies live in `src/`, shared CSS/JS/images in `assets/`, and the domain is set by `SITE_URL` in `build.py`.
 
 ## Deploy
 

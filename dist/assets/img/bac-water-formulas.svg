@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" role="img" aria-labelledby="title desc">
+<title id="title">BAC water calculator formula relationships</title>
+<desc id="desc">Mass divided by final liquid volume gives concentration. Mass divided by target concentration gives theoretical volume.</desc>
+<rect width="800" height="250" rx="18" fill="#eef3f4"/>
+<rect x="20" y="25" width="365" height="200" rx="14" fill="#fff" stroke="#d6e0e4"/>
+<rect x="415" y="25" width="365" height="200" rx="14" fill="#fff" stroke="#d6e0e4"/>
+<text x="45" y="67" fill="#0b7a75" font-family="system-ui,sans-serif" font-size="21" font-weight="700">Concentration</text>
+<text x="45" y="110" fill="#15232b" font-family="system-ui,sans-serif" font-size="18">amount (mg) ÷ volume (mL)</text>
+<path d="M45 134h306" stroke="#d6e0e4"/>
+<text x="45" y="176" fill="#15232b" font-family="system-ui,sans-serif" font-size="20" font-weight="700">= mg/mL</text>
+<text x="440" y="67" fill="#0b7a75" font-family="system-ui,sans-serif" font-size="21" font-weight="700">Theoretical volume</text>
+<text x="440" y="110" fill="#15232b" font-family="system-ui,sans-serif" font-size="18">amount (mg) ÷ target (mg/mL)</text>
+<path d="M440 134h306" stroke="#d6e0e4"/>
+<text x="440" y="176" fill="#15232b" font-family="system-ui,sans-serif" font-size="20" font-weight="700">= mL</text>
+</svg>

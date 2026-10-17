@@ -123,3 +123,15 @@ th { background: var(--surface-2); font-weight: 600; }
 .site-footer .partners { display: flex; flex-wrap: nowrap; align-items: center; gap: 16px; margin: 14px 0 12px; overflow-x: auto; }
 .site-footer .partners a { flex: none; }
 .site-footer .partners img { display: block; max-width: none; }
+/* BAC water calculator */
+.bac-tool { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.bac-tool .formula { overflow-wrap: anywhere; font-size: 14px; margin-bottom: 0; }
+.bac-tool .big strong { font-size: clamp(28px, 5vw, 40px); overflow-wrap: anywhere; }
+.bac-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.bac-actions button { font: inherit; font-size: 15px; min-height: 44px; padding: 8px 16px; border: 1px solid var(--accent); border-radius: 9px; background: var(--accent); color: var(--accent-ink); cursor: pointer; }
+.bac-actions button:first-child { background: var(--surface); color: var(--accent); }
+.bac-actions button:disabled { opacity: .5; cursor: not-allowed; }
+.bac-error { color: #b42318; font-size: 14px; margin: 4px 0 0; }
+.bac-error:empty { display: none; }
+.bac-tool input[aria-invalid="true"] { border-color: #b42318; }
+@media (max-width: 820px) { .bac-tool { grid-template-columns: 1fr; } }

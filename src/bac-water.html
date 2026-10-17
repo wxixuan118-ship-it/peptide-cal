@@ -1,0 +1,57 @@
+<section class="hero">
+  <h1>BAC Water Calculator</h1>
+  <p class="lead">The BAC water calculator explores concentration, theoretical diluent volume, and unit conversions with live arithmetic and visible formulas. Enter your own numbers; no dose or preparation plan is supplied.</p>
+</section>
+<p class="alert" role="note">This calculator is for educational mathematical calculations only. It does not provide medical dosing, injection, or medication preparation instructions. Always follow the product labeling and consult a qualified healthcare professional.</p>
+
+<section class="tool bac-tool" aria-labelledby="bac-concentration-heading" data-bac="concentration">
+  <div><h2 id="bac-concentration-heading">Concentration calculator</h2><p class="hint">Enter an amount and a diluent volume to calculate a mathematical concentration.</p>
+    <div class="field"><label for="bac-c-amount">Substance amount (mg)</label><input id="bac-c-amount" type="number" inputmode="decimal" min="0" step="any" autocomplete="off" aria-describedby="bac-c-error"><p class="bac-error" id="bac-c-error" aria-live="polite"></p></div>
+    <div class="field"><label for="bac-c-volume">Diluent volume (mL)</label><input id="bac-c-volume" type="number" inputmode="decimal" min="0" step="any" autocomplete="off" aria-describedby="bac-c-error"></div>
+    <div class="bac-actions"><button type="button" data-reset>Reset</button><button type="button" data-copy disabled>Copy Result</button></div>
+  </div>
+  <div class="results" aria-live="polite"><p class="big">Concentration <strong data-result>—</strong></p><p data-secondary>— mcg/mL</p><p class="formula" data-formula>Concentration (mg/mL) = Substance Amount (mg) ÷ Diluent Volume (mL)</p><p class="hint" data-copy-status role="status"></p></div>
+</section>
+<section class="tool bac-tool" aria-labelledby="bac-volume-heading" data-bac="volume">
+  <div><h2 id="bac-volume-heading">Volume calculator</h2><p class="hint">This returns a theoretical mathematical volume, not a recommended preparation volume.</p>
+    <div class="field"><label for="bac-v-amount">Substance amount (mg)</label><input id="bac-v-amount" type="number" inputmode="decimal" min="0" step="any" autocomplete="off" aria-describedby="bac-v-error"><p class="bac-error" id="bac-v-error" aria-live="polite"></p></div>
+    <div class="field"><label for="bac-v-target">Target concentration (mg/mL)</label><input id="bac-v-target" type="number" inputmode="decimal" min="0" step="any" autocomplete="off" aria-describedby="bac-v-error"></div>
+    <div class="bac-actions"><button type="button" data-reset>Reset</button><button type="button" data-copy disabled>Copy Result</button></div>
+  </div>
+  <div class="results" aria-live="polite"><p class="big">Theoretical volume <strong data-result>—</strong></p><p class="formula" data-formula>Volume (mL) = Substance Amount (mg) ÷ Target Concentration (mg/mL)</p><p class="hint">A mathematical result only. Check the medication's labeling and a qualified professional before any real-world use.</p><p class="hint" data-copy-status role="status"></p></div>
+</section>
+<section class="tool bac-tool" aria-labelledby="bac-convert-heading" data-bac="convert">
+  <div><h2 id="bac-convert-heading">Unit converter</h2><p class="hint">Convert mass or liquid volume in either direction.</p>
+    <div class="field"><label for="bac-u-value">Value</label><input id="bac-u-value" type="number" inputmode="decimal" min="0" step="any" autocomplete="off" aria-describedby="bac-u-error"><p class="bac-error" id="bac-u-error" aria-live="polite"></p></div>
+    <div class="field"><label for="bac-u-unit">Convert from</label><select id="bac-u-unit"><option value="mg">mg to mcg</option><option value="mcg">mcg to mg</option><option value="mL">mL to µL</option><option value="uL">µL to mL</option></select></div>
+    <div class="bac-actions"><button type="button" data-reset>Reset</button><button type="button" data-copy disabled>Copy Result</button></div>
+  </div>
+  <div class="results" aria-live="polite"><p class="big">Converted value <strong data-result>—</strong></p><p class="formula" data-formula>1 mg = 1,000 mcg; 1 mL = 1,000 µL</p><p class="hint" data-copy-status role="status"></p></div>
+</section>
+
+<article class="content">
+  <h2>What Is Bacteriostatic Water?</h2>
+  <p>Bacteriostatic Water for Injection is sterile water containing benzyl alcohol as a preservative. The preservative inhibits bacterial growth; it does not make a contaminated product sterile. Product formulations and labeling vary. The <a href="https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=87d6e9dc-fe3b-4593-ac9a-d7493d1959c7">DailyMed product label</a> describes its use as a diluent only according to the medication manufacturer's instructions and includes important restrictions, including for neonates.</p>
+  <h2>How the BAC Water Calculator Works</h2>
+  <p>The first calculator divides an entered mass by an entered liquid volume. The second reverses that equation to solve for a theoretical volume at an entered concentration. The converter changes units without changing the underlying quantity. All calculations happen in your browser; no account is required.</p>
+  <h2>Concentration and Volume Formulas</h2>
+  <figure><img src="/assets/img/bac-water-formulas.svg" width="800" height="250" loading="lazy" decoding="async" alt="BAC water calculator diagram showing concentration and theoretical volume formulas"><figcaption>Both equations describe mathematical relationships only.</figcaption></figure>
+  <p class="formula">Concentration (mg/mL) = Substance Amount (mg) ÷ Diluent Volume (mL)<br>Concentration (mcg/mL) = Concentration (mg/mL) × 1,000<br>Theoretical Volume (mL) = Substance Amount (mg) ÷ Target Concentration (mg/mL)</p>
+  <p>These equations assume the entered amount represents the relevant mass and that the entered volume represents the final liquid volume. A real product may specify a different final volume after reconstitution. Theoretical volume is not a compatibility, stability, sterility, or safety assessment.</p>
+  <h2>BAC Water vs. Sterile Water</h2>
+  <p>Bacteriostatic water contains a preservative; preservative-free <a href="https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=3a6422e1-feee-4095-8883-2b0837039e6e">Sterile Water for Injection</a> does not. They are not automatically interchangeable. The medicine's label determines which diluent, if any, is appropriate. For additional unit-focused math, see our <a href="/peptide-concentration-calculator/">concentration calculator</a> or the <a href="/peptide-dilution-calculator/">dilution calculator</a>.</p>
+  <h2>Understanding mg, mcg, and mL</h2>
+  <p>Milligrams (mg) and micrograms (mcg) measure mass: 1 mg equals 1,000 mcg. Milliliters (mL) and microliters (µL) measure volume: 1 mL equals 1,000 µL. A mass cannot be converted directly to a volume without a concentration.</p>
+  <h2>Common Calculation Mistakes</h2>
+  <ul><li>Using zero or a negative value as a denominator. Division then has no valid result for this tool.</li><li>Confusing mg with mcg or mL with µL, each a 1,000-fold difference.</li><li>Assuming the volume entered equals the final solution volume when a product's label says otherwise.</li><li>Treating an arithmetic result as proof that a diluent is compatible with a medication.</li></ul>
+  <p>Related reading: the <a href="/">calculator home page</a>, <a href="/about/">how our calculators are checked</a> and the <a href="/disclaimer/">medical disclaimer</a>.</p>
+  <section id="faq"><h2>Frequently Asked Questions</h2>
+    <h3>What is BAC water?</h3><p>BAC water is Bacteriostatic Water for Injection, sterile water with benzyl alcohol as a preservative. Check the specific product label for its composition and restrictions.</p>
+    <h3>What is bacteriostatic water used for?</h3><p>It can be a diluent for certain medications when the medication manufacturer specifically directs its use. This calculator does not determine whether it is suitable for a particular product.</p>
+    <h3>Is BAC water the same as sterile water?</h3><p>No. Bacteriostatic water contains a preservative; preservative-free Sterile Water for Injection does not. Follow the medication's diluent instructions.</p>
+    <h3>How do you calculate concentration in mg/mL?</h3><p>Divide substance amount in mg by final liquid volume in mL. The result has units of mg/mL.</p>
+    <h3>How do you convert mg to mcg?</h3><p>Multiply mg by 1,000. To convert mcg to mg, divide by 1,000.</p>
+    <h3>Can BAC water be used with every medication?</h3><p>No. Diluent compatibility depends on the medication and its labeling; benzyl alcohol may be unsuitable in some situations.</p>
+    <h3>Does BAC water prevent all bacterial contamination?</h3><p>No. Its preservative inhibits bacterial growth but does not guarantee sterility or eliminate contamination risk.</p>
+  </section>
+</article>

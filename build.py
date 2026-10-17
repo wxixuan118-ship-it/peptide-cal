@@ -29,6 +29,7 @@ CALCULATOR_NAV = [
     ("/peptide-blend-calculator/", "Blend Calculator"),
     ("/peptide-dilution-calculator/", "Dilution Calculator"),
     ("/peptide-concentration-calculator/", "Concentration Calculator"),
+    ("/mg-to-ml-calculator/", "mg to mL Calculator"),
     ("/molarity-calculator/", "Molarity Calculator"),
     ("/bac-water-calculator/", "BAC Water Calculator"),
     ("/peptide-molecular-weight-calculator/", "Molecular Weight Calculator"),
@@ -97,6 +98,17 @@ PAGES = [
         "crumb": "Peptide Concentration Calculator",
         "app": "Peptide Concentration Calculator",
         "priority": "0.8",
+    },
+    {
+        "path": "/mg-to-ml-calculator/",
+        "src": "mg-to-ml.html",
+        "title": "mg to mL Calculator: Convert mg, g and mL with Concentration",
+        "description": "Convert mg or g to mL, or mL to mg and g, using a known concentration or density. See the formula and why mass and volume cannot convert directly.",
+        "crumb": "mg to mL Calculator",
+        "app": "Mass and Volume Calculator",
+        "category": "EducationalApplication",
+        "priority": "0.8",
+        "updated": "2026-10-17",
     },
     {
         "path": "/bac-water-calculator/",
@@ -248,6 +260,7 @@ TEMPLATE = """<!doctype html>
       <a href="/peptide-blend-calculator/">Peptide Blend Calculator</a>
       <a href="/peptide-dilution-calculator/">Peptide Dilution Calculator</a>
       <a href="/peptide-concentration-calculator/">Peptide Concentration Calculator</a>
+      <a href="/mg-to-ml-calculator/">mg to mL Calculator</a>
       <a href="/molarity-calculator/">Molarity Calculator</a>
       <a href="/bac-water-calculator/">BAC Water Calculator</a>
       <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
@@ -433,10 +446,7 @@ def render(page):
             href, ' aria-current="page"' if href == page["path"] else "", label)
         for href, label in CALCULATOR_NAV
     )
-    nav = ('      <details class="nav-menu">\n'
-           '        <summary>Calculators</summary>\n'
-           '        <div class="nav-menu-links">\n%s\n        </div>\n'
-           '      </details>\n'
+    nav = ('%s\n'
            '      <a href="/blog/"%s>Blogs</a>' % (
                calculator_links,
                ' aria-current="page"' if page["path"].startswith("/blog/") else ""))
@@ -454,7 +464,9 @@ def render(page):
         schema=build_schema(page, body, url), nav=nav,
         crumbs=crumbs, body=body.strip(), updated=page.get("updated", UPDATED),
         partners=partners_html() if page["path"] == "/" else "", css_v=asset_version("style.css"),
-        script=('<script type="module" src="/assets/bac-water.mjs?v=%s"></script>' % asset_version("bac-water.mjs")
+        script=('<script type="module" src="/assets/mass-volume.js?v=%s"></script>' % asset_version("mass-volume.js")
+                if page["path"] == "/mg-to-ml-calculator/" else
+                '<script type="module" src="/assets/bac-water.mjs?v=%s"></script>' % asset_version("bac-water.mjs")
                 if page["path"] == "/bac-water-calculator/" else
                 '<script src="/assets/calc.js?v=%s" defer></script>' % asset_version("calc.js") if page.get("app") else ""),
     )

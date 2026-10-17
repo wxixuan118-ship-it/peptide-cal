@@ -13,6 +13,7 @@ const TYPES = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
+  ".mjs": "text/javascript; charset=utf-8",
   ".svg": "image/svg+xml",
   ".xml": "application/xml; charset=utf-8",
   ".txt": "text/plain; charset=utf-8",
@@ -22,7 +23,7 @@ const TYPES = {
   ".webp": "image/webp",
   ".ico": "image/x-icon",
 };
-const COMPRESSIBLE = new Set([".html", ".css", ".js", ".svg", ".xml", ".txt", ".json"]);
+const COMPRESSIBLE = new Set([".html", ".css", ".js", ".mjs", ".svg", ".xml", ".txt", ".json"]);
 
 const NOT_FOUND = `<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">

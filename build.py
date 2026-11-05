@@ -446,20 +446,29 @@ PARTNERS = [
     ('https://startupbenchmarks.com/product/peptidecalculatorpro',
      'https://startupbenchmarks.com/assets/images/badge.png',
      'Startup Benchmarks', None, 54),
+    # Exact markup required by directory backlink verifiers. Do not route
+    # these through the tuple template (GoodSaaS omits loading="lazy").
+    '<a href="https://toolfame.com" target="_blank" rel="noopener"><img src="https://toolfame.com/badge-light.svg" alt="Featured on toolfame.com" loading="lazy" height="54"></a>',
+    '<a href="https://launchigniter.com" target="_blank" rel="noopener"><img src="https://launchigniter.com/badge.svg" alt="Featured on LaunchIgniter" loading="lazy" width="250" height="54"></a>',
+    '<a href="https://goodsaas.xyz/saas/peptidecalculatorpro" target="_blank" rel="noopener"><img src="https://goodsaas.xyz/badge/peptidecalculatorpro.svg?theme=light" alt="Featured on GoodSaaS" width="154" height="32"></a>',
 ]
 
 
 def partners_html():
-    links = "\n".join(
-        '      <a href="%s" target="_blank" rel="noopener"%s>'
-        '<img src="%s" alt="%s" loading="lazy"%s%s></a>' % (
-            partner[0], partner[5] if len(partner) > 5 else '',
-            html.escape(partner[1]), html.escape(partner[2]),
-            ' width="%d"' % partner[3] if partner[3] is not None else '',
-            ' height="%d"' % partner[4] if partner[4] is not None else '')
-        for partner in PARTNERS
-    )
-    return '    <div class="partners" aria-label="Partners">\n%s\n    </div>' % links
+    links = []
+    for partner in PARTNERS:
+        if isinstance(partner, str):
+            links.append("      " + partner)
+            continue
+        links.append(
+            '      <a href="%s" target="_blank" rel="noopener"%s>'
+            '<img src="%s" alt="%s" loading="lazy"%s%s></a>' % (
+                partner[0], partner[5] if len(partner) > 5 else '',
+                html.escape(partner[1]), html.escape(partner[2]),
+                ' width="%d"' % partner[3] if partner[3] is not None else '',
+                ' height="%d"' % partner[4] if partner[4] is not None else '')
+        )
+    return '    <div class="partners" aria-label="Partners">\n%s\n    </div>' % "\n".join(links)
 
 
 def render(page):

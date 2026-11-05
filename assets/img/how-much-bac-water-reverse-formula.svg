@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 372" role="img" aria-labelledby="title desc">
+  <title id="title">Reverse formula for BAC water volume</title>
+  <desc id="desc">Water in mL equals vial mg times units, divided by 100 times dose in mg. A 5 mg vial, 0.25 mg dose and 10 units gives 2 mL.</desc>
+  <rect width="800" height="372" rx="18" fill="#eef3f4"/>
+  <text x="400" y="44" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#15232b" text-anchor="middle">Working backward from a syringe mark</text>
+  <rect x="60" y="66" width="680" height="58" rx="12" fill="#0b7a75"/>
+  <text x="400" y="103" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#fff" text-anchor="middle">water (mL) = (vial mg × units) ÷ (100 × dose mg)</text>
+  <rect x="28" y="146" width="240" height="168" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <circle cx="60" cy="178" r="16" fill="#0b7a75"/>
+  <text x="60" y="184" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+  <text x="86" y="184" font-family="Arial,sans-serif" font-size="16" font-weight="400" fill="#546570" text-anchor="start">Multiply</text>
+  <text x="148" y="240" font-family="Arial,sans-serif" font-size="22" font-weight="400" fill="#15232b" text-anchor="middle">5 mg × 10 units</text>
+  <text x="148" y="282" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#0b655f" text-anchor="middle">= 50</text>
+  <rect x="280" y="146" width="240" height="168" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <circle cx="312" cy="178" r="16" fill="#0b7a75"/>
+  <text x="312" y="184" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+  <text x="338" y="184" font-family="Arial,sans-serif" font-size="16" font-weight="400" fill="#546570" text-anchor="start">Convert and multiply</text>
+  <text x="400" y="240" font-family="Arial,sans-serif" font-size="22" font-weight="400" fill="#15232b" text-anchor="middle">100 × 0.25 mg</text>
+  <text x="400" y="282" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#0b655f" text-anchor="middle">= 25</text>
+  <rect x="532" y="146" width="240" height="168" rx="12" fill="#fff" stroke="#0b7a75" stroke-width="2"/>
+  <circle cx="564" cy="178" r="16" fill="#0b7a75"/>
+  <text x="564" y="184" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+  <text x="590" y="184" font-family="Arial,sans-serif" font-size="16" font-weight="400" fill="#546570" text-anchor="start">Divide</text>
+  <text x="652" y="240" font-family="Arial,sans-serif" font-size="22" font-weight="400" fill="#15232b" text-anchor="middle">50 ÷ 25</text>
+  <text x="652" y="282" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#0b655f" text-anchor="middle">= 2 mL</text>
+  <text x="400" y="350" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#546570" text-anchor="middle">Example: 5 mg vial, 250 mcg (0.25 mg) dose, 10-unit mark</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" role="img" aria-labelledby="title desc">
+  <title id="title">Doses per 5 mg vial at four dose sizes</title>
+  <desc id="desc">A 5 mg vial divides into 20 doses at 250 mcg, 10 at 500 mcg, 5 at 1 mg and 2 at 2.5 mg.</desc>
+  <rect width="800" height="350" rx="18" fill="#eef3f4"/>
+  <text x="400" y="42" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#15232b" text-anchor="middle">One 5 mg vial, divided by the dose</text>
+  <text x="40" y="100" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">250 mcg</text>
+  <rect x="150.00" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="175.15" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="200.30" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="225.45" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="250.60" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="275.75" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="300.90" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="326.05" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="351.20" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="376.35" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="401.50" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="426.65" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="451.80" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="476.95" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="502.10" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="527.25" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="552.40" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="577.55" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="602.70" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="627.85" y="70" width="22.15" height="44" rx="4" fill="#0b7a75"/>
+  <text x="680" y="100" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0b655f" text-anchor="start">20 doses</text>
+  <text x="40" y="160" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">500 mcg</text>
+  <rect x="150.00" y="130" width="47.30" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="200.30" y="130" width="47.30" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="250.60" y="130" width="47.30" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="300.90" y="130" width="47.30" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="351.20" y="130" width="47.30" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="401.50" y="130" width="47.30" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="451.80" y="130" width="47.30" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="502.10" y="130" width="47.30" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="552.40" y="130" width="47.30" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="602.70" y="130" width="47.30" height="44" rx="4" fill="#0b7a75"/>
+  <text x="680" y="160" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0b655f" text-anchor="start">10 doses</text>
+  <text x="40" y="220" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">1 mg</text>
+  <rect x="150.00" y="190" width="97.60" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="250.60" y="190" width="97.60" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="351.20" y="190" width="97.60" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="451.80" y="190" width="97.60" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="552.40" y="190" width="97.60" height="44" rx="4" fill="#0b7a75"/>
+  <text x="680" y="220" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0b655f" text-anchor="start">5 doses</text>
+  <text x="40" y="280" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">2.5 mg</text>
+  <rect x="150.00" y="250" width="248.50" height="44" rx="4" fill="#0b7a75"/>
+  <rect x="401.50" y="250" width="248.50" height="44" rx="4" fill="#0b7a75"/>
+  <text x="680" y="280" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0b655f" text-anchor="start">2 doses</text>
+  <text x="400" y="328" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#546570" text-anchor="middle">Example values only. Water volume does not change these counts.</text>
+</svg>

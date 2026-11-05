@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 354" role="img" aria-labelledby="title desc">
+  <title id="title">Why usable doses can be lower</title>
+  <desc id="desc">Twenty doses on paper can become nineteen if 0.1 mL of a 2.5 mg per mL solution cannot be recovered.</desc>
+  <rect width="800" height="354" rx="18" fill="#eef3f4"/>
+  <text x="400" y="44" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#15232b" text-anchor="middle">On paper 20 doses, in practice possibly 19</text>
+  <rect x="50.00" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="85.15" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="120.30" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="155.45" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="190.60" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="225.75" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="260.90" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="296.05" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="331.20" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="366.35" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="401.50" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="436.65" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="471.80" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="506.95" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="542.10" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="577.25" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="612.40" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="647.55" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="682.70" y="72" width="32.15" height="52" rx="4" fill="#0b7a75"/>
+  <rect x="717.85" y="72" width="32.15" height="52" rx="4" fill="#fbeed8" stroke="#9a5b00" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="50" y="152" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#546570" text-anchor="start">5 mg vial in 2 mL (2.5 mg/mL), 250 mcg per dose</text>
+  <text x="750" y="152" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#9a5b00" text-anchor="end">0.1 mL lost</text>
+  <rect x="28" y="176" width="240" height="96" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <text x="148" y="216" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#15232b" text-anchor="middle">Vial walls and stopper</text>
+  <text x="148" y="246" font-family="Arial,sans-serif" font-size="14.5" font-weight="400" fill="#546570" text-anchor="middle">Some liquid cannot be drawn out</text>
+  <rect x="280" y="176" width="240" height="96" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <text x="400" y="216" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#15232b" text-anchor="middle">Syringe hub and needle</text>
+  <text x="400" y="246" font-family="Arial,sans-serif" font-size="14.5" font-weight="400" fill="#546570" text-anchor="middle">Liquid remains after each draw</text>
+  <rect x="532" y="176" width="240" height="96" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <text x="652" y="216" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#15232b" text-anchor="middle">Small draw differences</text>
+  <text x="652" y="246" font-family="Arial,sans-serif" font-size="14.5" font-weight="400" fill="#546570" text-anchor="middle">Slips add up over many doses</text>
+  <rect x="118" y="290" width="564" height="44" rx="12" fill="#fbeed8"/>
+  <text x="400" y="319" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#9a5b00" text-anchor="middle">0.1 mL × 2.5 mg/mL = 250 mcg, or one full dose</text>
+</svg>

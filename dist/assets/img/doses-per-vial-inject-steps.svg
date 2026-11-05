@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 362" role="img" aria-labelledby="title desc">
+  <title id="title">Steps from vial to U-100 syringe mark</title>
+  <desc id="desc">5 mg in 2 mL is 2,500 mcg per mL. A 250 mcg dose is 0.1 mL, which is 10 units on a U-100 syringe.</desc>
+  <rect width="800" height="362" rx="18" fill="#eef3f4"/>
+  <text x="400" y="44" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#15232b" text-anchor="middle">How much to inject: from vial to syringe mark</text>
+  <rect x="28" y="70" width="224" height="142" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <text x="140" y="104" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#546570" text-anchor="middle">Concentration</text>
+  <text x="140" y="144" font-family="Arial,sans-serif" font-size="20" font-weight="400" fill="#15232b" text-anchor="middle">5 mg ÷ 2 mL</text>
+  <text x="140" y="188" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#0b655f" text-anchor="middle">2,500 mcg/mL</text>
+  <line x1="256" y1="141" x2="274" y2="141" stroke="#0b7a75" stroke-width="3"/><path d="M272 133 L284 141 L272 149 Z" fill="#0b7a75"/>
+  <rect x="288" y="70" width="224" height="142" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <text x="400" y="104" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#546570" text-anchor="middle">Volume</text>
+  <text x="400" y="144" font-family="Arial,sans-serif" font-size="20" font-weight="400" fill="#15232b" text-anchor="middle">250 mcg ÷ 2,500</text>
+  <text x="400" y="188" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#0b655f" text-anchor="middle">0.1 mL</text>
+  <line x1="516" y1="141" x2="534" y2="141" stroke="#0b7a75" stroke-width="3"/><path d="M532 133 L544 141 L532 149 Z" fill="#0b7a75"/>
+  <rect x="548" y="70" width="224" height="142" rx="12" fill="#fff" stroke="#0b7a75" stroke-width="2"/>
+  <text x="660" y="104" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#546570" text-anchor="middle">U-100 mark</text>
+  <text x="660" y="144" font-family="Arial,sans-serif" font-size="20" font-weight="400" fill="#15232b" text-anchor="middle">0.1 mL × 100</text>
+  <text x="660" y="188" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#0b655f" text-anchor="middle">10 units</text>
+  <rect x="90" y="246" width="590" height="36" rx="4" fill="#fff" stroke="#546570" stroke-width="1.5"/><rect x="91" y="247" width="58.0" height="34" fill="#0b7a75" opacity=".8"/><line x1="90" y1="246" x2="90" y2="255" stroke="#546570" stroke-width="1"/><line x1="119.5" y1="246" x2="119.5" y2="255" stroke="#546570" stroke-width="1"/><line x1="149" y1="246" x2="149" y2="255" stroke="#546570" stroke-width="1"/><line x1="178.5" y1="246" x2="178.5" y2="255" stroke="#546570" stroke-width="1"/><line x1="208" y1="246" x2="208" y2="255" stroke="#546570" stroke-width="1"/><line x1="237.5" y1="246" x2="237.5" y2="255" stroke="#546570" stroke-width="1"/><line x1="267" y1="246" x2="267" y2="255" stroke="#546570" stroke-width="1"/><line x1="296.5" y1="246" x2="296.5" y2="255" stroke="#546570" stroke-width="1"/><line x1="326" y1="246" x2="326" y2="255" stroke="#546570" stroke-width="1"/><line x1="355.5" y1="246" x2="355.5" y2="255" stroke="#546570" stroke-width="1"/><line x1="385" y1="246" x2="385" y2="255" stroke="#546570" stroke-width="1"/><line x1="414.5" y1="246" x2="414.5" y2="255" stroke="#546570" stroke-width="1"/><line x1="444" y1="246" x2="444" y2="255" stroke="#546570" stroke-width="1"/><line x1="473.5" y1="246" x2="473.5" y2="255" stroke="#546570" stroke-width="1"/><line x1="503" y1="246" x2="503" y2="255" stroke="#546570" stroke-width="1"/><line x1="532.5" y1="246" x2="532.5" y2="255" stroke="#546570" stroke-width="1"/><line x1="562" y1="246" x2="562" y2="255" stroke="#546570" stroke-width="1"/><line x1="591.5" y1="246" x2="591.5" y2="255" stroke="#546570" stroke-width="1"/><line x1="621" y1="246" x2="621" y2="255" stroke="#546570" stroke-width="1"/><line x1="650.5" y1="246" x2="650.5" y2="255" stroke="#546570" stroke-width="1"/><line x1="680" y1="246" x2="680" y2="255" stroke="#546570" stroke-width="1"/><rect x="147.0" y="241" width="5" height="46" rx="1" fill="#15232b"/><line x1="680" y1="264.0" x2="706" y2="264.0" stroke="#546570" stroke-width="2"/>
+  <text x="90.0" y="306" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="middle">0</text>
+  <text x="208.0" y="306" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="middle">20</text>
+  <text x="326.0" y="306" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="middle">40</text>
+  <text x="444.0" y="306" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="middle">60</text>
+  <text x="562.0" y="306" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="middle">80</text>
+  <text x="680.0" y="306" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="middle">100</text>
+  <text x="400" y="340" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#546570" text-anchor="middle">100 units on a U-100 syringe equal 1 mL</text>
+</svg>

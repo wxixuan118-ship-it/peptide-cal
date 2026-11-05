@@ -18,6 +18,7 @@ SITE_URL = "https://peptidecalculatorpro.org"   # <- your production domain, no 
 SITE_NAME = "Peptide Calculator"
 UPDATED = "2026-10-03"
 BLOG_PUBLISHED = "2026-10-17"
+BLOG_UPDATED = "2026-11-05"
 
 ROOT = Path(__file__).parent
 SRC, DIST = ROOT / "src", ROOT / "dist"
@@ -182,7 +183,7 @@ PAGES = [
         "path": "/blog/", "src": "blog.html", "crumb": "Blog",
         "title": "Blog | Peptide Calculator Guides",
         "description": "Read clear, sourced guides to BAC water, peptide calculation terms, and unit conversions alongside our free calculators.",
-        "updated": BLOG_PUBLISHED,
+        "updated": BLOG_UPDATED,
         "priority": "0.6",
     },
     {
@@ -191,6 +192,22 @@ PAGES = [
         "title": "BAC Water: Uses, Storage, Safety & Sterile Water Differences",
         "description": "What is BAC water? Learn what bacteriostatic water contains, how it differs from sterile water, what product labels say about storage, and key safety limits.",
         "article": True, "published": BLOG_PUBLISHED, "updated": BLOG_PUBLISHED,
+        "priority": "0.7",
+    },
+    {
+        "path": "/blog/how-much-bac-water-to-add/", "src": "blog-how-much-bac-water.html", "crumb": "How Much BAC Water to Add",
+        "parent_crumb": ("Blog", "/blog/"),
+        "title": "Peptide Calculator: How Much BAC Water to Add, With Worked Examples",
+        "description": "How much BAC water to add to a peptide vial? See how water volume changes concentration and syringe units, with worked examples and a reverse formula.",
+        "article": True, "published": BLOG_UPDATED, "updated": BLOG_UPDATED,
+        "priority": "0.7",
+    },
+    {
+        "path": "/blog/how-many-doses-per-vial/", "src": "blog-how-many-doses-per-vial.html", "crumb": "How Many Doses Per Vial",
+        "parent_crumb": ("Blog", "/blog/"),
+        "title": "Peptide Calculator: How Many Doses Per Vial and How Much to Inject",
+        "description": "Work out how many doses per vial you get and what volume a dose equals in U-100 units. Plus who should answer how much you should take.",
+        "article": True, "published": BLOG_UPDATED, "updated": BLOG_UPDATED,
         "priority": "0.7",
     },
     {
@@ -275,6 +292,8 @@ TEMPLATE = """<!doctype html>
       <a href="/tdee-calculator/">TDEE Calculator</a>
       <a href="/blog/">Blog</a>
       <a href="/blog/bac-water/">BAC Water Guide</a>
+      <a href="/blog/how-much-bac-water-to-add/">How Much BAC Water to Add</a>
+      <a href="/blog/how-many-doses-per-vial/">How Many Doses Per Vial</a>
       <a href="/about/">About</a>
       <a href="/disclaimer/">Medical Disclaimer</a>
       <a href="/privacy/">Privacy</a>

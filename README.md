@@ -18,6 +18,8 @@ Static site for [peptidecalculatorpro.org](https://peptidecalculatorpro.org): fr
 | TDEE Calculator | `/tdee-calculator/` |
 | Blog index | `/blog/` |
 | BAC Water guide | `/blog/bac-water/` |
+| How much BAC water guide | `/blog/how-much-bac-water-to-add/` |
+| Doses per vial guide | `/blog/how-many-doses-per-vial/` |
 
 ## Build
 

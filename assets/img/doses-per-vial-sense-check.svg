@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 328" role="img" aria-labelledby="title desc">
+  <title id="title">Sense checks for syringe unit results</title>
+  <desc id="desc">Recheck units if the result is under 2 units, over 100 units, below one dose per vial, or off by a factor of 1,000.</desc>
+  <rect width="800" height="328" rx="18" fill="#eef3f4"/>
+  <text x="400" y="44" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#15232b" text-anchor="middle">Results that should make you recheck the units</text>
+  <rect x="40" y="76" width="130" height="56" rx="8" fill="#9a5b00"/>
+  <rect x="174" y="76" width="456" height="56" rx="8" fill="#0b7a75"/>
+  <rect x="634" y="76" width="126" height="56" rx="8" fill="#9a5b00"/>
+  <text x="105" y="111" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#fff" text-anchor="middle">Under 2</text>
+  <text x="402" y="111" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#fff" text-anchor="middle">Fits and is readable on a 1 mL U-100 syringe</text>
+  <text x="697" y="111" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#fff" text-anchor="middle">Over 100</text>
+  <text x="105" y="158" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="middle">Hard to measure</text>
+  <text x="402" y="158" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="middle">Syringe units (not to scale)</text>
+  <text x="697" y="158" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="middle">More than 1 mL</text>
+  <rect x="28" y="184" width="366" height="120" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <text x="52" y="222" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#15232b" text-anchor="start">Doses per vial below 1</text>
+  <text x="52" y="254" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#546570" text-anchor="start">The dose is larger than the vial</text>
+  <text x="52" y="282" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#9a5b00" text-anchor="start">Usually a wrong unit</text>
+  <rect x="406" y="184" width="366" height="120" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <text x="430" y="222" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#15232b" text-anchor="start">Off by a factor of 1,000</text>
+  <text x="430" y="254" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#546570" text-anchor="start">250 mg = 1,000 × 250 mcg</text>
+  <text x="430" y="282" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#9a5b00" text-anchor="start">Read both labels again</text>
+</svg>

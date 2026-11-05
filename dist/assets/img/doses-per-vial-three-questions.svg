@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 292" role="img" aria-labelledby="title desc">
+  <title id="title">Three peptide calculator questions</title>
+  <desc id="desc">How many doses and how much to inject are arithmetic. How much to take must come from a prescriber or product labeling.</desc>
+  <rect width="800" height="292" rx="18" fill="#eef3f4"/>
+  <text x="400" y="44" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#15232b" text-anchor="middle">Three questions, two of them arithmetic</text>
+  <rect x="28" y="70" width="240" height="196" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <text x="148" y="118" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#15232b" text-anchor="middle">How many doses?</text>
+  <text x="148" y="172" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#0b655f" text-anchor="middle">vial amount ÷ dose</text>
+  <rect x="44" y="206" width="208" height="42" rx="10" fill="#d9eeec"/>
+  <text x="148" y="233" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0b655f" text-anchor="middle">Calculator can do this</text>
+  <rect x="280" y="70" width="240" height="196" rx="12" fill="#fff" stroke="#d6e0e4" stroke-width="2"/>
+  <text x="400" y="118" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#15232b" text-anchor="middle">How much to inject?</text>
+  <text x="400" y="172" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#0b655f" text-anchor="middle">dose ÷ concentration</text>
+  <rect x="296" y="206" width="208" height="42" rx="10" fill="#d9eeec"/>
+  <text x="400" y="233" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0b655f" text-anchor="middle">Calculator can do this</text>
+  <rect x="532" y="70" width="240" height="196" rx="12" fill="#fbeed8" stroke="#9a5b00" stroke-width="2"/>
+  <text x="652" y="118" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#15232b" text-anchor="middle">How much to take?</text>
+  <text x="652" y="172" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#9a5b00" text-anchor="middle">Prescriber or label</text>
+  <rect x="548" y="206" width="208" height="42" rx="10" fill="#fff"/>
+  <text x="652" y="233" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#9a5b00" text-anchor="middle">Not a calculator answer</text>
+</svg>

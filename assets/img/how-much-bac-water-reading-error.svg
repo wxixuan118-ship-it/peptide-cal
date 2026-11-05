@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" role="img" aria-labelledby="title desc">
+  <title id="title">Half-unit reading error by water volume</title>
+  <desc id="desc">A half-unit misread is a 10 percent error at 1 mL, 5 percent at 2 mL, 4 percent at 2.5 mL and 3.3 percent at 3 mL.</desc>
+  <rect width="800" height="340" rx="18" fill="#eef3f4"/>
+  <text x="400" y="42" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#15232b" text-anchor="middle">The same half-unit slip matters less on a larger draw</text>
+  <text x="400" y="72" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#546570" text-anchor="middle">Error against a 250 mcg target, from misreading by 0.5 units</text>
+  <text x="40" y="118" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">1 mL</text>
+  <text x="40" y="140" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="start">5 units</text>
+  <rect x="150" y="100" width="520" height="34" rx="6" fill="#fff" stroke="#d6e0e4" stroke-width="1"/>
+  <rect x="150" y="100" width="520" height="34" rx="6" fill="#9a5b00"/>
+  <text x="682" y="124" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">10%</text>
+  <text x="40" y="174" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">2 mL</text>
+  <text x="40" y="196" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="start">10 units</text>
+  <rect x="150" y="156" width="520" height="34" rx="6" fill="#fff" stroke="#d6e0e4" stroke-width="1"/>
+  <rect x="150" y="156" width="260" height="34" rx="6" fill="#0b7a75"/>
+  <text x="422" y="180" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">5%</text>
+  <text x="40" y="230" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">2.5 mL</text>
+  <text x="40" y="252" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="start">12.5 units</text>
+  <rect x="150" y="212" width="520" height="34" rx="6" fill="#fff" stroke="#d6e0e4" stroke-width="1"/>
+  <rect x="150" y="212" width="208" height="34" rx="6" fill="#0b7a75"/>
+  <text x="370" y="236" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">4%</text>
+  <text x="40" y="286" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">3 mL</text>
+  <text x="40" y="308" font-family="Arial,sans-serif" font-size="15" font-weight="400" fill="#546570" text-anchor="start">15 units</text>
+  <rect x="150" y="268" width="520" height="34" rx="6" fill="#fff" stroke="#d6e0e4" stroke-width="1"/>
+  <rect x="150" y="268" width="171.6" height="34" rx="6" fill="#0b7a75"/>
+  <text x="333.6" y="292" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15232b" text-anchor="start">3.3%</text>
+</svg>

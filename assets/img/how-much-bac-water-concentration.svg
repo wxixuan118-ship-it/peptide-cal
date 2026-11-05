@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" role="img" aria-labelledby="title desc">
+  <title id="title">How BAC water sets peptide concentration</title>
+  <desc id="desc">A 5 mg vial plus 2 mL of BAC water gives a concentration of 2.5 mg per mL. The total peptide stays 5 mg.</desc>
+  <rect width="800" height="350" rx="18" fill="#eef3f4"/>
+  <text x="400" y="44" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#15232b" text-anchor="middle">Water sets the concentration</text>
+  <rect x="28" y="68" width="210" height="190" rx="12" fill="#fff"/>
+  <rect x="115" y="80" width="36" height="14" rx="3" fill="#546570"/><rect x="101" y="94" width="64" height="96" rx="8" fill="#fff" stroke="#546570" stroke-width="2"/><rect x="104" y="178.48000000000002" width="58" height="8.52" rx="5" fill="#b9c6cc"/>
+  <text x="133" y="216" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#546570" text-anchor="middle">Peptide in vial</text>
+  <text x="133" y="244" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#15232b" text-anchor="middle">5 mg</text>
+  <text x="263" y="172" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#546570" text-anchor="middle">+</text>
+  <rect x="288" y="68" width="210" height="190" rx="12" fill="#fff"/>
+  <rect x="375" y="80" width="36" height="14" rx="3" fill="#546570"/><rect x="361" y="94" width="64" height="96" rx="8" fill="#fff" stroke="#546570" stroke-width="2"/><rect x="364" y="118.0" width="58" height="69.0" rx="5" fill="#9fd3cf"/>
+  <text x="393" y="216" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#546570" text-anchor="middle">BAC water added</text>
+  <text x="393" y="244" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#15232b" text-anchor="middle">2 mL</text>
+  <line x1="506" y1="163" x2="536" y2="163" stroke="#0b7a75" stroke-width="3"/><path d="M534 155 L546 163 L534 171 Z" fill="#0b7a75"/>
+  <rect x="552" y="68" width="220" height="190" rx="12" fill="#0b7a75"/>
+  <rect x="644" y="80" width="36" height="14" rx="3" fill="#546570"/><rect x="630" y="94" width="64" height="96" rx="8" fill="#fff" stroke="#546570" stroke-width="2"/><rect x="633" y="118.0" width="58" height="69.0" rx="5" fill="#9fd3cf"/>
+  <text x="662" y="216" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#d9eeec" text-anchor="middle">Concentration</text>
+  <text x="662" y="244" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#fff" text-anchor="middle">2.5 mg/mL</text>
+  <rect x="118" y="278" width="564" height="48" rx="12" fill="#d9eeec"/>
+  <text x="400" y="309" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#0b655f" text-anchor="middle">The vial still holds 5 mg. Each mL now holds 2.5 mg.</text>
+</svg>

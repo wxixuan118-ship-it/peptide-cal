@@ -87,6 +87,21 @@
   <p class="formula">units = volume (mL) × 100</p>
   <p>The factor of 100 comes from the U-100 insulin syringe: one millilitre is divided into 100 units, so each unit holds 0.01 mL. It is the standard syringe for small subcutaneous volumes, and the one this page assumes.</p>
 
+  <h2>Peptide Calculator Conversion Rules: mg, mcg, IU and Units</h2>
+  <p>Four different things get mixed up on a vial label. Keep them separate and the peptide calculator arithmetic stays simple:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Conversion</th><th>Rule</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>mg to mcg</td><td>1 mg = 1,000 mcg</td><td>Mass. Multiply by 1,000, divide to go back.</td></tr>
+        <tr><td>mL to syringe units</td><td>1 mL = 100 units (U-100)</td><td>Volume. One unit is 0.01 mL, whatever the vial contains.</td></tr>
+        <tr><td>Dose to units</td><td>units = dose ÷ concentration × 100</td><td>Needs the mg/mL concentration from vial mg ÷ water mL.</td></tr>
+        <tr><td>IU to mg</td><td>No universal factor</td><td>IU measures biological activity; the mg equivalent is specific to each product and its label.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A worked example ties the rules together: 5 mg in 2 mL is 2.5 mg/mL; 250 mcg is 0.25 mg; 0.25 mg ÷ 2.5 mg/mL = 0.1 mL; 0.1 mL × 100 = <strong>10 units</strong>. The mg-to-mcg step changes mass, the mL-to-units step changes volume, and the concentration is the bridge between them. IU cannot be bridged without the product's own IU-per-mg figure printed on the label — if both the vial and the dose are written in IU, enter IU for both in the calculator above.</p>
+
   <h2>Syringe Calculator Peptide Example: 5 mg Vial</h2>
   <p>Say you have a 5 mg vial, you add 2 mL of bacteriostatic water, and your dose is 250 mcg. Here is the working:</p>
   <ul>
@@ -139,7 +154,7 @@
 
   <h2>Peptide Calculator IU vs Syringe Units</h2>
   <p>Syringe "units" and IU (international units) sound alike but measure different things. Syringe units are volume: 100 units is 1 mL on a U-100 syringe. IU measure biological activity, and the conversion to mg is different for every substance, so there is no universal mg-to-IU factor.</p>
-  <p>If your vial is labelled in IU, select <strong>IU for both the vial and the dose</strong> in the peptide calculator above; mixing IU with mg is blocked because it needs the product's own IU-per-mg figure. For somatropin specifically, the <a href="/hgh-peptide-dose-calculator/">HGH peptide dose calculator</a> adds IU-to-mg tables, brand presentations and pen notes.</p>
+  <p>If your vial is labelled in IU, select <strong>IU for both the vial and the dose</strong> in the peptide calculator above; mixing IU with mg is blocked because it needs the product's own IU-per-mg figure. Do not convert IU to mg with a generic factor — use the figure printed on the product label.</p>
 
   <h2>Peptide Calculator Accuracy Tips</h2>
   <p>The math is exact, but the draw is only as good as the inputs. A few habits keep results meaningful in practice:</p>
@@ -151,6 +166,10 @@
   </ul>
   <p>Planning a weekly schedule? The <a href="/peptide-dosage-calculator/">peptide dosage calculator</a> adds dosing frequency and shows how many days a vial will last.</p>
 
+  <h2>Peptide Calculator by Body Weight: mg per kg</h2>
+  <p>Some plans express a dose per kilogram rather than a fixed amount. The arithmetic is one multiplication: <span class="formula">dose (mg) = dose (mg/kg) × body weight (kg)</span>. For example, 0.1 mg/kg at 80 kg is 8 mg. For a dose written in mcg/kg, do the same multiplication and divide the result by 1,000 to get mg.</p>
+  <p>Once you have that absolute dose, enter it with your vial strength and water volume in the <a href="/peptide-dosage-calculator/">peptide dosage calculator</a>. It returns the U-100 units, doses per vial and days of supply. This is arithmetic only; whether a weight-based dose is appropriate, and which figure to use, is a decision for your prescriber.</p>
+
   <h2>Other Peptide Calculators on This Site</h2>
   <div class="cards">
     <div class="card">
@@ -158,7 +177,7 @@
       <p>Works out how much bacteriostatic water to add so each dose lands on a round, easy-to-read number of units.</p>
     </div>
     <div class="card">
-      <h3><a href="/peptide-dosage-calculator/">Peptide dosage calculator</a></h3>
+      <h3><a href="/peptide-dosage-calculator/">peptide dosage calculator</a></h3>
       <p>Converts a dose into units and mL, then shows doses per vial, days of supply and a dose-to-units table.</p>
     </div>
     <div class="card">
@@ -174,8 +193,12 @@
       <p>Converts mg and mL into mg/mL, mcg/mL, mcg per unit, % w/v and molarity for lab solutions.</p>
     </div>
     <div class="card">
-      <h3><a href="/molarity-calculator/">Molarity calculator</a></h3>
-      <p>Convert mass or moles and final volume into M, mM and µM, or find moles from a target molarity.</p>
+      <h3><a href="/bac-water-calculator/">BAC water calculator</a></h3>
+      <p>Works on the diluent side: mg/mL, mcg per unit, target volume and mg, mcg, mL or µL conversions.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/mg-to-ml-calculator/">mg to mL calculator</a></h3>
+      <p>Converts mass and volume when a concentration or density is known, with no dose or syringe math.</p>
     </div>
     <div class="card">
       <h3><a href="/peptide-molecular-weight-calculator/">Peptide molecular weight calculator</a></h3>
@@ -190,20 +213,12 @@
       <p>The same math with retatrutide vial presets, plus a units-per-mg chart. Arithmetic only, no dose advice.</p>
     </div>
     <div class="card">
-      <h3><a href="/hgh-peptide-dose-calculator/">HGH peptide dose calculator</a></h3>
-      <p>Converts an IU-labelled somatropin vial, the water added and a prescribed dose into syringe units.</p>
-    </div>
-    <div class="card">
       <h3><a href="/klow-peptide-calculator/">KLOW peptide calculator</a></h3>
       <p>Works through the four-peptide 80 mg KLOW blend and shows what each draw delivers.</p>
     </div>
     <div class="card">
       <h3><a href="/peptide-property-calculator/">Peptide property calculator</a></h3>
       <p>Molecular weight, pI, net charge and hydropathy from a sequence, in one pass.</p>
-    </div>
-    <div class="card">
-      <h3><a href="/tdee-calculator/">TDEE calculator</a></h3>
-      <p>Estimates daily calorie burn, weight-loss targets and a protein range to pair with your plan.</p>
     </div>
   </div>
 
@@ -218,7 +233,7 @@
     <h3>Can the peptide calculator handle blends?</h3>
     <p>Yes, if you calculate one component at a time. Enter that component's mg in the vial and its dose; the units you get also deliver the other components in the same ratio as the blend. The <a href="/peptide-blend-calculator/">peptide blend calculator</a> shows every component at once.</p>
     <h3>Does the peptide calculator work with IU?</h3>
-    <p>Yes. Choose IU for both the vial amount and the dose; syringe units are still volume, so the result is the same arithmetic. For somatropin vials and pens, the <a href="/hgh-peptide-dose-calculator/">HGH peptide dose calculator</a> adds IU-to-mg conversion and brand-specific notes.</p>
+    <p>Yes. Choose IU for both the vial amount and the dose; syringe units are still volume, so the result is the same arithmetic. For an IU vial, use the IU-per-mg figure on the product label if you need the mg equivalent.</p>
     <h3>Which syringe does the peptide calculator assume?</h3>
     <p>A U-100 insulin syringe, where 1 mL equals 100 units. If you use a different syringe, convert the mL result shown instead of the unit figure.</p>
     <h3>Is a peptides calculator the same as a dosage calculator?</h3>

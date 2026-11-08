@@ -18,7 +18,7 @@ SITE_URL = "https://peptidecalculatorpro.org"   # <- your production domain, no 
 SITE_NAME = "Peptide Calculator"
 UPDATED = "2026-10-03"
 BLOG_PUBLISHED = "2026-10-17"
-BLOG_UPDATED = "2026-11-05"
+BLOG_UPDATED = "2026-11-08"
 
 ROOT = Path(__file__).parent
 SRC, DIST = ROOT / "src", ROOT / "dist"
@@ -37,7 +37,6 @@ CALCULATOR_NAV = [
     ("/peptide-molecular-weight-calculator/", "Molecular Weight Calculator"),
     ("/peptide-net-charge-calculator/", "Net Charge Calculator"),
     ("/retatrutide-peptide-calculator/", "Retatrutide"),
-    ("/hgh-peptide-dose-calculator/", "HGH"),
     ("/klow-peptide-calculator/", "KLOW"),
     ("/tdee-calculator/", "TDEE"),
 ]
@@ -52,9 +51,9 @@ PAGES = [
     {
         "path": "/",
         "src": "home.html",
-        "title": "Peptide Calculator: Free mg to Syringe Units Tool",
-        "description": ("Free peptide calculator: enter vial mg, bacteriostatic water and your dose "
-                        "to get exact syringe units, mL per injection and doses per vial. Instant results."),
+        "title": "Peptide Calculator – mg, mcg & IU to Syringe Units | Peptide Calculator Pro",
+        "description": ("Peptide calculator for mg, mcg and IU vials: enter the vial strength, bacteriostatic "
+                        "water and your dose to get exact U-100 syringe units, mL per injection and doses per vial."),
         "crumb": None,
         "app": "Peptide Calculator",
         "priority": "1.0",
@@ -63,9 +62,9 @@ PAGES = [
     {
         "path": "/peptide-reconstitution-calculator/",
         "src": "reconstitution.html",
-        "title": "Peptide Reconstitution Calculator: BAC Water Mixing",
-        "description": ("Peptide reconstitution calculator: find how much bacteriostatic water to add "
-                        "to any vial so each dose lands on a clean, easy-to-read syringe unit mark."),
+        "title": "Peptide Reconstitution Calculator – Water Volume & Syringe Units",
+        "description": ("Peptide reconstitution calculator: work backwards from the syringe units you want "
+                        "to the bacteriostatic water volume to add, with mg/mL and dose checks."),
         "crumb": "Peptide Reconstitution Calculator",
         "app": "Peptide Reconstitution Calculator",
         "priority": "0.9",
@@ -74,9 +73,9 @@ PAGES = [
     {
         "path": "/peptide-dosage-calculator/",
         "src": "dosage.html",
-        "title": "Peptide Dosage Calculator in Units: mcg, mg & Vial Supply",
-        "description": ("Peptide dosage calculator in units: turn any mcg or mg dose into syringe units "
-                        "and mL, then see doses per vial, how long a vial lasts and monthly needs."),
+        "title": "Peptide Dosage Calculator – Units, Doses per Vial & Supply",
+        "description": ("Peptide dosage calculator: convert mcg or mg doses into U-100 syringe units, "
+                        "then see doses per vial, days of supply and monthly peptide needs."),
         "crumb": "Peptide Dosage Calculator",
         "app": "Peptide Dosage Calculator",
         "priority": "0.9",
@@ -101,6 +100,7 @@ PAGES = [
         "crumb": "Peptide Dilution Calculator",
         "app": "Peptide Dilution Calculator",
         "priority": "0.8",
+        "updated": "2026-11-08",
     },
     {
         "path": "/peptide-concentration-calculator/",
@@ -111,27 +111,29 @@ PAGES = [
         "crumb": "Peptide Concentration Calculator",
         "app": "Peptide Concentration Calculator",
         "priority": "0.8",
+        "updated": "2026-11-08",
     },
     {
         "path": "/mg-to-ml-calculator/",
         "src": "mg-to-ml.html",
-        "title": "mg to mL Calculator: Convert mg, g and mL with Concentration",
-        "description": "Convert mg or g to mL, or mL to mg and g, using a known concentration or density. See the formula and why mass and volume cannot convert directly.",
+        "title": "Convert mg to mL – Calculator for Mass, Volume & Concentration",
+        "description": "Convert mg to mL, or mL to mg, using a known concentration or density. See the formulas, worked examples and why mass and volume cannot convert directly.",
         "crumb": "mg to mL Calculator",
         "app": "Mass and Volume Calculator",
         "category": "EducationalApplication",
         "priority": "0.8",
-        "updated": "2026-10-17",
+        "updated": "2026-11-08",
     },
     {
         "path": "/bac-water-calculator/",
         "src": "bac-water.html",
-        "title": "BAC Water Calculator – Concentration & Dilution Math",
-        "description": "Free BAC water calculator for concentration and volume math. Convert mg, mcg, and mL with clear formulas and instant results.",
+        "title": "BAC Water Calculator – mg/mL, mcg per Unit & Diluent Volume",
+        "description": "BAC water calculator: convert peptide mass and diluent volume into mg/mL, mcg per unit and a target-concentration volume, plus mg/mcg and mL/µL conversions.",
         "crumb": "BAC Water Calculator",
         "app": "BAC Water Calculator",
         "category": "EducationalApplication",
         "priority": "0.8",
+        "updated": "2026-11-08",
     },
     {
         "path": "/molarity-calculator/",
@@ -185,17 +187,6 @@ PAGES = [
                         "prescribed dose into U-100 syringe units and mL. Math only, no dose advice."),
         "crumb": "Retatrutide Peptide Calculator",
         "app": "Retatrutide Peptide Calculator",
-        "priority": "0.8",
-        "updated": "2026-11-08",
-    },
-    {
-        "path": "/hgh-peptide-dose-calculator/",
-        "src": "hgh.html",
-        "title": "HGH Peptide Dose Calculator: Somatropin IU to Units",
-        "description": ("HGH peptide dose calculator: convert somatropin IU to U-100 syringe units "
-                        "for 6, 10, 12, 16, 24 and 36 IU vials, with brand labels and mg options. Math only."),
-        "crumb": "HGH Peptide Dose Calculator",
-        "app": "HGH Peptide Dose Calculator",
         "priority": "0.8",
         "updated": "2026-11-08",
     },
@@ -331,7 +322,6 @@ TEMPLATE = """<!doctype html>
       <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
       <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
       <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
-      <a href="/hgh-peptide-dose-calculator/">HGH Peptide Dose Calculator</a>
       <a href="/klow-peptide-calculator/">KLOW Peptide Calculator</a>
       <a href="/tdee-calculator/">TDEE Calculator</a>
       <a href="/blog/">Blog</a>

@@ -502,9 +502,9 @@ PARTNERS = [
      'Startup Benchmarks', 265, 54),
     # Exact markup required by directory backlink verifiers. Do not route
     # these through the tuple template.
-    '<a href="https://toolfame.com" target="_blank" rel="nofollow noopener"><img src="https://toolfame.com/badge-light.svg" alt="Featured on toolfame.com" loading="lazy" width="160" height="54"></a>',
-    '<a href="https://launchigniter.com" target="_blank" rel="nofollow noopener"><img src="https://launchigniter.com/badge.svg" alt="Featured on LaunchIgniter" loading="lazy" width="250" height="54"></a>',
-    '<a href="https://goodsaas.xyz/saas/peptidecalculatorpro" target="_blank" rel="nofollow noopener"><img src="https://goodsaas.xyz/badge/peptidecalculatorpro.svg?theme=light" alt="Featured on GoodSaaS" loading="lazy" width="154" height="32"></a>',
+    '<a href="https://toolfame.com" target="_blank" rel="noopener"><img src="https://toolfame.com/badge-light.svg" alt="Featured on toolfame.com" loading="lazy" width="160" height="54"></a>',
+    '<a href="https://launchigniter.com" target="_blank" rel="noopener"><img src="https://launchigniter.com/badge.svg" alt="Featured on LaunchIgniter" loading="lazy" width="250" height="54"></a>',
+    '<a href="https://goodsaas.xyz/saas/peptidecalculatorpro" target="_blank" rel="noopener"><img src="https://goodsaas.xyz/badge/peptidecalculatorpro.svg?theme=light" alt="Featured on GoodSaaS" loading="lazy" width="154" height="32"></a>',
 ]
 
 
@@ -515,7 +515,7 @@ def partners_html():
             links.append("      " + partner)
             continue
         links.append(
-            '      <a href="%s" target="_blank" rel="nofollow noopener"%s>'
+            '      <a href="%s" target="_blank" rel="noopener"%s>'
             '<img src="%s" alt="%s" loading="lazy"%s%s></a>' % (
                 partner[0], partner[5] if len(partner) > 5 else '',
                 html.escape(partner[1]), html.escape(partner[2]),

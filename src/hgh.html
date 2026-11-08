@@ -64,6 +64,73 @@
   </div>
 </section>
 
+<section class="tool" data-calc="hgh-water" aria-labelledby="water-tool-title">
+  <form onsubmit="return false">
+    <h2 id="water-tool-title">HGH Reconstitution Calculator: Units to Water</h2>
+    <p class="hint">Work backwards. Choose the prescribed dose and the draw you can actually measure, and this tells you how much bacteriostatic water to add.</p>
+
+    <div class="field">
+      <label for="r-vial">HGH in the vial (IU)</label>
+      <input id="r-vial" type="number" inputmode="decimal" min="0" step="any" value="36">
+      <div class="chips">
+        <button type="button" class="chip" data-target="r-vial" data-value="6">6 IU</button>
+        <button type="button" class="chip" data-target="r-vial" data-value="10">10 IU</button>
+        <button type="button" class="chip" data-target="r-vial" data-value="16">16 IU</button>
+        <button type="button" class="chip" data-target="r-vial" data-value="36">36 IU</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="r-dose">Prescribed dose per injection (IU)</label>
+      <input id="r-dose" type="number" inputmode="decimal" min="0" step="any" value="2">
+      <p class="hint">The 2 IU default is only an example input, not a recommended dose.</p>
+    </div>
+
+    <div class="field">
+      <label for="r-units">Draw you want on the syringe (units)</label>
+      <input id="r-units" type="number" inputmode="decimal" min="0" step="any" value="10">
+      <div class="chips">
+        <button type="button" class="chip" data-target="r-units" data-value="5">5 units</button>
+        <button type="button" class="chip" data-target="r-units" data-value="10">10 units</button>
+        <button type="button" class="chip" data-target="r-units" data-value="20">20 units</button>
+        <button type="button" class="chip" data-target="r-units" data-value="30">30 units</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="r-syringe">Syringe size</label>
+      <select id="r-syringe">
+        <option value="30">0.3 mL (30 units)</option>
+        <option value="50">0.5 mL (50 units)</option>
+        <option value="100" selected>1.0 mL (100 units)</option>
+      </select>
+    </div>
+  </form>
+
+  <div class="results" aria-live="polite">
+    <p class="big">Add <strong><span data-out="water">1.8</span> mL</strong> of bacteriostatic water</p>
+    <ul class="stats">
+      <li>Concentration<b data-out="conc">20 IU/mL</b></li>
+      <li>Units per IU<b data-out="units-per-iu">5</b></li>
+      <li>HGH per unit<b data-out="per-unit">0.2 IU</b></li>
+      <li>Doses per vial<b data-out="doses">18</b></li>
+    </ul>
+    <p class="alert" data-out="alert" hidden></p>
+    <div class="table-wrap">
+      <table>
+        <caption class="hint">Water for other draw sizes, with your vial and dose</caption>
+        <thead><tr><th>Target draw</th><th>Water to add</th><th>Concentration</th><th>Units per IU</th></tr></thead>
+        <tbody id="hgh-water-table">
+          <tr><td>5 units</td><td>0.9 mL</td><td>40 IU/mL</td><td>2.5</td></tr>
+          <tr><td>10 units</td><td>1.8 mL</td><td>20 IU/mL</td><td>5</td></tr>
+          <tr><td>20 units</td><td>3.6 mL</td><td>10 IU/mL</td><td>10</td></tr>
+          <tr><td>30 units</td><td>5.4 mL</td><td>6.67 IU/mL</td><td>15</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <article class="content">
   <h2>What This HGH Dose Calculator Does</h2>
   <p>HGH products are sold as lyophilised powder (or as prefilled pens) and their strength is written in international units, not milligrams. To work out what to draw, you need three numbers: the IU in the vial, the water you add, and the prescribed dose. This calculator converts them into millilitres and into the marks on a U-100 insulin syringe.</p>
@@ -117,7 +184,7 @@
       </tbody>
     </table>
   </div>
-  <p>If a dose works out under 2 units, adding more water on the next vial makes it easier to measure. Plan that with the <a href="/peptide-reconstitution-calculator/">peptide reconstitution calculator</a>, and check vial supply with the <a href="/peptide-dosage-calculator/">peptide dosage calculator</a>.</p>
+  <p>If a dose works out under 2 units, adding more water on the next vial makes it easier to measure. The units-to-water calculator above works that backwards from the draw you want; check vial supply with the <a href="/peptide-dosage-calculator/">peptide dosage calculator</a>.</p>
 
   <h2>Converting HGH IU to mg</h2>
   <p>Most somatropin labels state a relationship close to 1 mg = 3 IU, which also means 1 IU ≈ 0.333 mg. It is a convention, not a physical constant: the IU is defined by a biological assay, and different products can be calibrated slightly differently. Two well-known examples show how the label is written in practice — a 5.3 mg Genotropin cartridge is labelled 16 IU, and a 12 mg cartridge is labelled 36 IU. Both fit the 3 IU per mg rule closely enough to be useful, but the number you should trust is the one printed on your own product.</p>
@@ -157,7 +224,7 @@
   <p>Microgram prescriptions follow the same route. A 500 mcg dose is 0.5 mg, so with the same 5 mg/mL solution the draw is 0.1 mL, or 10 units. The common failure is to type 500 into a field that expects mg; the calculator then treats it as 500 mg and returns a result that is a thousand times too large. Check the unit selector before you read the units.</p>
 
   <h2>Handling a 36 IU Vial</h2>
-  <p>Large cartridges are the ones that produce unreadable draws. A 36 IU vial with 1 mL of water gives 36 IU/mL, so a 1 IU dose is 2.8 units — below the range most people can measure reliably on a U-100 barrel. With 3 mL of water the concentration falls to 12 IU/mL and the same 1 IU dose becomes 8.3 units, which is a much better target. That is why high-strength products usually come with a larger diluent volume or as a pen with a fixed, pre-set concentration.</p>
+  <p>Large cartridges are the ones that produce unreadable draws. A 36 IU vial with 1 mL of water gives 36 IU/mL, so a 1 IU dose is 2.8 units — below the range most people can measure reliably on a U-100 barrel. With 3 mL of water the concentration falls to 12 IU/mL and the same 1 IU dose becomes 8.3 units, which is a much better target. If you would rather fix the draw first and let the water follow, the units-to-water calculator at the top returns the exact volume. That is also why high-strength products usually come with a larger diluent volume or as a pen with a fixed, pre-set concentration.</p>
   <p>Check that the water volume you plan actually fits the vial. A 36 IU (12 mg) lyophilised cake often sits in a small vial, and adding 3 mL may be near the practical limit; adding 2 mL and accepting a 5.6 unit draw can be the better compromise. Whatever you choose, keep the same water volume for every vial of that product so the units for a given dose do not drift.</p>
 
   <h2>Pens, Cartridges and Fixed Diluent</h2>

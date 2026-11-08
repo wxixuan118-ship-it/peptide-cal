@@ -579,7 +579,39 @@
     seqAlert(root, p, pH < 0 || pH > 14 ? "pH must be between 0 and 14." : "");
   }
 
-  var map = { main: computeMain, recon: computeRecon, dose: computeDose, blend: computeBlend, klow: computeKlow, dilution: computeDilution, conc: computeConc, molarity: computeMolarity, "moles-to-molarity": computeMolesToMolarity, "molarity-to-moles": computeMolarityToMoles, mw: computeMw, charge: computeCharge, property: computeProperty, tdee: computeTdee, adaptive: computeAdaptive };
+  /* HGH reverse: choose the draw you can measure, get the water volume */
+  function computeHghWater(root) {
+    var vial = num($("#r-vial", root));      // IU in the vial
+    var dose = num($("#r-dose", root));      // IU per injection
+    var target = num($("#r-units", root));   // units wanted on the syringe
+    var cap = parseInt($("#r-syringe", root).value, 10);
+    var ok = vial > 0 && dose > 0 && target > 0;
+    var water = ok ? vial * target / (U100 * dose) : 0;   // mL
+    var conc = water > 0 ? vial / water : 0;              // IU per mL
+    set(root, "water", ok ? fmt(water, 2) : "–");
+    set(root, "conc", ok ? fmt(conc, 2) + " IU/mL" : "–");
+    set(root, "units-per-iu", ok ? fmt(target / dose, 2) : "–");
+    set(root, "per-unit", ok ? fmt(dose / target, 3) + " IU" : "–");
+    set(root, "doses", ok ? fmt(Math.floor(vial / dose + 1e-9), 0) : "–");
+    var alert = $('[data-out="alert"]', root), msg = "";
+    if (ok && water < 0.5) msg = "Under 0.5 mL of water is hard to add precisely and makes a very strong solution. Choose a larger draw.";
+    else if (ok && water > 5) msg = "More than 5 mL may not fit a small HGH vial. Choose a smaller draw or a larger vial.";
+    else if (ok && target > cap) msg = "The target draw (" + fmt(target, 1) + " units) is larger than the selected syringe.";
+    alert.textContent = msg; alert.hidden = !msg;
+
+    var body = $("#hgh-water-table", root);
+    if (body) {
+      var rows = "";
+      [5, 10, 15, 20, 30, 40, 50].forEach(function (u) {
+        var w = vial > 0 && dose > 0 ? vial * u / (U100 * dose) : 0;
+        rows += "<tr><td>" + u + " units</td><td>" + (w > 0 ? fmt(w, 2) + " mL" : "–") + "</td><td>" +
+          (w > 0 ? fmt(vial / w, 2) + " IU/mL" : "–") + "</td><td>" + (w > 0 ? fmt(u / dose, 2) : "–") + "</td></tr>";
+      });
+      body.innerHTML = rows;
+    }
+  }
+
+  var map = { main: computeMain, recon: computeRecon, dose: computeDose, blend: computeBlend, klow: computeKlow, "hgh-water": computeHghWater, dilution: computeDilution, conc: computeConc, molarity: computeMolarity, "moles-to-molarity": computeMolesToMolarity, "molarity-to-moles": computeMolarityToMoles, mw: computeMw, charge: computeCharge, property: computeProperty, tdee: computeTdee, adaptive: computeAdaptive };
   $$("[data-calc]").forEach(function (root) {
     var fn = map[root.getAttribute("data-calc")];
     if (fn) wire(root, fn);

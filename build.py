@@ -15,7 +15,8 @@ import shutil
 from pathlib import Path
 
 SITE_URL = "https://peptidecalculatorpro.org"   # <- your production domain, no trailing slash
-SITE_NAME = "Peptide Calculator"
+SITE_NAME = "Peptide Calculator Pro"
+SITE_ALT = "Peptide Calculator"
 UPDATED = "2026-10-03"
 BLOG_PUBLISHED = "2026-10-17"
 BLOG_UPDATED = "2026-11-08"
@@ -309,25 +310,12 @@ TEMPLATE = """<!doctype html>
 <footer class="site-footer">
   <div class="wrap">
     <nav aria-label="Footer">
-      <a href="/">Peptide Calculator</a>
-      <a href="/peptide-reconstitution-calculator/">Peptide Reconstitution Calculator</a>
-      <a href="/peptide-dosage-calculator/">Peptide Dosage Calculator</a>
-      <a href="/peptide-blend-calculator/">Peptide Blend Calculator</a>
-      <a href="/peptide-dilution-calculator/">Peptide Dilution Calculator</a>
-      <a href="/peptide-concentration-calculator/">Peptide Concentration Calculator</a>
-      <a href="/mg-to-ml-calculator/">mg to mL Calculator</a>
-      <a href="/molarity-calculator/">Molarity Calculator</a>
-      <a href="/bac-water-calculator/">BAC Water Calculator</a>
-      <a href="/peptide-property-calculator/">Peptide Property Calculator</a>
-      <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
-      <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
-      <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
-      <a href="/klow-peptide-calculator/">KLOW Peptide Calculator</a>
-      <a href="/tdee-calculator/">TDEE Calculator</a>
+      <a href="/">Home</a>
+      <a href="/peptide-reconstitution-calculator/">Reconstitution</a>
+      <a href="/peptide-dosage-calculator/">Dosage</a>
+      <a href="/peptide-concentration-calculator/">Concentration</a>
+      <a href="/peptide-molecular-weight-calculator/">Molecular Weight</a>
       <a href="/blog/">Blog</a>
-      <a href="/blog/bac-water/">BAC Water Guide</a>
-      <a href="/blog/how-much-bac-water-to-add/">How Much BAC Water to Add</a>
-      <a href="/blog/how-many-doses-per-vial/">How Many Doses Per Vial</a>
       <a href="/about/">About</a>
       <a href="/disclaimer/">Medical Disclaimer</a>
       <a href="/privacy/">Privacy</a>
@@ -380,17 +368,50 @@ def faq_items(body):
 
 
 def build_schema(page, body, url):
-    graph = [{
+    org_id = SITE_URL + "/#organization"
+    org = {
+        "@type": "Organization", "@id": org_id,
+        "name": SITE_NAME, "alternateName": SITE_ALT,
+        "url": SITE_URL + "/",
+        "logo": {"@type": "ImageObject", "url": SITE_URL + "/assets/img/favicon.svg"},
+        "sameAs": [p[0] for p in PARTNERS if isinstance(p, tuple)],
+    }
+    graph = [org, {
         "@type": "WebSite", "@id": SITE_URL + "/#website",
-        "url": SITE_URL + "/", "name": SITE_NAME, "inLanguage": "en",
+        "url": SITE_URL + "/", "name": SITE_NAME, "alternateName": SITE_ALT,
+        "inLanguage": "en", "publisher": {"@id": org_id},
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {"@type": "EntryPoint", "urlTemplate": SITE_URL + "/?q={search_term_string}"},
+            "query-input": "required name=search_term_string",
+        },
     }]
     page_node = {
         "@type": "WebPage", "@id": url + "#webpage", "url": url, "name": page["title"],
         "description": page["description"], "isPartOf": {"@id": SITE_URL + "/#website"},
         "dateModified": page.get("updated", UPDATED), "inLanguage": "en",
+        "author": {"@id": org_id}, "publisher": {"@id": org_id},
+        "medicalReviewer": {
+            "@type": "Organization",
+            "name": "Peptide Calculator Pro Medical Review Team",
+        },
     }
+    if page["path"] == "/":
+        page_node["speakable"] = {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".steps", ".formula", "#faq h3", "#faq p"],
+        }
     graph.append(page_node)
     if page.get("app"):
+        features = page.get("features")
+        if features is None:
+            features = [
+                "Convert mg or mcg vial strength to U-100 syringe units",
+                "Enter bacteriostatic water volume to get mg per mL concentration",
+                "Support for IU-labelled vials using the product's own IU-per-mg figure",
+                "Show mL per injection, doses per vial and days of supply",
+                "Works for single peptides and multi-peptide blends",
+            ]
         graph.append({
             "@type": "WebApplication", "@id": url + "#app", "name": page["app"], "url": url,
             "applicationCategory": page.get("category", "HealthApplication"), "operatingSystem": "Any (web browser)",
@@ -398,6 +419,8 @@ def build_schema(page, body, url):
             "isAccessibleForFree": True,
             "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
             "description": page["description"],
+            "provider": {"@id": org_id},
+            "featureList": features,
         })
         page_node["mainEntity"] = {"@id": url + "#app"}
     if page.get("article"):
@@ -405,8 +428,7 @@ def build_schema(page, body, url):
             "@type": "Article", "@id": url + "#article", "headline": page["title"],
             "description": page["description"], "url": url,
             "datePublished": page["published"], "dateModified": page.get("updated", UPDATED),
-            "author": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL + "/"},
-            "publisher": {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL + "/"},
+            "author": {"@id": org_id}, "publisher": {"@id": org_id},
             "mainEntityOfPage": {"@id": url + "#webpage"},
         })
         page_node["mainEntity"] = {"@id": url + "#article"}
@@ -442,12 +464,10 @@ PARTNERS = [
     ('https://fazier.com/launches/peptidecalculatorpro.org',
      'https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light',
      'Peptide Calculator \u2014 Launched on Fazier', 120, 51),
-    ('https://stylemirrorai.com/', '/assets/img/stylemirror-ai-badge.svg',
-     'AI Clothes Changer', 230, 54),
     ('https://twelve.tools', 'https://twelve.tools/badge0-white.svg',
      'Featured on Twelve Tools', 148, 40),
     ('https://unitelist.com/product/peptidecalculatorpro',
-     'https://unitelist.com/assets/images/badge.png', 'Unite List', None, 54),
+     'https://unitelist.com/assets/images/badge.png', 'Unite List', 166, 54),
     ('https://www.freeai.run', 'https://www.freeai.run/badge/badge_light.svg',
      'Featured on FreeAI', 200, 54),
     ('https://findly.tools/peptide-calculator-pro?utm_source=peptide-calculator-pro',
@@ -459,32 +479,32 @@ PARTNERS = [
      'https://newname.ai/badge/listed.svg', 'Listed on NewName.ai',
      200, 54, ' data-newname-badge="peptide-calculator-pro"'),
     ('https://prolaunch.net', 'https://prolaunch.net/images/badges/featured-light.svg',
-     'Pro Launch Featured Badge (light theme)', 240, None,
+     'Pro Launch Featured Badge (light theme)', 152, 44,
      ' title="Pro Launch Featured Badge"'),
     ('https://shinylaunch.com/product/peptidecalculatorpro',
-     'https://shinylaunch.com/assets/images/badge.png', 'ShinyLaunch', None, 54),
+     'https://shinylaunch.com/assets/images/badge.png', 'ShinyLaunch', 198, 54),
     ('https://thekeytools.com/ai/peptidecalculatorpro',
-     'https://thekeytools.com/assets/images/badge.png', 'The Key Tools', None, 54),
+     'https://thekeytools.com/assets/images/badge.png', 'The Key Tools', 208, 54),
     ('https://devhub.best/projects/peptide-calculator?utm_source=badge',
      'https://r2.direasy-multi-tenant.focusapps.app/uploads/616d0b1a-3979-4b8c-94d1-b4f1fedd3ead/1783239702078/53yqmim54zv/featured-on-light.svg',
-     'Featured on DevHub', None, 44),
+     'Featured on DevHub', 150, 44),
     ('https://dododirectory.com', 'https://dododirectory.com/badge-light.png',
      'Featured on DodoDirectory', 200, 54),
     ('https://huntfortools.com/tool/peptidecalculatorpro',
-     'https://huntfortools.com/assets/images/badge.png', 'Hunt for Tools', None, 54),
+     'https://huntfortools.com/assets/images/badge.png', 'Hunt for Tools', 207, 54),
     ('https://productwing.com/product/peptidecalculatorpro',
-     'https://productwing.com/assets/images/badge.png', 'Product Wing', None, 54),
+     'https://productwing.com/assets/images/badge.png', 'Product Wing', 202, 54),
     ('https://indielineup.com/product/peptide-calculator?ref=badge',
      'https://indielineup.com/badge/peptide-calculator.svg',
      'Featured on IndieLineup', 160, 44),
     ('https://startupbenchmarks.com/product/peptidecalculatorpro',
      'https://startupbenchmarks.com/assets/images/badge.png',
-     'Startup Benchmarks', None, 54),
+     'Startup Benchmarks', 265, 54),
     # Exact markup required by directory backlink verifiers. Do not route
-    # these through the tuple template (GoodSaaS omits loading="lazy").
-    '<a href="https://toolfame.com" target="_blank" rel="noopener"><img src="https://toolfame.com/badge-light.svg" alt="Featured on toolfame.com" loading="lazy" height="54"></a>',
-    '<a href="https://launchigniter.com" target="_blank" rel="noopener"><img src="https://launchigniter.com/badge.svg" alt="Featured on LaunchIgniter" loading="lazy" width="250" height="54"></a>',
-    '<a href="https://goodsaas.xyz/saas/peptidecalculatorpro" target="_blank" rel="noopener"><img src="https://goodsaas.xyz/badge/peptidecalculatorpro.svg?theme=light" alt="Featured on GoodSaaS" width="154" height="32"></a>',
+    # these through the tuple template.
+    '<a href="https://toolfame.com" target="_blank" rel="nofollow noopener"><img src="https://toolfame.com/badge-light.svg" alt="Featured on toolfame.com" loading="lazy" width="160" height="54"></a>',
+    '<a href="https://launchigniter.com" target="_blank" rel="nofollow noopener"><img src="https://launchigniter.com/badge.svg" alt="Featured on LaunchIgniter" loading="lazy" width="250" height="54"></a>',
+    '<a href="https://goodsaas.xyz/saas/peptidecalculatorpro" target="_blank" rel="nofollow noopener"><img src="https://goodsaas.xyz/badge/peptidecalculatorpro.svg?theme=light" alt="Featured on GoodSaaS" loading="lazy" width="154" height="32"></a>',
 ]
 
 
@@ -495,7 +515,7 @@ def partners_html():
             links.append("      " + partner)
             continue
         links.append(
-            '      <a href="%s" target="_blank" rel="noopener"%s>'
+            '      <a href="%s" target="_blank" rel="nofollow noopener"%s>'
             '<img src="%s" alt="%s" loading="lazy"%s%s></a>' % (
                 partner[0], partner[5] if len(partner) > 5 else '',
                 html.escape(partner[1]), html.escape(partner[2]),

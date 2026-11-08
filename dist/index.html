@@ -8,7 +8,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://peptidecalculatorpro.org/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Peptide Calculator">
+<meta property="og:site_name" content="Peptide Calculator Pro">
 <meta property="og:title" content="Peptide Calculator – mg, mcg &amp; IU to Syringe Units | Peptide Calculator Pro">
 <meta property="og:description" content="Peptide calculator for mg, mcg and IU vials: enter the vial strength, bacteriostatic water and your dose to get exact U-100 syringe units, mL per injection and doses per vial.">
 <meta property="og:url" content="https://peptidecalculatorpro.org/">
@@ -21,11 +21,53 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://peptidecalculatorpro.org/#organization",
+      "name": "Peptide Calculator Pro",
+      "alternateName": "Peptide Calculator",
+      "url": "https://peptidecalculatorpro.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://peptidecalculatorpro.org/assets/img/favicon.svg"
+      },
+      "sameAs": [
+        "https://smollaunch.com",
+        "https://fazier.com/launches/peptidecalculatorpro.org",
+        "https://twelve.tools",
+        "https://unitelist.com/product/peptidecalculatorpro",
+        "https://www.freeai.run",
+        "https://findly.tools/peptide-calculator-pro?utm_source=peptide-calculator-pro",
+        "https://saascity.io",
+        "https://newname.ai/badge?ref=peptide-calculator-pro",
+        "https://prolaunch.net",
+        "https://shinylaunch.com/product/peptidecalculatorpro",
+        "https://thekeytools.com/ai/peptidecalculatorpro",
+        "https://devhub.best/projects/peptide-calculator?utm_source=badge",
+        "https://dododirectory.com",
+        "https://huntfortools.com/tool/peptidecalculatorpro",
+        "https://productwing.com/product/peptidecalculatorpro",
+        "https://indielineup.com/product/peptide-calculator?ref=badge",
+        "https://startupbenchmarks.com/product/peptidecalculatorpro"
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "https://peptidecalculatorpro.org/#website",
       "url": "https://peptidecalculatorpro.org/",
-      "name": "Peptide Calculator",
-      "inLanguage": "en"
+      "name": "Peptide Calculator Pro",
+      "alternateName": "Peptide Calculator",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://peptidecalculatorpro.org/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://peptidecalculatorpro.org/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     },
     {
       "@type": "WebPage",
@@ -38,6 +80,25 @@
       },
       "dateModified": "2026-11-08",
       "inLanguage": "en",
+      "author": {
+        "@id": "https://peptidecalculatorpro.org/#organization"
+      },
+      "publisher": {
+        "@id": "https://peptidecalculatorpro.org/#organization"
+      },
+      "medicalReviewer": {
+        "@type": "Organization",
+        "name": "Peptide Calculator Pro Medical Review Team"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".steps",
+          ".formula",
+          "#faq h3",
+          "#faq p"
+        ]
+      },
       "mainEntity": {
         "@id": "https://peptidecalculatorpro.org/#app"
       },
@@ -59,7 +120,17 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "Peptide calculator for mg, mcg and IU vials: enter the vial strength, bacteriostatic water and your dose to get exact U-100 syringe units, mL per injection and doses per vial."
+      "description": "Peptide calculator for mg, mcg and IU vials: enter the vial strength, bacteriostatic water and your dose to get exact U-100 syringe units, mL per injection and doses per vial.",
+      "provider": {
+        "@id": "https://peptidecalculatorpro.org/#organization"
+      },
+      "featureList": [
+        "Convert mg or mcg vial strength to U-100 syringe units",
+        "Enter bacteriostatic water volume to get mg per mL concentration",
+        "Support for IU-labelled vials using the product's own IU-per-mg figure",
+        "Show mL per injection, doses per vial and days of supply",
+        "Works for single peptides and multi-peptide blends"
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -68,7 +139,7 @@
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Peptide Calculator",
+          "name": "Peptide Calculator Pro",
           "item": "https://peptidecalculatorpro.org/"
         }
       ]
@@ -122,7 +193,7 @@
           "name": "Which syringe does the peptide calculator assume?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A U-100 insulin syringe, where 1 mL equals 100 units. If you use a different syringe, convert the mL result shown instead of the unit figure."
+            "text": "A U-100 insulin syringe, where 1 mL equals 100 units. The 0.3 mL, 0.5 mL and 1 mL barrels all use this same U-100 scale, so the unit result is identical whichever one you pick; only the barrel size and tick spacing change. If you use a 3 mL standard syringe marked in millilitres rather than units, divide the unit result by 100 to read it in mL (for example, 20 units = 0.2 mL)."
           }
         },
         {
@@ -150,7 +221,7 @@
 <body>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">P</span>Peptide Calculator</a>
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">P</span>Peptide Calculator Pro</a>
     <nav class="site-nav" aria-label="Primary">
       <details class="nav-menu">
         <summary>Calculators</summary>
@@ -233,10 +304,80 @@
   </div>
 </section>
 
+<section class="content" aria-labelledby="by-compound">
+  <h2 id="by-compound">Calculators by Compound</h2>
+  <p>The same arithmetic works for every peptide — the vial mg, the bacteriostatic water and your dose are all that change. Pick a compound below for its preset vial sizes and units-per-mg chart, or use the general calculator above for anything not listed.</p>
+  <div class="cards">
+    <div class="card">
+      <h3><a href="/retatrutide-peptide-calculator/">Retatrutide calculator</a></h3>
+      <p>GLP-1/GIP/glucagon agonist. Preset 10 mg vials and a units-per-mg chart. Math only, no dose advice.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/klow-peptide-calculator/">KLOW peptide calculator</a></h3>
+      <p>The four-peptide 80 mg KLOW blend: GHK-Cu, BPC-157, TB-500 and KPV, with what each draw delivers.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/">Semaglutide calculator</a></h3>
+      <p>GLP-1 agonist. Enter the vial mg (commonly 5 mg), BAC water and your prescribed dose for U-100 units.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/">Tirzepatide calculator</a></h3>
+      <p>GIP/GLP-1 agonist. Most vials are 10 mg; add water and read the units for your weekly dose.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/">BPC-157 calculator</a></h3>
+      <p>Healing peptide. Typical 5 mg or 10 mg vials; 250 mcg is a common draw target.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/">TB-500 calculator</a></h3>
+      <p>Recovery peptide. Often stacked with BPC-157; 5 mg and 10 mg vials are standard.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/">CJC-1295 calculator</a></h3>
+      <p>GHRH analog. Use 5 mg or 10 mg vials; dose in mcg, converted to units here.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/">Ipamorelin calculator</a></h3>
+      <p>GHRP. Commonly 5 mg vials, often combined with CJC-1295.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/">GHK-Cu calculator</a></h3>
+      <p>Copper peptide. High-potency vials (50 mg) need careful water volume to keep draws readable.</p>
+    </div>
+  </div>
+</section>
+
+<section class="content" aria-labelledby="lab-calcs">
+  <h2 id="lab-calcs">Lab &amp; Property Calculators</h2>
+  <p>For sequence work and solution chemistry rather than injection dosing.</p>
+  <div class="cards">
+    <div class="card">
+      <h3><a href="/peptide-molecular-weight-calculator/">Molecular weight calculator</a></h3>
+      <p>Paste a sequence for average MW, monoisotopic mass, formula and mass-spec m/z values.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/peptide-net-charge-calculator/">Net charge calculator</a></h3>
+      <p>Net charge at any pH, isoelectric point, hydrophobicity and a solubility starting point.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/peptide-property-calculator/">Property calculator</a></h3>
+      <p>Molecular weight, pI, net charge and hydropathy from a sequence, in one pass.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/molarity-calculator/">Molarity calculator</a></h3>
+      <p>Convert mass or moles plus final volume to M, mM and µM, or calculate moles needed.</p>
+    </div>
+    <div class="card">
+      <h3><a href="/peptide-concentration-calculator/">Concentration calculator</a></h3>
+      <p>mg/mL, mcg/mL, mcg per unit, % w/v and molarity for lab solutions.</p>
+    </div>
+  </div>
+</section>
+
 <article class="content">
   <h2>How Much Peptide to Inject? Start With Your Prescribed Dose</h2>
   <p>Use a dose provided by your licensed healthcare professional; this calculator does not determine how much peptide you should inject (<a href="/blog/how-many-doses-per-vial/">read why</a>). You need three numbers from your vial label and your plan. The tool handles the unit conversions, so you never have to move a decimal point by hand.</p>
-  <ol>
+  <ol class="steps">
     <li><strong>Enter the vial amount.</strong> This is the total peptide printed on the label, usually in mg (for example 5 mg or 10 mg). Use the mcg option if the label lists micrograms.</li>
     <li><strong>Enter the water you added.</strong> Type the millilitres of bacteriostatic water used to reconstitute the powder. More water means a weaker solution and more units per dose.</li>
     <li><strong>Enter your dose.</strong> Type the amount prescribed or planned for one injection, in mcg or mg.</li>
@@ -324,6 +465,41 @@
   <p>Syringe "units" and IU (international units) sound alike but measure different things. Syringe units are volume: 100 units is 1 mL on a U-100 syringe. IU measure biological activity, and the conversion to mg is different for every substance, so there is no universal mg-to-IU factor.</p>
   <p>If your vial is labelled in IU, select <strong>IU for both the vial and the dose</strong> in the peptide calculator above; mixing IU with mg is blocked because it needs the product's own IU-per-mg figure. Do not convert IU to mg with a generic factor — use the figure printed on the product label.</p>
 
+  <h2>How to Reconstitute a Peptide Vial</h2>
+  <p>The math above assumes you have already turned the freeze-dried powder into a solution. A consistent mixing routine keeps every draw from the same vial at the concentration you calculated:</p>
+  <ol>
+    <li><strong>Wipe both stoppers.</strong> Swab the top of the peptide vial and the bacteriostatic water vial with a fresh alcohol wipe and let them air-dry for a few seconds.</li>
+    <li><strong>Draw the water.</strong> Pull air into the syringe equal to the mL of bacteriostatic water you are adding, inject it into the water vial, then draw the water out.</li>
+    <li><strong>Inject along the wall.</strong> Push the needle through the peptide vial stopper and angle it so the water runs slowly down the inside glass. Do not squirt directly onto the powder — it can foam and degrade.</li>
+    <li><strong>Dissolve gently.</strong> Roll the vial between your palms or swirl it slowly until the powder is fully clear. Never shake; foaming breaks peptide bonds.</li>
+    <li><strong>Label the vial.</strong> Write the concentration in mg/mL and the date you mixed it, so every later draw uses the same figure.</li>
+  </ol>
+  <p>If you have not chosen a water volume yet, the <a href="/peptide-reconstitution-calculator/">peptide reconstitution calculator</a> works backwards from a target number of units to the exact mL of water to add.</p>
+  <p><strong>Pre-mixed or compounded liquid vials.</strong> Some suppliers ship semaglutide, tirzepatide and other peptides already dissolved, with a concentration printed in mg/mL on the label. For these you do not add water: enter the total mg of peptide in the vial and the total mL of liquid as the "water" figure. The concentration and units result come out the same way. If you only know the mg/mL and the volume, the <a href="/peptide-concentration-calculator/">peptide concentration calculator</a> converts between mg/mL, mcg per unit and molarity directly.</p>
+
+  <h2>Storage and Shelf Life</h2>
+  <ul>
+    <li><strong>Unmixed powder.</strong> Store in the refrigerator (2–8 °C) or freezer, away from light. Most lyophilized peptides remain stable for months to years when sealed.</li>
+    <li><strong>Mixed solution.</strong> Refrigerate at 2–8 °C after reconstituting. A reconstituted peptide is typically stable for 4–8 weeks; check the manufacturer's data sheet for the compound you are using.</li>
+    <li><strong>Bacteriostatic water.</strong> Once opened, bacteriostatic water stays usable for about 28 days because its 0.9% benzyl alcohol preservative stops bacterial growth. Preservative-free sterile water is for single use only and should not be used for multi-dose vials.</li>
+    <li><strong>Do not freeze the mixed solution</strong> unless the data sheet says otherwise — freezing can damage reconstituted peptides.</li>
+  </ul>
+
+  <h2>Bacteriostatic Water vs Sterile Water</h2>
+  <p>Both are sterile, but only one is designed for a vial you will draw from more than once:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>Bacteriostatic water</th><th>Sterile water (preservative-free)</th></tr></thead>
+      <tbody>
+        <tr><td>Preservative</td><td>0.9% benzyl alcohol</td><td>None</td></tr>
+        <tr><td>Multi-dose vials</td><td>Yes</td><td>No — single use only</td></tr>
+        <tr><td>Opened shelf life</td><td>About 28 days refrigerated</td><td>Use immediately or discard</td></tr>
+        <tr><td>Best for</td><td>Reconstituting peptides for multiple draws</td><td>One-time injections or IV use</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Benzyl alcohol does not kill bacteria — it stops them reproducing — which is why a single vial of bacteriostatic water can be accessed many times safely. Use preservative-free sterile water only for a one-time draw, not for a peptide vial you will return to over weeks.</p>
+
   <h2>Peptide Calculator Accuracy Tips</h2>
   <p>The math is exact, but the draw is only as good as the inputs. A few habits keep results meaningful in practice:</p>
   <ul>
@@ -338,26 +514,46 @@
   <p>Some plans express a dose per kilogram rather than a fixed amount. The arithmetic is one multiplication: <span class="formula">dose (mg) = dose (mg/kg) × body weight (kg)</span>. For example, 0.1 mg/kg at 80 kg is 8 mg. For a dose written in mcg/kg, do the same multiplication and divide the result by 1,000 to get mg.</p>
   <p>Once you have that absolute dose, enter it with your vial strength and water volume in the <a href="/peptide-dosage-calculator/">peptide dosage calculator</a>. It returns the U-100 units, doses per vial and days of supply. This is arithmetic only; whether a weight-based dose is appropriate, and which figure to use, is a decision for your prescriber.</p>
 
-  <h2>Other Peptide Calculators on This Site</h2>
+  <h2>Common Peptide Vial and Water Setups</h2>
+  <p>The figures below are common supplier conventions for vial size and the water volume most people add. They are starting points for the math, not dose recommendations — your prescribed dose and the concentration you choose both affect the units. Read your own vial label before you mix.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Peptide</th><th>Common vial size</th><th>Common water volume</th><th>Resulting concentration</th></tr></thead>
+      <tbody>
+        <tr><td>BPC-157</td><td>5 mg or 10 mg</td><td>2 mL</td><td>2.5 or 5 mg/mL</td></tr>
+        <tr><td>TB-500</td><td>5 mg or 10 mg</td><td>2 mL</td><td>2.5 or 5 mg/mL</td></tr>
+        <tr><td>CJC-1295 (no DAC)</td><td>5 mg or 10 mg</td><td>2–3 mL</td><td>1.7–5 mg/mL</td></tr>
+        <tr><td>Ipamorelin</td><td>5 mg</td><td>2–2.5 mL</td><td>2–2.5 mg/mL</td></tr>
+        <tr><td>Semaglutide</td><td>3 mg, 5 mg or 10 mg</td><td>2 mL</td><td>1.5–5 mg/mL</td></tr>
+        <tr><td>Tirzepatide</td><td>10 mg</td><td>2 mL</td><td>5 mg/mL</td></tr>
+        <tr><td>Retatrutide</td><td>10 mg</td><td>2 mL</td><td>5 mg/mL</td></tr>
+        <tr><td>GHK-Cu</td><td>50 mg</td><td>3 mL</td><td>16.7 mg/mL</td></tr>
+        <tr><td>NAD+</td><td>500 mg or 1000 mg</td><td>5 mL</td><td>100–200 mg/mL</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Use these to sanity-check your own vial. If your label says a different mg, enter that figure — the calculator does not assume any of these setups.</p>
+
+  <h2>More Calculators on This Site</h2>
   <div class="cards">
     <div class="card">
-      <h3><a href="/peptide-reconstitution-calculator/">Peptide reconstitution calculator</a></h3>
+      <h3><a href="/peptide-reconstitution-calculator/">Reconstitution calculator</a></h3>
       <p>Works out how much bacteriostatic water to add so each dose lands on a round, easy-to-read number of units.</p>
     </div>
     <div class="card">
-      <h3><a href="/peptide-dosage-calculator/">peptide dosage calculator</a></h3>
+      <h3><a href="/peptide-dosage-calculator/">Dosage calculator</a></h3>
       <p>Converts a dose into units and mL, then shows doses per vial, days of supply and a dose-to-units table.</p>
     </div>
     <div class="card">
-      <h3><a href="/peptide-blend-calculator/">Peptide blend calculator</a></h3>
+      <h3><a href="/peptide-blend-calculator/">Blend calculator</a></h3>
       <p>For vials with two or three peptides: units to draw and how much of each peptide every draw delivers.</p>
     </div>
     <div class="card">
-      <h3><a href="/peptide-dilution-calculator/">Peptide dilution calculator</a></h3>
+      <h3><a href="/peptide-dilution-calculator/">Dilution calculator</a></h3>
       <p>Makes a weaker solution from a mixed vial with C1V1 = C2V2, so tiny doses become easier to measure.</p>
     </div>
     <div class="card">
-      <h3><a href="/peptide-concentration-calculator/">Peptide concentration calculator</a></h3>
+      <h3><a href="/peptide-concentration-calculator/">Concentration calculator</a></h3>
       <p>Converts mg and mL into mg/mL, mcg/mL, mcg per unit, % w/v and molarity for lab solutions.</p>
     </div>
     <div class="card">
@@ -369,23 +565,23 @@
       <p>Converts mass and volume when a concentration or density is known, with no dose or syringe math.</p>
     </div>
     <div class="card">
-      <h3><a href="/peptide-molecular-weight-calculator/">Peptide molecular weight calculator</a></h3>
+      <h3><a href="/peptide-molecular-weight-calculator/">Molecular weight calculator</a></h3>
       <p>Paste a sequence for average MW, monoisotopic mass, formula and mass-spec m/z values.</p>
     </div>
     <div class="card">
-      <h3><a href="/peptide-net-charge-calculator/">Peptide net charge calculator</a></h3>
+      <h3><a href="/peptide-net-charge-calculator/">Net charge calculator</a></h3>
       <p>Net charge at any pH, isoelectric point, hydrophobicity and a solubility starting point.</p>
     </div>
     <div class="card">
-      <h3><a href="/retatrutide-peptide-calculator/">Retatrutide peptide calculator</a></h3>
+      <h3><a href="/retatrutide-peptide-calculator/">Retatrutide calculator</a></h3>
       <p>The same math with retatrutide vial presets, plus a units-per-mg chart. Arithmetic only, no dose advice.</p>
     </div>
     <div class="card">
-      <h3><a href="/klow-peptide-calculator/">KLOW peptide calculator</a></h3>
+      <h3><a href="/klow-peptide-calculator/">KLOW calculator</a></h3>
       <p>Works through the four-peptide 80 mg KLOW blend and shows what each draw delivers.</p>
     </div>
     <div class="card">
-      <h3><a href="/peptide-property-calculator/">Peptide property calculator</a></h3>
+      <h3><a href="/peptide-property-calculator/">Property calculator</a></h3>
       <p>Molecular weight, pI, net charge and hydropathy from a sequence, in one pass.</p>
     </div>
   </div>
@@ -403,7 +599,7 @@
     <h3>Does the peptide calculator work with IU?</h3>
     <p>Yes. Choose IU for both the vial amount and the dose; syringe units are still volume, so the result is the same arithmetic. For an IU vial, use the IU-per-mg figure on the product label if you need the mg equivalent.</p>
     <h3>Which syringe does the peptide calculator assume?</h3>
-    <p>A U-100 insulin syringe, where 1 mL equals 100 units. If you use a different syringe, convert the mL result shown instead of the unit figure.</p>
+    <p>A U-100 insulin syringe, where 1 mL equals 100 units. The 0.3 mL, 0.5 mL and 1 mL barrels all use this same U-100 scale, so the unit result is identical whichever one you pick; only the barrel size and tick spacing change. If you use a 3 mL standard syringe marked in millilitres rather than units, divide the unit result by 100 to read it in mL (for example, 20 units = 0.2 mL).</p>
     <h3>Is a peptides calculator the same as a dosage calculator?</h3>
     <p>They use the same formula. A peptides calculator usually focuses on units per injection, while a dosage calculator also adds frequency and vial supply.</p>
     <h3>Is this a unit calculator for peptides?</h3>
@@ -418,52 +614,38 @@
 <footer class="site-footer">
   <div class="wrap">
     <nav aria-label="Footer">
-      <a href="/">Peptide Calculator</a>
-      <a href="/peptide-reconstitution-calculator/">Peptide Reconstitution Calculator</a>
-      <a href="/peptide-dosage-calculator/">Peptide Dosage Calculator</a>
-      <a href="/peptide-blend-calculator/">Peptide Blend Calculator</a>
-      <a href="/peptide-dilution-calculator/">Peptide Dilution Calculator</a>
-      <a href="/peptide-concentration-calculator/">Peptide Concentration Calculator</a>
-      <a href="/mg-to-ml-calculator/">mg to mL Calculator</a>
-      <a href="/molarity-calculator/">Molarity Calculator</a>
-      <a href="/bac-water-calculator/">BAC Water Calculator</a>
-      <a href="/peptide-property-calculator/">Peptide Property Calculator</a>
-      <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
-      <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
-      <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
-      <a href="/klow-peptide-calculator/">KLOW Peptide Calculator</a>
-      <a href="/tdee-calculator/">TDEE Calculator</a>
+      <a href="/">Home</a>
+      <a href="/peptide-reconstitution-calculator/">Reconstitution</a>
+      <a href="/peptide-dosage-calculator/">Dosage</a>
+      <a href="/peptide-concentration-calculator/">Concentration</a>
+      <a href="/peptide-molecular-weight-calculator/">Molecular Weight</a>
       <a href="/blog/">Blog</a>
-      <a href="/blog/bac-water/">BAC Water Guide</a>
-      <a href="/blog/how-much-bac-water-to-add/">How Much BAC Water to Add</a>
-      <a href="/blog/how-many-doses-per-vial/">How Many Doses Per Vial</a>
       <a href="/about/">About</a>
       <a href="/disclaimer/">Medical Disclaimer</a>
       <a href="/privacy/">Privacy</a>
       <a href="/partners/">Partners</a>
     </nav>
     <div class="partners" aria-label="Partners">
-      <a href="https://smollaunch.com" target="_blank" rel="noopener"><img src="https://smollaunch.com/badges/featured.svg" alt="Peptide Calculator — Featured on Smol Launch" loading="lazy" width="250" height="60"></a>
-      <a href="https://fazier.com/launches/peptidecalculatorpro.org" target="_blank" rel="noopener"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&amp;theme=light" alt="Peptide Calculator — Launched on Fazier" loading="lazy" width="120" height="51"></a>
-      <a href="https://stylemirrorai.com/" target="_blank" rel="noopener"><img src="/assets/img/stylemirror-ai-badge.svg" alt="AI Clothes Changer" loading="lazy" width="230" height="54"></a>
-      <a href="https://twelve.tools" target="_blank" rel="noopener"><img src="https://twelve.tools/badge0-white.svg" alt="Featured on Twelve Tools" loading="lazy" width="148" height="40"></a>
-      <a href="https://unitelist.com/product/peptidecalculatorpro" target="_blank" rel="noopener"><img src="https://unitelist.com/assets/images/badge.png" alt="Unite List" loading="lazy" height="54"></a>
-      <a href="https://www.freeai.run" target="_blank" rel="noopener"><img src="https://www.freeai.run/badge/badge_light.svg" alt="Featured on FreeAI" loading="lazy" width="200" height="54"></a>
-      <a href="https://findly.tools/peptide-calculator-pro?utm_source=peptide-calculator-pro" target="_blank" rel="noopener"><img src="https://findly.tools/badges/findly-tools-badge-light.svg" alt="Featured on Findly.tools" loading="lazy" width="175" height="55"></a>
-      <a href="https://saascity.io" target="_blank" rel="noopener"><img src="https://saascity.io/badges/featured-dark.svg" alt="Featured on SaaSCity" loading="lazy" width="150" height="54"></a>
-      <a href="https://newname.ai/badge?ref=peptide-calculator-pro" target="_blank" rel="noopener" data-newname-badge="peptide-calculator-pro"><img src="https://newname.ai/badge/listed.svg" alt="Listed on NewName.ai" loading="lazy" width="200" height="54"></a>
-      <a href="https://prolaunch.net" target="_blank" rel="noopener" title="Pro Launch Featured Badge"><img src="https://prolaunch.net/images/badges/featured-light.svg" alt="Pro Launch Featured Badge (light theme)" loading="lazy" width="240"></a>
-      <a href="https://shinylaunch.com/product/peptidecalculatorpro" target="_blank" rel="noopener"><img src="https://shinylaunch.com/assets/images/badge.png" alt="ShinyLaunch" loading="lazy" height="54"></a>
-      <a href="https://thekeytools.com/ai/peptidecalculatorpro" target="_blank" rel="noopener"><img src="https://thekeytools.com/assets/images/badge.png" alt="The Key Tools" loading="lazy" height="54"></a>
-      <a href="https://devhub.best/projects/peptide-calculator?utm_source=badge" target="_blank" rel="noopener"><img src="https://r2.direasy-multi-tenant.focusapps.app/uploads/616d0b1a-3979-4b8c-94d1-b4f1fedd3ead/1783239702078/53yqmim54zv/featured-on-light.svg" alt="Featured on DevHub" loading="lazy" height="44"></a>
-      <a href="https://dododirectory.com" target="_blank" rel="noopener"><img src="https://dododirectory.com/badge-light.png" alt="Featured on DodoDirectory" loading="lazy" width="200" height="54"></a>
-      <a href="https://huntfortools.com/tool/peptidecalculatorpro" target="_blank" rel="noopener"><img src="https://huntfortools.com/assets/images/badge.png" alt="Hunt for Tools" loading="lazy" height="54"></a>
-      <a href="https://productwing.com/product/peptidecalculatorpro" target="_blank" rel="noopener"><img src="https://productwing.com/assets/images/badge.png" alt="Product Wing" loading="lazy" height="54"></a>
-      <a href="https://indielineup.com/product/peptide-calculator?ref=badge" target="_blank" rel="noopener"><img src="https://indielineup.com/badge/peptide-calculator.svg" alt="Featured on IndieLineup" loading="lazy" width="160" height="44"></a>
-      <a href="https://startupbenchmarks.com/product/peptidecalculatorpro" target="_blank" rel="noopener"><img src="https://startupbenchmarks.com/assets/images/badge.png" alt="Startup Benchmarks" loading="lazy" height="54"></a>
-      <a href="https://toolfame.com" target="_blank" rel="noopener"><img src="https://toolfame.com/badge-light.svg" alt="Featured on toolfame.com" loading="lazy" height="54"></a>
-      <a href="https://launchigniter.com" target="_blank" rel="noopener"><img src="https://launchigniter.com/badge.svg" alt="Featured on LaunchIgniter" loading="lazy" width="250" height="54"></a>
-      <a href="https://goodsaas.xyz/saas/peptidecalculatorpro" target="_blank" rel="noopener"><img src="https://goodsaas.xyz/badge/peptidecalculatorpro.svg?theme=light" alt="Featured on GoodSaaS" width="154" height="32"></a>
+      <a href="https://smollaunch.com" target="_blank" rel="nofollow noopener"><img src="https://smollaunch.com/badges/featured.svg" alt="Peptide Calculator — Featured on Smol Launch" loading="lazy" width="250" height="60"></a>
+      <a href="https://fazier.com/launches/peptidecalculatorpro.org" target="_blank" rel="nofollow noopener"><img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&amp;theme=light" alt="Peptide Calculator — Launched on Fazier" loading="lazy" width="120" height="51"></a>
+      <a href="https://twelve.tools" target="_blank" rel="nofollow noopener"><img src="https://twelve.tools/badge0-white.svg" alt="Featured on Twelve Tools" loading="lazy" width="148" height="40"></a>
+      <a href="https://unitelist.com/product/peptidecalculatorpro" target="_blank" rel="nofollow noopener"><img src="https://unitelist.com/assets/images/badge.png" alt="Unite List" loading="lazy" width="166" height="54"></a>
+      <a href="https://www.freeai.run" target="_blank" rel="nofollow noopener"><img src="https://www.freeai.run/badge/badge_light.svg" alt="Featured on FreeAI" loading="lazy" width="200" height="54"></a>
+      <a href="https://findly.tools/peptide-calculator-pro?utm_source=peptide-calculator-pro" target="_blank" rel="nofollow noopener"><img src="https://findly.tools/badges/findly-tools-badge-light.svg" alt="Featured on Findly.tools" loading="lazy" width="175" height="55"></a>
+      <a href="https://saascity.io" target="_blank" rel="nofollow noopener"><img src="https://saascity.io/badges/featured-dark.svg" alt="Featured on SaaSCity" loading="lazy" width="150" height="54"></a>
+      <a href="https://newname.ai/badge?ref=peptide-calculator-pro" target="_blank" rel="nofollow noopener" data-newname-badge="peptide-calculator-pro"><img src="https://newname.ai/badge/listed.svg" alt="Listed on NewName.ai" loading="lazy" width="200" height="54"></a>
+      <a href="https://prolaunch.net" target="_blank" rel="nofollow noopener" title="Pro Launch Featured Badge"><img src="https://prolaunch.net/images/badges/featured-light.svg" alt="Pro Launch Featured Badge (light theme)" loading="lazy" width="152" height="44"></a>
+      <a href="https://shinylaunch.com/product/peptidecalculatorpro" target="_blank" rel="nofollow noopener"><img src="https://shinylaunch.com/assets/images/badge.png" alt="ShinyLaunch" loading="lazy" width="198" height="54"></a>
+      <a href="https://thekeytools.com/ai/peptidecalculatorpro" target="_blank" rel="nofollow noopener"><img src="https://thekeytools.com/assets/images/badge.png" alt="The Key Tools" loading="lazy" width="208" height="54"></a>
+      <a href="https://devhub.best/projects/peptide-calculator?utm_source=badge" target="_blank" rel="nofollow noopener"><img src="https://r2.direasy-multi-tenant.focusapps.app/uploads/616d0b1a-3979-4b8c-94d1-b4f1fedd3ead/1783239702078/53yqmim54zv/featured-on-light.svg" alt="Featured on DevHub" loading="lazy" width="150" height="44"></a>
+      <a href="https://dododirectory.com" target="_blank" rel="nofollow noopener"><img src="https://dododirectory.com/badge-light.png" alt="Featured on DodoDirectory" loading="lazy" width="200" height="54"></a>
+      <a href="https://huntfortools.com/tool/peptidecalculatorpro" target="_blank" rel="nofollow noopener"><img src="https://huntfortools.com/assets/images/badge.png" alt="Hunt for Tools" loading="lazy" width="207" height="54"></a>
+      <a href="https://productwing.com/product/peptidecalculatorpro" target="_blank" rel="nofollow noopener"><img src="https://productwing.com/assets/images/badge.png" alt="Product Wing" loading="lazy" width="202" height="54"></a>
+      <a href="https://indielineup.com/product/peptide-calculator?ref=badge" target="_blank" rel="nofollow noopener"><img src="https://indielineup.com/badge/peptide-calculator.svg" alt="Featured on IndieLineup" loading="lazy" width="160" height="44"></a>
+      <a href="https://startupbenchmarks.com/product/peptidecalculatorpro" target="_blank" rel="nofollow noopener"><img src="https://startupbenchmarks.com/assets/images/badge.png" alt="Startup Benchmarks" loading="lazy" width="265" height="54"></a>
+      <a href="https://toolfame.com" target="_blank" rel="nofollow noopener"><img src="https://toolfame.com/badge-light.svg" alt="Featured on toolfame.com" loading="lazy" width="160" height="54"></a>
+      <a href="https://launchigniter.com" target="_blank" rel="nofollow noopener"><img src="https://launchigniter.com/badge.svg" alt="Featured on LaunchIgniter" loading="lazy" width="250" height="54"></a>
+      <a href="https://goodsaas.xyz/saas/peptidecalculatorpro" target="_blank" rel="nofollow noopener"><img src="https://goodsaas.xyz/badge/peptidecalculatorpro.svg?theme=light" alt="Featured on GoodSaaS" loading="lazy" width="154" height="32"></a>
     </div>
     <p>Educational tool only — not medical advice. Always confirm doses with a licensed healthcare professional. Last reviewed 2026-11-08.</p>
   </div>

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HGH Peptide Dose Calculator: IU to Syringe Units</title>
-<meta name="description" content="HGH peptide dose calculator: turn a somatropin vial in IU, the bacteriostatic water added and a prescribed dose into U-100 syringe units and mL. Math only.">
+<title>HGH Peptide Dose Calculator: Somatropin IU to Units</title>
+<meta name="description" content="HGH peptide dose calculator: convert somatropin IU to U-100 syringe units for 6, 10, 12, 16, 24 and 36 IU vials, with brand labels and mg options. Math only.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://peptidecalculatorpro.org/hgh-peptide-dose-calculator/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Peptide Calculator">
-<meta property="og:title" content="HGH Peptide Dose Calculator: IU to Syringe Units">
-<meta property="og:description" content="HGH peptide dose calculator: turn a somatropin vial in IU, the bacteriostatic water added and a prescribed dose into U-100 syringe units and mL. Math only.">
+<meta property="og:title" content="HGH Peptide Dose Calculator: Somatropin IU to Units">
+<meta property="og:description" content="HGH peptide dose calculator: convert somatropin IU to U-100 syringe units for 6, 10, 12, 16, 24 and 36 IU vials, with brand labels and mg options. Math only.">
 <meta property="og:url" content="https://peptidecalculatorpro.org/hgh-peptide-dose-calculator/">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0b7a75">
@@ -31,8 +31,8 @@
       "@type": "WebPage",
       "@id": "https://peptidecalculatorpro.org/hgh-peptide-dose-calculator/#webpage",
       "url": "https://peptidecalculatorpro.org/hgh-peptide-dose-calculator/",
-      "name": "HGH Peptide Dose Calculator: IU to Syringe Units",
-      "description": "HGH peptide dose calculator: turn a somatropin vial in IU, the bacteriostatic water added and a prescribed dose into U-100 syringe units and mL. Math only.",
+      "name": "HGH Peptide Dose Calculator: Somatropin IU to Units",
+      "description": "HGH peptide dose calculator: convert somatropin IU to U-100 syringe units for 6, 10, 12, 16, 24 and 36 IU vials, with brand labels and mg options. Math only.",
       "isPartOf": {
         "@id": "https://peptidecalculatorpro.org/#website"
       },
@@ -59,7 +59,7 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "HGH peptide dose calculator: turn a somatropin vial in IU, the bacteriostatic water added and a prescribed dose into U-100 syringe units and mL. Math only."
+      "description": "HGH peptide dose calculator: convert somatropin IU to U-100 syringe units for 6, 10, 12, 16, 24 and 36 IU vials, with brand labels and mg options. Math only."
     },
     {
       "@type": "BreadcrumbList",
@@ -156,10 +156,11 @@
         <select id="vial-unit" aria-label="Vial amount unit"><option value="iu" selected>IU</option><option value="mg">mg</option></select>
       </div>
       <div class="chips">
-        <button type="button" class="chip" data-target="vial" data-value="5">5 IU</button>
+        <button type="button" class="chip" data-target="vial" data-value="6">6 IU</button>
         <button type="button" class="chip" data-target="vial" data-value="10">10 IU</button>
         <button type="button" class="chip" data-target="vial" data-value="12">12 IU</button>
-        <button type="button" class="chip" data-target="vial" data-value="20">20 IU</button>
+        <button type="button" class="chip" data-target="vial" data-value="16">16 IU</button>
+        <button type="button" class="chip" data-target="vial" data-value="36">36 IU</button>
       </div>
     </div>
 
@@ -214,6 +215,10 @@
   <p>An international unit measures biological activity, while a milligram measures mass. For somatropin, most labels equate 1 mg with about 3 IU, but the exact figure belongs to the product and its manufacturer, so it cannot be assumed. If a label only gives mg, use the IU-per-mg figure printed in that product's own instructions.</p>
   <p>Because of that, this calculator blocks mixing units: choose IU for both the vial and the dose, or mg/mcg for both. Converting between them needs the product-specific factor, not a generic one.</p>
 
+  <h2>HGH Is a Protein, Not a Small Peptide</h2>
+  <p>Somatropin is a single-chain polypeptide of 191 amino acids with two disulfide bonds and a molecular weight of about 22,124 Da, roughly 22 kDa. That is ten to fifty times larger than the research peptides usually discussed on this site: BPC-157 is 1,419 Da, TB-500 about 889 Da and GHK-Cu about 402 Da. The phrase "HGH peptide" survives because the molecule is built from amino acids and reaches buyers through the same channels, but in pharmacy it is classed as a protein hormone, not a peptide.</p>
+  <p>The size explains most of the handling rules. HGH denatures when shaken, heated or frozen and thawed, so it ships lyophilised or refrigerated and is reconstituted gently. It is digested if swallowed, which is why prescription somatropin is injected subcutaneously rather than taken as a capsule. And because it is a prescription medicine with defined indications — growth hormone deficiency in children and adults, Turner syndrome, and short stature from specified causes, among others — the dose is set by a clinician who tracks growth, IGF-1 and adverse effects. This calculator only does the arithmetic for a dose that has already been prescribed.</p>
+
   <h2>HGH Calculator Formula</h2>
   <p class="formula">concentration (IU/mL) = vial (IU) ÷ water (mL)<br>volume (mL) = dose (IU) ÷ concentration<br>units = volume (mL) × 100</p>
   <p>On a U-100 insulin syringe, 100 units equal 1 mL. That conversion is fixed by the syringe, whatever the product. The concentration is the part that changes with the water volume.</p>
@@ -237,7 +242,7 @@
   <p>Units on a U-100 syringe for a 1 IU dose, by vial size and water volume. Multiply by your dose in IU.</p>
 
   <figure>
-    <img src="/assets/img/hgh-units-per-iu.svg" width="800" height="310" loading="lazy" decoding="async" alt="Bar chart of U-100 units for a 1 IU HGH dose: a 5 IU vial gives 20 to 60 units, 10 IU gives 10 to 30, 12 IU gives 8.3 to 25, and 36 IU gives 2.8 to 8.3 units depending on 1, 2 or 3 mL of water">
+    <img src="/assets/img/hgh-units-per-iu.svg" width="800" height="310" loading="lazy" decoding="async" alt="Bar chart of U-100 units for a 1 IU HGH dose: a 6 IU vial gives 16.7 to 50 units, 10 IU gives 10 to 30, 12 IU gives 8.3 to 25, 16 IU gives 6.3 to 18.8, 24 IU gives 4.2 to 12.5, and 36 IU gives 2.8 to 8.3 units with 1, 2 or 3 mL of water">
     <figcaption>The same 1 IU dose produces very different draws. Larger vials need more water to stay readable.</figcaption>
   </figure>
 
@@ -245,10 +250,10 @@
     <table>
       <thead><tr><th>Vial</th><th>Approx. mass</th><th>1 mL water</th><th>2 mL water</th><th>3 mL water</th></tr></thead>
       <tbody>
-        <tr><td>5 IU</td><td>≈ 1.7 mg</td><td>20 units</td><td>40 units</td><td>60 units</td></tr>
+        <tr><td>6 IU</td><td>≈ 2 mg</td><td>16.7 units</td><td>33.3 units</td><td>50 units</td></tr>
         <tr><td>10 IU</td><td>≈ 3.3 mg</td><td>10 units</td><td>20 units</td><td>30 units</td></tr>
         <tr><td>12 IU</td><td>≈ 4 mg</td><td>8.3 units</td><td>16.7 units</td><td>25 units</td></tr>
-        <tr><td>15 IU</td><td>≈ 5 mg</td><td>6.7 units</td><td>13.3 units</td><td>20 units</td></tr>
+        <tr><td>16 IU</td><td>≈ 5.3 mg</td><td>6.3 units</td><td>12.5 units</td><td>18.8 units</td></tr>
         <tr><td>24 IU</td><td>≈ 8 mg</td><td>4.2 units</td><td>8.3 units</td><td>12.5 units</td></tr>
         <tr><td>36 IU</td><td>≈ 12 mg</td><td>2.8 units</td><td>5.6 units</td><td>8.3 units</td></tr>
       </tbody>
@@ -263,6 +268,7 @@
       <thead><tr><th>IU on the label</th><th>Approximate mg</th><th>Common form</th></tr></thead>
       <tbody>
         <tr><td>4 IU</td><td>≈ 1.3 mg</td><td>small vial or cartridge</td></tr>
+        <tr><td>6 IU</td><td>≈ 2 mg</td><td>small vial</td></tr>
         <tr><td>8 IU</td><td>≈ 2.7 mg</td><td>vial</td></tr>
         <tr><td>10 IU</td><td>≈ 3.3 mg</td><td>vial</td></tr>
         <tr><td>16 IU</td><td>≈ 5.3 mg</td><td>cartridge or pen</td></tr>
@@ -271,6 +277,22 @@
     </table>
   </div>
   <p>The reverse direction is where mistakes happen. If a prescription is written in mg and the vial is labelled in IU, do not divide by 3 in your head and inject from a syringe built for IU. Either convert with the product's own factor and write the result down, or switch both selectors in the calculator to mg and work entirely in mass. This calculator refuses to mix IU and mg in one calculation precisely because the factor is product-specific.</p>
+
+  <h2>Brand Presentations and Their Labels</h2>
+  <p>Prescription somatropin is sold under several brand names, and the same brand can appear as a vial, a cartridge or a sealed pen. The table below lists label pairings that follow the 3 IU per mg convention. It is a cross-check, not a substitute for the leaflet in the box — some products state a slightly different potency, and the leaflet always wins.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Product</th><th>Presentation</th><th>Label</th><th>What to check</th></tr></thead>
+      <tbody>
+        <tr><td>Genotropin</td><td>cartridge / pen</td><td>5.3 mg = 16 IU; 12 mg = 36 IU</td><td>fixed diluent, often 1.15 mL</td></tr>
+        <tr><td>Humatrope</td><td>vial or cartridge</td><td>5 mg = 15 IU; 12 mg = 36 IU</td><td>separate diluent, volume stated</td></tr>
+        <tr><td>Norditropin</td><td>FlexPro pen</td><td>5 mg = 15 IU; 10 mg = 30 IU; 15 mg = 45 IU</td><td>dial shows IU, no syringe</td></tr>
+        <tr><td>Saizen</td><td>click.easy cartridge</td><td>8.8 mg = 26.4 IU</td><td>clicks per IU printed on device</td></tr>
+        <tr><td>Omnitrope</td><td>vial</td><td>5 mg = 15 IU; 10 mg = 30 IU</td><td>reconstitute with supplied diluent</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Two patterns are worth noticing. Cartridges and pens rarely contain a round number of milligrams, because the fill is set by the device rather than by the arithmetic. And a pen's diluent volume is fixed at manufacture, so the concentration inside the pen is not something you can adjust — which is why pen users should read the dial, not calculate units.</p>
 
   <h2>Working Entirely in Milligrams</h2>
   <p>When the vial and the prescription are both in mg, the IU question disappears and the calculation becomes an ordinary peptide dilution. A 6 mg vial reconstituted with 1.2 mL gives 5 mg/mL. A prescribed 0.6 mg dose is therefore 0.12 mL, or 12 units on a U-100 syringe, and the vial holds 10 such doses. Nothing in that chain needs an IU-per-mg factor, which is why keeping both selectors in mg is safer than converting one side by hand.</p>
@@ -282,6 +304,7 @@
 
   <h2>Pens, Cartridges and Fixed Diluent</h2>
   <p>Many prescription HGH products are supplied as pens or cartridges that already contain the diluent, often around 1.15 mL, and are dialled in IU rather than drawn in syringe units. With a pen there is no water volume to choose and no unit calculation to do: the dial shows the dose directly. Do not extract the contents with a syringe, and do not reuse the numbers from a powder vial, because the concentration inside the pen is set by the manufacturer.</p>
+  <p>Some devices, such as click-based cartridges, move in "clicks" rather than IU. A click is a mechanical step on one specific device, so the IU per click differs between a 5 mg cartridge and a 15 mg cartridge and is printed in that device's leaflet. Read the clicks-per-IU figure for your own pen, or use a pen that displays IU, and never convert clicks with the vial formula on this page — the pen's fixed concentration is not the concentration you calculated above.</p>
 
   <figure>
     <img src="/assets/img/hgh-vial-vs-pen.svg" width="800" height="280" loading="lazy" decoding="async" alt="HGH vial versus pen comparison: a powder vial lets you choose the water volume and calculate syringe units, while a pre-filled pen has a fixed diluent and a dial that already shows IU">

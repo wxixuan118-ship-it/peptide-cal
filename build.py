@@ -191,9 +191,9 @@ PAGES = [
     {
         "path": "/hgh-peptide-dose-calculator/",
         "src": "hgh.html",
-        "title": "HGH Peptide Dose Calculator: IU to Syringe Units",
-        "description": ("HGH peptide dose calculator: turn a somatropin vial in IU, the bacteriostatic water "
-                        "added and a prescribed dose into U-100 syringe units and mL. Math only."),
+        "title": "HGH Peptide Dose Calculator: Somatropin IU to Units",
+        "description": ("HGH peptide dose calculator: convert somatropin IU to U-100 syringe units "
+                        "for 6, 10, 12, 16, 24 and 36 IU vials, with brand labels and mg options. Math only."),
         "crumb": "HGH Peptide Dose Calculator",
         "app": "HGH Peptide Dose Calculator",
         "priority": "0.8",

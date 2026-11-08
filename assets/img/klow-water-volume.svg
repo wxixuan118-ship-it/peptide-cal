@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="300" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="42" font-size="22" font-weight="700" fill="#15232b">More water, larger draw for the same 1 mg GHK-Cu</text>
+  <text x="40" y="68" font-size="15" fill="#546570">80 mg KLOW vial; units on a U-100 syringe.</text>
+
+  <g stroke="#c5d2d7" stroke-width="1">
+    <line x1="90" y1="230" x2="740" y2="230"/>
+    <line x1="90" y1="170" x2="740" y2="170" stroke-dasharray="4 5"/>
+    <line x1="90" y1="110" x2="740" y2="110" stroke-dasharray="4 5"/>
+  </g>
+  <g font-size="13" fill="#546570" text-anchor="end">
+    <text x="76" y="235">0</text>
+    <text x="76" y="175">5</text>
+    <text x="76" y="115">10</text>
+    <text x="76" y="95">units</text>
+  </g>
+
+  <g>
+    <rect x="170" y="206" width="80" height="24" rx="4" fill="#a8cfcb"/>
+    <rect x="310" y="182" width="80" height="48" rx="4" fill="#67b8b1"/>
+    <rect x="450" y="158" width="80" height="72" rx="4" fill="#2f9e95"/>
+    <rect x="590" y="110" width="80" height="120" rx="4" fill="#0b7a75"/>
+  </g>
+  <g font-size="17" font-weight="700" fill="#15232b" text-anchor="middle">
+    <text x="210" y="198">2</text>
+    <text x="350" y="174">4</text>
+    <text x="490" y="150">6</text>
+    <text x="630" y="102">10</text>
+  </g>
+  <g font-size="15" fill="#15232b" text-anchor="middle">
+    <text x="210" y="256">1 mL</text>
+    <text x="350" y="256">2 mL</text>
+    <text x="490" y="256">3 mL</text>
+    <text x="630" y="256">5 mL</text>
+  </g>
+  <text x="40" y="286" font-size="14" fill="#546570">The dose is unchanged; only the volume that carries it changes.</text>
+</svg>

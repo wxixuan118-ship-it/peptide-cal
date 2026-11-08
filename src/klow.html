@@ -1,0 +1,220 @@
+<section class="hero">
+  <h1>KLOW Peptide Calculator</h1>
+  <p class="lead">This KLOW peptide calculator handles the four-peptide 80 mg blend — GHK-Cu, BPC-157, TB-500 and KPV — in one vial. Enter each amount, the bacteriostatic water added and the dose of the component you measure by, and it returns the units to draw plus how much of every other peptide arrives in that same draw. It does the arithmetic only; it does not suggest a dose.</p>
+</section>
+
+<section class="tool" data-calc="klow" aria-labelledby="tool-title">
+  <form onsubmit="return false">
+    <h2 id="tool-title">KLOW calculator inputs</h2>
+
+    <div class="field">
+      <label for="k-ghk">GHK-Cu in the vial (mg)</label>
+      <input id="k-ghk" type="number" inputmode="decimal" min="0" step="any" value="50">
+      <div class="chips">
+        <button type="button" class="chip" data-target="k-ghk" data-value="50">50 mg</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="k-bpc">BPC-157 in the vial (mg)</label>
+      <input id="k-bpc" type="number" inputmode="decimal" min="0" step="any" value="10">
+      <div class="chips">
+        <button type="button" class="chip" data-target="k-bpc" data-value="10">10 mg</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="k-tb">TB-500 in the vial (mg)</label>
+      <input id="k-tb" type="number" inputmode="decimal" min="0" step="any" value="10">
+      <div class="chips">
+        <button type="button" class="chip" data-target="k-tb" data-value="10">10 mg</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="k-kpv">KPV in the vial (mg)</label>
+      <input id="k-kpv" type="number" inputmode="decimal" min="0" step="any" value="10">
+      <p class="hint">Enter 0 for any component your label does not list.</p>
+      <div class="chips">
+        <button type="button" class="chip" data-target="k-kpv" data-value="10">10 mg</button>
+        <button type="button" class="chip" data-preset="k-ghk=50,k-bpc=10,k-tb=10,k-kpv=10,k-water=3">KLOW 80 mg preset (50/10/10/10)</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="k-water">Bacteriostatic water added (mL)</label>
+      <input id="k-water" type="number" inputmode="decimal" min="0" step="any" value="3">
+      <div class="chips">
+        <button type="button" class="chip" data-target="k-water" data-value="1">1 mL</button>
+        <button type="button" class="chip" data-target="k-water" data-value="2">2 mL</button>
+        <button type="button" class="chip" data-target="k-water" data-value="3">3 mL</button>
+        <button type="button" class="chip" data-target="k-water" data-value="5">5 mL</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="k-base">Measure the dose by</label>
+      <select id="k-base">
+        <option value="0" selected>GHK-Cu</option>
+        <option value="1">BPC-157</option>
+        <option value="2">TB-500</option>
+        <option value="3">KPV</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="k-dose">Dose of that component per injection</label>
+      <div class="input-row">
+        <input id="k-dose" type="number" inputmode="decimal" min="0" step="any" value="1">
+        <select id="k-dose-unit" aria-label="Dose unit"><option value="mg" selected>mg</option><option value="mcg">mcg</option></select>
+      </div>
+      <p class="hint">The 1 mg default is an example input, not a recommended dose.</p>
+    </div>
+
+    <div class="field">
+      <label for="k-syringe">Syringe size</label>
+      <select id="k-syringe">
+        <option value="30">0.3 mL (30 units)</option>
+        <option value="50">0.5 mL (50 units)</option>
+        <option value="100" selected>1.0 mL (100 units)</option>
+      </select>
+    </div>
+  </form>
+
+  <div class="results" aria-live="polite">
+    <p class="big">Draw <strong><span data-out="units">6</span> units</strong> on a U-100 syringe</p>
+    {{SYRINGE 6}}
+    <ul class="stats">
+      <li>Volume per dose<b data-out="ml">0.06 mL</b></li>
+      <li>Total blend strength<b data-out="total-conc">26.667 mg/mL</b></li>
+      <li>Doses per vial<b data-out="doses">50</b></li>
+    </ul>
+    <p class="alert" data-out="alert" hidden></p>
+    <div class="table-wrap">
+      <table>
+        <caption class="hint">What each KLOW draw delivers</caption>
+        <thead><tr><th>Component</th><th>In vial</th><th>Concentration</th><th>Per dose</th></tr></thead>
+        <tbody id="k-table">
+          <tr><td>GHK-Cu (dosed by)</td><td>50 mg</td><td>16.667 mg/mL</td><td>1000 mcg</td></tr>
+          <tr><td>BPC-157</td><td>10 mg</td><td>3.333 mg/mL</td><td>200 mcg</td></tr>
+          <tr><td>TB-500</td><td>10 mg</td><td>3.333 mg/mL</td><td>200 mcg</td></tr>
+          <tr><td>KPV</td><td>10 mg</td><td>3.333 mg/mL</td><td>200 mcg</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<article class="content">
+  <h2>What the KLOW Peptide Calculator Does</h2>
+  <p>KLOW is a vendor-named blend, not a single compound. The vial sold as "KLOW 80 mg" normally combines four peptides — GHK-Cu, BPC-157, TB-500 and KPV — as one lyophilised powder. Once you add bacteriostatic water, all four dissolve into the same liquid, so every draw contains all of them in the ratio printed on the label.</p>
+  <p>That is why this tool asks which component you measure by. Enter the mg of each peptide, choose the one your plan gives a dose for, then read the units for that dose and the amount of the other three that comes along with it. The calculator never recommends a dose or a protocol.</p>
+
+  <h2>What Is in a KLOW Vial</h2>
+  <p>The common 80 mg KLOW label lists 50 mg GHK-Cu, 10 mg BPC-157, 10 mg TB-500 and 10 mg KPV. Vendors do vary the split, and some sell smaller vials or omit one component, so always enter the numbers printed on your own label rather than the preset. The powder often looks blue because of the copper carried by GHK-Cu.</p>
+
+  <figure>
+    <img src="/assets/img/klow-composition.svg" width="800" height="300" loading="lazy" decoding="async" alt="KLOW peptide calculator composition chart: an 80 mg vial split into 50 mg GHK-Cu, 10 mg BPC-157, 10 mg TB-500 and 10 mg KPV, a 5 to 1 to 1 to 1 mass ratio">
+    <figcaption>The standard 80 mg KLOW split. GHK-Cu alone is 62.5% of the powder.</figcaption>
+  </figure>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Component</th><th>Mass in vial</th><th>Share of powder</th><th>Approx. molecular weight</th></tr></thead>
+      <tbody>
+        <tr><td>GHK-Cu</td><td>50 mg</td><td>62.5%</td><td>401.9 Da (copper complex)</td></tr>
+        <tr><td>BPC-157</td><td>10 mg</td><td>12.5%</td><td>1,419.5 Da (15 residues)</td></tr>
+        <tr><td>TB-500</td><td>10 mg</td><td>12.5%</td><td>≈ 889 Da (7 residues)</td></tr>
+        <tr><td>KPV</td><td>10 mg</td><td>12.5%</td><td>342.4 Da (3 residues)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Those molecular weights explain why the blend cannot be reasoned about in moles. GHK-Cu is roughly a third the size of BPC-157, so 50 mg of GHK-Cu is far more molecules than 10 mg of BPC-157 — but the calculator works in milligrams, because that is what the label and the balance use. A 1 mg GHK-Cu dose is a mass of GHK-Cu, not a molar amount, and the other three peptides simply follow the mass ratio of the vial. Molar reasoning only becomes necessary if you move to a molarity calculator or compare the blend with a single-peptide solution at a stated µM concentration.</p>
+
+  <p>KLOW is supplied for laboratory research only. It is not approved by the FDA or any other regulator for human use, the blend itself has no controlled clinical trials, and the purity and sterility of research-grade vials are not guaranteed. Nothing on this page is medical advice.</p>
+
+  <h2>How a KLOW Draw Is Built</h2>
+  <p>The most common mistake with a four-peptide vial is to treat the total 80 mg as if it were a single peptide. It is not. You choose one component to measure the dose by, and the water volume converts that component's milligram dose into a volume. Every other peptide then arrives in the same volume at its own concentration.</p>
+
+  <figure>
+    <img src="/assets/img/klow-draw-anatomy.svg" width="800" height="280" loading="lazy" decoding="async" alt="KLOW peptide calculator walkthrough: a vial of 50 mg GHK-Cu, 10 mg BPC-157, 10 mg TB-500 and 10 mg KPV plus 3 mL water gives 26.667 mg per mL, and a 6 unit draw delivers 1 mg GHK-Cu plus 200 mcg of each other peptide">
+    <figcaption>Three steps from label to syringe. The 1 mg figure is an example input, not a recommendation.</figcaption>
+  </figure>
+
+  <p>Notice the asymmetry in the last step. A draw measured on GHK-Cu carries 200 mcg of each smaller component, because 10 mg is one fifth of 50 mg and the same fraction of the dose follows. If you instead measure the dose on BPC-157, KPV or TB-500, the same 1 mg dose of that component would deliver 5 mg of GHK-Cu in the same draw. That is a fivefold difference in GHK-Cu from a label that looks almost identical on the page, which is why the "measure the dose by" selector is the most important field in this calculator.</p>
+
+  <h2>More Water Means a Bigger Draw, Not a Bigger Dose</h2>
+  <p>Water volume changes only the volume that carries a given dose. With the standard 80 mg vial, a 1 mg GHK-Cu dose is 2 units at 1 mL of water, 4 units at 2 mL, 6 units at 3 mL and 10 units at 5 mL. The milligram dose is identical in all four cases; only the number on the syringe changes.</p>
+
+  <figure>
+    <img src="/assets/img/klow-water-volume.svg" width="800" height="300" loading="lazy" decoding="async" alt="Bar chart of syringe units for a 1 mg GHK-Cu dose from an 80 mg KLOW vial: 2 units with 1 mL of water, 4 units with 2 mL, 6 units with 3 mL and 10 units with 5 mL">
+    <figcaption>Same 1 mg GHK-Cu dose, four water volumes. Larger draws are easier to measure accurately.</figcaption>
+  </figure>
+
+  <p>Most labels suggest 3 mL, which produces a 6 unit draw for a 1 mg GHK-Cu dose and a total blend strength of 26.667 mg/mL. Smaller water volumes make the solution stronger and the draw shorter, which is harder to read on a U-100 syringe; larger volumes make the draw longer but may not fit comfortably in the vial. If a draw falls under 2 units, add more water with the next vial rather than trying to measure a fraction of a unit.</p>
+
+  <h2>How the KLOW Calculator Works</h2>
+  <p>The math is the same as any blend. Pick one component to measure by, then convert its dose into a volume using its own concentration:</p>
+  <p class="formula">mL per dose = dose of chosen component (mg) × water (mL) ÷ chosen component in vial (mg)<br>units = mL per dose × 100<br>other component per dose = its mg in vial ÷ water (mL) × mL per dose</p>
+  <p>Every component is diluted by the same water volume, so the ratio between them never changes. Adding more water shifts the units you draw for a given dose, but GHK-Cu, BPC-157, TB-500 and KPV stay in the same proportion to each other.</p>
+
+  <h2>KLOW Peptide Calculator Example</h2>
+  <p>Take the 80 mg preset — 50 mg GHK-Cu, 10 mg BPC-157, 10 mg TB-500, 10 mg KPV — reconstituted with 3 mL of bacteriostatic water, measured by a 1 mg GHK-Cu dose (an example input, not a recommendation):</p>
+  <ul>
+    <li>GHK-Cu concentration: 50 mg ÷ 3 mL = 16.667 mg/mL.</li>
+    <li>Volume per dose: 1 mg ÷ 16.667 mg/mL = 0.06 mL, which is <strong>6 units</strong>.</li>
+    <li>Each 10 mg component in that draw: 10 mg ÷ 3 mL × 0.06 mL = <strong>0.2 mg (200 mcg)</strong>.</li>
+    <li>Doses per vial: 50 mg ÷ 1 mg = 50, and all four components run out together.</li>
+  </ul>
+  <p>Because GHK-Cu carries five times the mass of each other peptide in the standard vial, a GHK-Cu dose and a KPV dose of the same size are not the same draw. Always check that the "measure the dose by" selector matches the component your plan names.</p>
+
+  <h2>KLOW vs GLOW: What Actually Changes</h2>
+  <p>The sister blend sold as GLOW 70 mg keeps 50 mg GHK-Cu, 10 mg BPC-157 and 10 mg TB-500, and drops KPV. Two things follow from that. The total mass is lower, so 3 mL of water gives 23.333 mg/mL total instead of 26.667 mg/mL. But if you measure the dose on GHK-Cu, the draw is unchanged, because 50 mg in 3 mL is still 16.667 mg/mL; the missing KPV contributed mass, not the component you are dosing by. The same is true if you measure on BPC-157 or TB-500, since those masses did not change either.</p>
+  <p>In practice, a KLOW draw at a given GHK-Cu dose carries 200 mcg of KPV that the equivalent GLOW draw does not. That is the only difference in the syringe. Enter whichever label you actually have, and do not assume the two products are interchangeable just because three of the four numbers match — vendors also change the split without changing the name.</p>
+
+  <h2>KLOW Vial or Pre-Loaded Pen</h2>
+  <p>Some suppliers ship KLOW as a 3.0 mL pre-loaded pen rather than a lyophilised vial. The arithmetic is different in one important way: the manufacturer has already set the concentration, so the pen's markings give you the dose directly and there is no water volume for you to choose. Do not pull the contents out of a pen with a syringe, and do not apply powder-vial math to a pen as if you had reconstituted it yourself.</p>
+  <p>If the pen label gives only a total milligram amount and a total volume, you can still divide one by the other to check the concentration and to see what a given volume contains. That is the same concentration step this calculator performs, but the units you draw should come from the pen's own dial or markings, not from a U-100 syringe calculation.</p>
+
+  <h2>How to Read a KLOW Label</h2>
+  <p>A usable KLOW label answers four questions: how many milligrams of each peptide, what the total peptide mass is, how much water the supplier recommends, and how the product should be stored. Many labels print "80 mg" in large type and the per-component figures in small type underneath; others print only the total. If the per-component amounts are missing, this calculator cannot infer them, and guessing a 50/10/10/10 split is not safe — the unit count depends entirely on the component you dose by.</p>
+  <p>Check the lot number, the stated purity and whether the label says the product is for research use only. A blue tint in the powder is normal for GHK-Cu and is not a purity signal by itself. If the label recommends a water volume that differs from the preset, use the label's figure and type it in; the calculator will update the units.</p>
+
+  <h2>Which Syringe to Use</h2>
+  <p>A U-100 insulin syringe carries 100 units per millilitre, so 6 units is 0.06 mL whatever the barrel size. The barrel size decides how easily you can read that volume. A 0.3 mL (30 unit) barrel gives the most space per unit and is the easiest choice for draws under 20 units; a 0.5 mL (50 unit) barrel is a reasonable all-round option; a 1.0 mL (100 unit) barrel is better for larger draws but compresses a 6 unit draw into a very short distance.</p>
+  <p>If your syringe has half-unit marks, a draw of 5.5 or 6.5 units can be measured, but reading between marks introduces error. Aim for a water volume that puts your routine dose on a whole unit, or at least on a half unit, rather than accepting a value that sits between two lines.</p>
+
+  <h2>KLOW Reconstitution Notes</h2>
+  <p>Add bacteriostatic water slowly down the inside wall of the vial, then swirl or roll it; do not shake, because foaming makes the powder harder to dissolve and can damage peptides. Use the water volume and storage instructions on your own label — they differ between suppliers. Once mixed, most labels call for refrigeration at 2–8 °C, protected from light, and the vial should not be re-frozen.</p>
+  <p>Storage is where blends are most often mishandled. Lyophilised powder usually tolerates a longer period at 2–8 °C, and some suppliers specify −20 °C for long-term storage, but a reconstituted vial is a much shorter-lived product: refrigerate it, keep it out of sunlight, avoid repeated temperature swings such as the refrigerator door, and use it within the window printed on the label. Write the mixing date on the vial so the window is visible. If the solution turns cloudy, changes colour or contains particles, do not assume it is still usable.</p>
+  <p>If you have not chosen a water volume yet, the <a href="/peptide-reconstitution-calculator/">peptide reconstitution calculator</a> works backwards from a target number of units. For two- or three-peptide vials such as GLOW, the <a href="/peptide-blend-calculator/">peptide blend calculator</a> covers the same math with a GLOW preset.</p>
+
+  <h2>What the Evidence Shows — and What It Does Not</h2>
+  <p>There is no clinical trial of the KLOW combination as a finished product. What exists is preclinical work on the individual peptides. GHK-Cu is a copper-binding tripeptide studied for wound healing and collagen-related pathways. BPC-157 has a large rodent literature around gastrointestinal and soft-tissue models. TB-500 is a fragment of thymosin beta-4 studied for cell migration and actin regulation in animals. KPV is a small anti-inflammatory tripeptide studied in cell and animal systems.</p>
+  <p>None of that establishes a human dose for the blend, none of it shows that the four components are additive or safe together, and none of it substitutes for a controlled trial. Purity also varies between suppliers, and a certificate of analysis covers a lot, not the vial in your hand. Treat the published work as background on each component, not as a protocol for the combination.</p>
+
+  <h2>Common KLOW Calculator Mistakes</h2>
+  <ul>
+    <li><strong>Entering 80 mg as one peptide.</strong> The vial holds four peptides. Entering the total for the component you dose by makes that component look five times stronger than it is and cuts the units you draw.</li>
+    <li><strong>Dosing by the wrong component.</strong> A dose written for BPC-157 is not interchangeable with the same milligram figure for GHK-Cu, because the two are present in different amounts.</li>
+    <li><strong>Expecting to adjust one peptide.</strong> Raising the units raises all four. Changing one component alone would need separate vials.</li>
+    <li><strong>Mixing up mg and mcg.</strong> A 250 mcg dose is 0.25 mg; the unit selector is a thousandfold difference.</li>
+  </ul>
+
+  <section id="faq">
+    <h2>KLOW Peptide Calculator FAQ</h2>
+    <h3>What is in a KLOW peptide vial?</h3>
+    <p>The standard 80 mg label lists 50 mg GHK-Cu, 10 mg BPC-157, 10 mg TB-500 and 10 mg KPV. Vendors vary, so check your own label and use the preset only as a starting point.</p>
+    <h3>How many units is 1 mg of GHK-Cu in KLOW?</h3>
+    <p>From the 80 mg vial with 3 mL of water, 1 mg of GHK-Cu is 6 units on a U-100 syringe. With 2 mL of water the same dose is 4 units, and with 1 mL it is 2 units.</p>
+    <h3>Can I dose one KLOW peptide separately?</h3>
+    <p>No. All four peptides are dissolved in the same liquid, so any draw contains all of them at the label ratio. Separate doses need separate vials.</p>
+    <h3>Is KLOW approved for human use?</h3>
+    <p>No. KLOW is a research-only blend and is not approved by the FDA or any other regulator. This calculator performs arithmetic only and does not recommend a dose.</p>
+    <h3>Does the calculator store my numbers?</h3>
+    <p>No. Everything runs in your browser and nothing you type is saved or sent anywhere.</p>
+  </section>
+
+  <p class="note">This KLOW peptide calculator performs arithmetic only and is provided for educational purposes. It does not recommend any peptide, blend, dose or supplier. Confirm every dose with a licensed healthcare professional, and read our <a href="/disclaimer/">medical disclaimer</a> and <a href="/about/">how the formulas are checked</a>.</p>
+</article>

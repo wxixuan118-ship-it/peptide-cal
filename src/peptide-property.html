@@ -1,0 +1,186 @@
+<section class="hero">
+  <h1>Peptide Property Calculator</h1>
+  <p class="lead">This peptide property calculator takes an amino acid sequence and returns the properties you need before ordering, weighing or dissolving a peptide: average and monoisotopic molecular weight, length, net charge at any pH, isoelectric point, a hydropathy score and the extinction coefficient at 280 nm. It runs entirely in your browser.</p>
+</section>
+
+<section class="tool" data-calc="property" aria-labelledby="tool-title">
+  <form onsubmit="return false">
+    <h2 id="tool-title">Peptide property calculator inputs</h2>
+
+    <div class="field">
+      <label for="p-seq">Peptide sequence (one-letter codes)</label>
+      <textarea id="p-seq" rows="4" spellcheck="false" autocomplete="off">GHK</textarea>
+      <p class="hint">Spaces, numbers and dashes are ignored. Only the 20 standard amino acids are calculated.</p>
+      <div class="chips">
+        <button type="button" class="chip" data-preset="p-seq=GHK,p-nterm=h,p-cterm=oh,p-ss=0">GHK</button>
+        <button type="button" class="chip" data-preset="p-seq=GEPPPGKPADDAGLV,p-nterm=h,p-cterm=oh,p-ss=0">BPC-157</button>
+        <button type="button" class="chip" data-preset="p-seq=KPV,p-nterm=h,p-cterm=oh,p-ss=0">KPV</button>
+        <button type="button" class="chip" data-preset="p-seq=CYIQNCPLG,p-nterm=h,p-cterm=nh2,p-ss=1">Oxytocin</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="p-ph">pH for the net charge</label>
+      <input id="p-ph" type="number" inputmode="decimal" min="0" max="14" step="0.1" value="7">
+      <div class="chips">
+        <button type="button" class="chip" data-target="p-ph" data-value="2">pH 2</button>
+        <button type="button" class="chip" data-target="p-ph" data-value="5">pH 5</button>
+        <button type="button" class="chip" data-target="p-ph" data-value="7">pH 7</button>
+        <button type="button" class="chip" data-target="p-ph" data-value="7.4">pH 7.4</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="p-nterm">N-terminus</label>
+      <select id="p-nterm">
+        <option value="h" selected>Free amine (H–)</option>
+        <option value="ac">Acetylated (Ac–)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="p-cterm">C-terminus</label>
+      <select id="p-cterm">
+        <option value="oh" selected>Free acid (–OH)</option>
+        <option value="nh2">Amidated (–NH₂)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="p-ss">Disulfide bonds</label>
+      <input id="p-ss" type="number" inputmode="numeric" min="0" step="1" value="0">
+      <p class="hint">Each disulfide removes two hydrogens and takes two cysteines out of the charge calculation.</p>
+    </div>
+  </form>
+
+  <div class="results" aria-live="polite">
+    <p class="big">Molecular weight <strong data-out="mw">340.38 Da</strong></p>
+    <ul class="stats">
+      <li>Monoisotopic mass<b data-out="mono">340.19 Da</b></li>
+      <li>Length<b data-out="length">3 residues</b></li>
+      <li>Net charge at pH <span data-out="ph">7</span><b data-out="charge">+1.22</b></li>
+      <li>Isoelectric point (pI)<b data-out="pi">9.7</b></li>
+      <li>Charge at pH 7<b data-out="charge7">+1.22</b></li>
+      <li>Hydropathy (GRAVY)<b data-out="gravy">-2.5</b></li>
+      <li>Extinction coefficient ε280<b data-out="eps">0 M⁻¹cm⁻¹</b></li>
+      <li>A280 at 1 mg/mL<b data-out="a280">0</b></li>
+    </ul>
+    <p class="hint" data-out="eps-note">No tryptophan, tyrosine or cysteine: this sequence has no absorbance at 280 nm. Quantify it at 214 nm or by mass.</p>
+    <p class="alert" data-out="alert" hidden></p>
+  </div>
+</section>
+
+<article class="content">
+  <h2>What the Peptide Property Calculator Reports</h2>
+  <p>Peptide properties are calculated from the sequence, not measured in a lab. This tool parses the one-letter code you paste and reports the figures that matter most for ordering and handling a peptide:</p>
+  <ul>
+    <li><strong>Average molecular weight</strong> — the mass using natural isotope abundances, which is what a vial's mg label refers to.</li>
+    <li><strong>Monoisotopic mass</strong> — the mass using the most abundant isotope of each element, which is what mass spectrometry reports.</li>
+    <li><strong>Length</strong> — the number of amino acid residues after cleaning the input.</li>
+    <li><strong>Net charge at your chosen pH</strong> — the sum of all ionisable side chains and termini.</li>
+    <li><strong>Isoelectric point (pI)</strong> — the pH at which the net charge is zero.</li>
+    <li><strong>GRAVY</strong> — the Kyte-Doolittle hydropathy average, where positive values mean a more hydrophobic peptide.</li>
+    <li><strong>Extinction coefficient ε280</strong> — how strongly the peptide absorbs 280 nm light, used to read concentration on a spectrophotometer.</li>
+    <li><strong>A280 at 1 mg/mL</strong> — the absorbance a 1 mg/mL solution gives in a 1 cm cuvette, so you can convert a raw reading into a concentration.</li>
+  </ul>
+
+  <figure>
+    <img src="/assets/img/peptide-property-pipeline.svg" width="800" height="290" loading="lazy" decoding="async" alt="Peptide property calculator pipeline: the BPC-157 sequence GEPPPGKPADDAGLV gives average molecular weight 1,419.5 Da, monoisotopic mass 1,418.5 Da, net charge, pI near 3.9, GRAVY of minus 0.69 and an extinction coefficient of zero">
+    <figcaption>Every output comes from the same parsed sequence and the same terminal settings.</figcaption>
+  </figure>
+
+  <h2>How Peptide Molecular Weight Is Calculated</h2>
+  <p>Each residue contributes a fixed formula, and the free termini add one water molecule. For a peptide with a free N-terminus and a free C-terminus:</p>
+  <p class="formula">MW = Σ (residue formulas) + H₂O − 2H per disulfide</p>
+  <p>An acetylated N-terminus adds C₂H₂O, and an amidated C-terminus replaces the terminal –OH with –NH₂. Those terminal groups shift the mass by a few daltons, so a sequence pasted without them will not match a certificate of analysis exactly. The difference between average and monoisotopic mass grows with length: for short peptides it is under 1 Da, and for long ones it can exceed 1 Da.</p>
+  <p>Average mass is the number to use when you weigh powder on a balance, because the balance sees a population of molecules with the natural mix of isotopes. Monoisotopic mass is the number to use when you read an LC-MS report, because the mass spectrometer resolves individual isotope peaks and the software usually reports the lightest one.</p>
+
+  <h2>Net Charge and Isoelectric Point</h2>
+  <p>The charge calculation uses the Henderson–Hasselbalch equation with a standard pKa set for the N-terminus, C-terminus, lysine, arginine, histidine, aspartate, glutamate, cysteine and tyrosine. Each group contributes a fraction between 0 and 1 (positive for bases, negative for acids) depending on how far the pH sits from its pKa. The pI is then found by bisection: the pH at which the summed charge crosses zero.</p>
+  <p>Cysteines locked in a disulfide bond cannot ionise, so enter the number of disulfide bonds and the tool removes those cysteines from the charge and two hydrogens from the mass. Charge is the property that most often decides which buffer or solvent a peptide needs.</p>
+
+  <figure>
+    <img src="/assets/img/peptide-charge-vs-ph.svg" width="800" height="310" loading="lazy" decoding="async" alt="Net charge of BPC-157 against pH: about plus two below pH 2, crossing zero near pH 3.9, then about minus two from pH 6 to 8 and falling towards minus four at pH 12">
+    <figcaption>BPC-157 carries a strong negative charge at physiological pH, well away from its pI.</figcaption>
+  </figure>
+
+  <h2>Worked Example: BPC-157</h2>
+  <p>Paste <strong>GEPPPGKPADDAGLV</strong> with a free N-terminus, a free C-terminus and no disulfides. The calculator returns an average mass of about 1,419.5 Da and a monoisotopic mass about 1 Da lower. The side chains that ionise are one lysine, two aspartates and one glutamate, plus the two termini.</p>
+  <ul>
+    <li>At pH 2 the peptide is close to fully protonated and net charge is about +2.</li>
+    <li>Between pH 3 and pH 5 the aspartate and glutamate carboxyls lose their protons and the charge falls steeply.</li>
+    <li>Near pH 3.9 the positive and negative groups cancel, which is the pI.</li>
+    <li>At pH 7.4 the net charge is about −2, so the peptide is anionic in a neutral buffer.</li>
+  </ul>
+  <p>That negative charge is why BPC-157 usually dissolves readily in water or in a mildly alkaline buffer, and why an acidic solution is a poor first choice for it. Published tables quote pI values between roughly 3.5 and 4.0 for the same sequence, because different references use slightly different pKa sets and assume different terminal groups. Treat the pI from any calculator as a working estimate, not an identity test.</p>
+
+  <h2>Hydropathy and Solubility</h2>
+  <p>GRAVY is the average Kyte-Doolittle score across the sequence. Strongly negative values indicate a hydrophilic peptide that usually dissolves in water; positive values flag hydrophobic stretches that may need a small amount of organic solvent such as acetonitrile or DMSO before dilution. Treat that as a starting point, not a prediction — actual solubility also depends on pH, ionic strength and the counter-ion.</p>
+
+  <figure>
+    <img src="/assets/img/peptide-hydropathy.svg" width="800" height="300" loading="lazy" decoding="async" alt="Kyte-Doolittle hydropathy scale from minus 4.5 to plus 4.5 with GHK at minus 2.50, BPC-157 at minus 0.69 and KPV at minus 0.43, all on the hydrophilic side">
+    <figcaption>A single average can hide local patches; a hydrophobic tail can still make a hydrophilic peptide clump.</figcaption>
+  </figure>
+
+  <h2>Extinction Coefficient at 280 nm</h2>
+  <p>The extinction coefficient tells you how much light a peptide absorbs at 280 nm, and it is the standard way to measure peptide concentration without weighing anything. Only three things contribute: tryptophan, tyrosine and cystine. The estimate this calculator uses is the Gill and von Hippel relationship:</p>
+  <p class="formula">ε280 = 5,690 × (Trp) + 1,280 × (Tyr) + 120 × (disulfides)</p>
+  <p>For oxytocin — <strong>CYIQNCPLG</strong> amidated at the C-terminus, with one disulfide — the count is one tyrosine and one disulfide, so ε280 = 1,280 + 120 = 1,400 M⁻¹cm⁻¹. With a mass of about 1,007 Da, a 1 mg/mL solution in a 1 cm cuvette reads A280 ≈ 1.39. Rearranged, a measured absorbance of 0.70 means the solution is about 0.5 mg/mL.</p>
+  <p>Two limits matter. First, a peptide with no tryptophan, tyrosine or cysteine has an extinction coefficient of zero and simply cannot be measured at 280 nm; BPC-157, GHK and KPV all fall into that group, which is why the tool shows a note instead of a number. Second, the disulfide term is an average of different cystine environments, and copper complexes such as GHK-Cu absorb broadly across the ultraviolet range, so a 280 nm reading on a copper peptide is not a reliable concentration. For those peptides, use amino acid analysis, nitrogen content or absorbance at 214 nm against a standard curve.</p>
+
+  <h2>peptide property calculator vs GenScript, PepCalc and Innovagen</h2>
+  <p>Searches for a peptide property calculator usually land on one of a few established tools. The GenScript peptide property calculator returns molecular weight, pI, net charge and a hydrophobicity figure from a pasted sequence. PepCalc and the Innovagen peptide property calculator add an extinction coefficient at 280 nm and a titration curve plotting charge against pH. This page covers the same core set — mass, pI, charge, hydropathy and ε280 — with the formulas shown and nothing sent to a server.</p>
+  <p>Where the tools differ is in the details. Some accept three-letter codes as well as one-letter codes; this one reads one-letter codes and ignores anything outside the 20 standard residues. Some model modified residues, D-amino acids or cyclic backbones directly; this one expects you to adjust the termini by hand. Some use the Hopp and Woods hydrophilicity scale rather than Kyte-Doolittle; the two rank residues differently, so a GRAVY value is only comparable with another Kyte-Doolittle value. None of them can predict real solubility, because that depends on the counter-ion, the buffer and the temperature.</p>
+
+  <h2>Using pI to Choose a Starting Buffer</h2>
+  <p>Peptides are usually least soluble at their pI, where the net charge is zero and molecules can pack together. Keeping the buffer at least one pH unit away from the pI gives the molecule a net charge and helps it stay in solution. The table below is a starting point for laboratory handling, not a dosing guide.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>pI</th><th>Net charge at pH 7.4</th><th>Reasonable first solvent</th></tr></thead>
+      <tbody>
+        <tr><td>Below 4</td><td>Negative</td><td>Water, or water with a little dilute ammonium bicarbonate</td></tr>
+        <tr><td>4 – 6</td><td>Slightly negative</td><td>Water first; adjust with dilute acid or base if cloudy</td></tr>
+        <tr><td>6 – 8</td><td>Near neutral</td><td>Water; avoid buffering close to the pI</td></tr>
+        <tr><td>Above 9</td><td>Positive</td><td>Water first, then a small amount of 10% acetic acid</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A peptide that stays cloudy in water despite a favourable pI is often hydrophobic rather than mischarged. In that case a small amount of acetonitrile or DMSO, added before the aqueous dilution, usually helps more than changing the pH.</p>
+
+  <h2>What This Calculator Does Not Do</h2>
+  <p>It does not model post-translational modifications, non-standard residues, copper complexes (such as GHK-Cu), secondary structure or aggregation. It also does not predict a precise solubility in mg/mL. Four specific blind spots are worth knowing:</p>
+  <ul>
+    <li><strong>D-amino acids.</strong> A D-residue has the same formula and almost the same mass, so the calculator cannot see it, but it changes stability and sometimes receptor binding.</li>
+    <li><strong>Cyclic backbones.</strong> Head-to-tail cyclisation removes one water molecule, so the real mass is about 18.02 Da lower than the linear sequence predicts.</li>
+    <li><strong>Metal complexes.</strong> GHK-Cu is about 61.5 Da heavier than GHK (copper minus two protons), so a mass built from the bare sequence will not match the vial.</li>
+    <li><strong>Disulfides and free thiols.</strong> Enter the number of bonds you expect; if the product is supplied with free cysteines, leave the count at zero.</li>
+  </ul>
+  <p>For those questions, a certificate of analysis and the supplier's handling notes are more reliable than any sequence calculator.</p>
+
+  <h2>Checking the Numbers Against a Certificate of Analysis</h2>
+  <p>A certificate of analysis for a research peptide normally reports identity by mass spectrometry, purity by HPLC, appearance, and sometimes water content and counter-ion. The mass on the certificate should match the monoisotopic mass here, within the tolerance of the instrument. If it is about 18 Da lower, suspect a cyclic backbone; if it is tens of daltons higher, suspect a metal or a fatty acid chain; if it is a few daltons off, check whether the termini are acetylated or amidated.</p>
+  <p>Purity by HPLC is reported as percentage of total peak area, and a 98% figure does not mean 98% of the vial weight is peptide. Counter-ions such as acetate or trifluoroacetate, plus residual water, make up part of the mass. For careful work, use the net peptide content stated on the certificate when you calculate a concentration, rather than assuming the vial contains exactly the label weight.</p>
+
+  <h2>Related Peptide Calculators</h2>
+  <p>The <a href="/peptide-molecular-weight-calculator/">peptide molecular weight calculator</a> adds an m/z table for mass spectrometry. The <a href="/peptide-net-charge-calculator/">peptide net charge calculator</a> adds a charge-versus-pH table and a solubility starting point. Once you know the mass, the <a href="/molarity-calculator/">molarity calculator</a> converts between mg and molar concentration, and the <a href="/peptide-concentration-calculator/">peptide concentration calculator</a> covers mg/mL, mcg/mL and per-unit amounts.</p>
+
+  <section id="faq">
+    <h2>Peptide Property Calculator FAQ</h2>
+    <h3>How do you calculate the molecular weight of a peptide?</h3>
+    <p>Add the formula of every residue, add one water molecule for the free termini, subtract two hydrogens for each disulfide bond, then convert the formula to mass. This calculator does that from the one-letter sequence.</p>
+    <h3>What is the difference between average and monoisotopic mass?</h3>
+    <p>Average mass uses the natural abundance of each isotope and matches a vial's mg label. Monoisotopic mass uses only the most abundant isotope and matches what a mass spectrometer reports.</p>
+    <h3>What does the isoelectric point tell me?</h3>
+    <p>The pI is the pH at which the peptide carries no net charge. Peptides are usually least soluble at their pI, so it is a useful number when choosing a buffer.</p>
+    <h3>What is the extinction coefficient at 280 nm used for?</h3>
+    <p>It converts an absorbance reading into a concentration with the Beer-Lambert law: A280 = ε × c × path length. Divide ε by the molecular weight to get the absorbance of a 1 mg/mL solution, which is the figure most labs use.</p>
+    <h3>Why is my calculator mass slightly different from the certificate?</h3>
+    <p>Check the terminal groups first: acetylation adds about 42 Da and amidation removes about 1 Da. Then check for a cyclic backbone (−18 Da), a metal complex, or a modified residue the tool does not model. Small differences can also come from using average rather than monoisotopic mass.</p>
+    <h3>Can I paste a sequence with spaces, numbers or dashes?</h3>
+    <p>Yes. Spaces, digits and dashes are stripped before calculation. Any other character outside the 20 standard one-letter codes is ignored and listed in the alert.</p>
+    <h3>Is this the same as the GenScript peptide property calculator?</h3>
+    <p>It covers the same core properties — molecular weight, pI, net charge, hydropathy and the 280 nm extinction coefficient — with open formulas. It does not replicate every proprietary feature of any third-party tool.</p>
+  </section>
+
+  <p class="note">This peptide property calculator performs arithmetic on the sequence you enter and is provided for educational purposes. Predicted values can differ from measured values; always use the supplier's certificate of analysis for identity, purity and mass. Read our <a href="/disclaimer/">medical disclaimer</a> and <a href="/about/">how the formulas are checked</a>.</p>
+</article>

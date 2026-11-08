@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" width="800" height="260" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="260" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="42" font-size="22" font-weight="700" fill="#15232b">From a 10 IU vial to 20 units on the syringe</text>
+
+  <g font-size="14" fill="#15232b">
+    <rect x="34" y="72" width="168" height="112" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="50" y="98" font-size="13" fill="#546570">Vial</text>
+    <text x="50" y="130" font-size="20" font-weight="700">10 IU</text>
+    <text x="50" y="162" fill="#546570">lyophilised powder</text>
+
+    <rect x="228" y="72" width="168" height="112" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="244" y="98" font-size="13" fill="#546570">Add water</text>
+    <text x="244" y="130" font-size="20" font-weight="700">1 mL</text>
+    <text x="244" y="162" fill="#546570">= 10 IU per mL</text>
+
+    <rect x="422" y="72" width="168" height="112" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="438" y="98" font-size="13" fill="#546570">Dose</text>
+    <text x="438" y="130" font-size="20" font-weight="700">2 IU</text>
+    <text x="438" y="162" fill="#546570">= 0.2 mL</text>
+
+    <rect x="616" y="72" width="150" height="112" rx="12" fill="#0b7a75"/>
+    <text x="632" y="98" font-size="13" fill="#d9ecea">On the syringe</text>
+    <text x="632" y="132" font-size="26" font-weight="700" fill="#ffffff">20 units</text>
+    <text x="632" y="162" font-size="13" fill="#d9ecea">U-100, 0.2 mL</text>
+  </g>
+  <path d="M206 128 h18 M400 128 h18 M594 128 h18" stroke="#0b7a75" stroke-width="3"/>
+  <text x="40" y="220" font-size="14" fill="#546570">units = dose (IU) ÷ (vial IU ÷ water mL) × 100</text>
+  <text x="40" y="242" font-size="14" fill="#546570">IU is a biological unit, not a mass — never convert IU to mg without the product's own factor.</text>
+</svg>

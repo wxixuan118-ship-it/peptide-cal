@@ -495,7 +495,91 @@
     alert.textContent = msg; alert.hidden = !msg;
   }
 
-  var map = { main: computeMain, recon: computeRecon, dose: computeDose, blend: computeBlend, dilution: computeDilution, conc: computeConc, molarity: computeMolarity, "moles-to-molarity": computeMolesToMolarity, "molarity-to-moles": computeMolarityToMoles, mw: computeMw, charge: computeCharge, tdee: computeTdee, adaptive: computeAdaptive };
+  /* KLOW: four-component blend (GHK-Cu, BPC-157, TB-500, KPV) in one vial */
+  function computeKlow(root) {
+    var ids = ["k-ghk", "k-bpc", "k-tb", "k-kpv"];
+    var names = ["GHK-Cu", "BPC-157", "TB-500", "KPV"];
+    var mgs = ids.map(function (id) { return num($("#" + id, root)); });
+    var water = num($("#k-water", root));
+    var base = parseInt($("#k-base", root).value, 10);
+    var doseMg = toMg(num($("#k-dose", root)), $("#k-dose-unit", root).value);
+    var cap = parseInt($("#k-syringe", root).value, 10);
+    var baseMg = mgs[base] || 0;
+    var total = mgs.reduce(function (s, v) { return s + v; }, 0);
+    var ml = water > 0 && baseMg > 0 ? doseMg * water / baseMg : 0;
+    var units = ml * U100;
+    set(root, "units", fmt(units, 1));
+    set(root, "ml", fmt(ml, 3) + " mL");
+    set(root, "total-conc", water > 0 ? fmt(total / water, 3) + " mg/mL" : "–");
+    set(root, "doses", doseMg > 0 && baseMg > 0 ? fmt(Math.floor(baseMg / doseMg + 1e-9), 0) : "–");
+    drawSyringe(root, units, cap);
+
+    var body = $("#k-table", root);
+    if (body) {
+      var rows = "";
+      names.forEach(function (name, i) {
+        if (mgs[i] <= 0) return;
+        var c = water > 0 ? mgs[i] / water : 0;
+        rows += "<tr><td>" + name + (i === base ? " (dosed by)" : "") + "</td><td>" + fmt(mgs[i], 2) + " mg</td><td>" +
+          fmt(c, 3) + " mg/mL</td><td>" + fmt(c * ml * 1000, 1) + " mcg</td></tr>";
+      });
+      body.innerHTML = rows;
+    }
+    var alert = $('[data-out="alert"]', root), msg = "";
+    if (baseMg <= 0) msg = "The component you dose by has 0 mg in the vial. Enter its amount or choose another component.";
+    else if (units > cap) msg = "This draw (" + fmt(units, 1) + " units) is larger than the selected syringe. Use a larger syringe or add less water.";
+    else if (units > 0 && units < 2) msg = "Under 2 units is hard to measure accurately. Adding more bacteriostatic water makes small doses easier to draw.";
+    alert.textContent = msg; alert.hidden = !msg;
+  }
+
+  /* Peptide properties from a sequence: MW, net charge at pH, pI, GRAVY */
+  function computeProperty(root) {
+    var p = readSeq(root, "p-seq"), seq = p.seq, c = counts(seq);
+    var nAc = $("#p-nterm", root).value === "ac", cAm = $("#p-cterm", root).value === "nh2";
+    var ss = Math.max(0, Math.min(Math.floor(num($("#p-ss", root))), Math.floor((c.C || 0) / 2)));
+    var nFree = !nAc, cFree = !cAm;
+    var pH = num($("#p-ph", root));
+    var f = [0, 2, 0, 1, 0];
+    Object.keys(c).forEach(function (aa) { for (var k = 0; k < 5; k++) f[k] += RES[aa][k] * c[aa]; });
+    if (nAc) { f[0] += 2; f[1] += 2; f[3] += 1; }
+    if (cAm) { f[1] += 1; f[2] += 1; f[3] -= 1; }
+    f[1] -= 2 * ss;
+    var mass = function (tbl) { return f.reduce(function (s, n, k) { return s + n * tbl[k]; }, 0); };
+    var ok = seq.length > 0;
+    var avg = ok ? mass(AVG) : 0, mono = ok ? mass(MONO) : 0;
+    var freeCys = (c.C || 0) - 2 * ss;
+    var q = ok ? chargeAt(c, pH, nFree, cFree, freeCys) : 0;
+    var q7 = ok ? chargeAt(c, 7, nFree, cFree, freeCys) : 0;
+    var lo = 0, hi = 14, pI = 0;
+    if (ok) {
+      for (var i = 0; i < 60; i++) { pI = (lo + hi) / 2; if (chargeAt(c, pI, nFree, cFree, freeCys) > 0) lo = pI; else hi = pI; }
+    }
+    var gravy = ok ? seq.split("").reduce(function (s, aa) { return s + KD[aa]; }, 0) / seq.length : 0;
+    // Gill & von Hippel (1989): Trp 5690, Tyr 1280 and 120 per disulfide at 280 nm
+    var eps = (c.W || 0) * 5690 + (c.Y || 0) * 1280 + ss * 120;
+    var a280 = ok && avg > 0 ? eps / avg : 0;
+    var sign = function (v) { return (v > 0.005 ? "+" : v < -0.005 ? "−" : "") + fmt(Math.abs(v), 2); };
+    set(root, "eps", ok ? fmt(eps, 0) + " M⁻¹cm⁻¹" : "–");
+    set(root, "a280", ok ? fmt(a280, 3) : "–");
+    var epsNote = $('[data-out="eps-note"]', root);
+    if (epsNote) {
+      epsNote.textContent = ok && eps === 0
+        ? "No tryptophan, tyrosine or cysteine: this sequence has no absorbance at 280 nm. Quantify it at 214 nm or by mass."
+        : "";
+      epsNote.hidden = !epsNote.textContent;
+    }
+    set(root, "mw", ok ? fmt(avg, 2) + " Da" : "–");
+    set(root, "mono", ok ? fmt(mono, 2) + " Da" : "–");
+    set(root, "length", ok ? seq.length + " residues" : "–");
+    set(root, "charge", ok ? sign(q) : "–");
+    set(root, "ph", fmt(pH, 2));
+    set(root, "pi", ok ? fmt(pI, 2) : "–");
+    set(root, "charge7", ok ? sign(q7) : "–");
+    set(root, "gravy", ok ? (gravy > 0 ? "+" : "") + fmt(gravy, 3) : "–");
+    seqAlert(root, p, pH < 0 || pH > 14 ? "pH must be between 0 and 14." : "");
+  }
+
+  var map = { main: computeMain, recon: computeRecon, dose: computeDose, blend: computeBlend, klow: computeKlow, dilution: computeDilution, conc: computeConc, molarity: computeMolarity, "moles-to-molarity": computeMolesToMolarity, "molarity-to-moles": computeMolarityToMoles, mw: computeMw, charge: computeCharge, property: computeProperty, tdee: computeTdee, adaptive: computeAdaptive };
   $$("[data-calc]").forEach(function (root) {
     var fn = map[root.getAttribute("data-calc")];
     if (fn) wire(root, fn);

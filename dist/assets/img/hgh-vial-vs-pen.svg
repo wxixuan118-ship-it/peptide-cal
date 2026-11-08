@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="800" height="280" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="280" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="42" font-size="22" font-weight="700" fill="#15232b">Vial or pen: where the units come from</text>
+
+  <rect x="40" y="70" width="345" height="168" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+  <text x="60" y="100" font-size="17" font-weight="700" fill="#15232b">Powder vial + syringe</text>
+  <g font-size="14" fill="#546570">
+    <text x="60" y="128">You add the water, so you choose</text>
+    <text x="60" y="150">the concentration.</text>
+    <text x="60" y="180" fill="#15232b">10 IU + 1 mL = 20 units for 2 IU</text>
+    <text x="60" y="204">Recheck units after every new vial.</text>
+  </g>
+  <g>
+    <rect x="60" y="216" width="300" height="8" rx="4" fill="#dfe9eb"/>
+    <rect x="60" y="216" width="120" height="8" rx="4" fill="#0b7a75"/>
+  </g>
+
+  <rect x="415" y="70" width="345" height="168" rx="12" fill="#ffffff" stroke="#c5d2d7"/>
+  <text x="435" y="100" font-size="17" font-weight="700" fill="#15232b">Pre-filled pen</text>
+  <g font-size="14" fill="#546570">
+    <text x="435" y="128">Diluent is sealed inside, so the</text>
+    <text x="435" y="150">concentration is fixed (e.g. 1.15 mL).</text>
+    <text x="435" y="180" fill="#15232b">The dial already shows IU — no units.</text>
+    <text x="435" y="204">Do not draw from a pen with a syringe.</text>
+  </g>
+  <rect x="435" y="216" width="300" height="8" rx="4" fill="#dfe9eb"/>
+  <rect x="435" y="216" width="290" height="8" rx="4" fill="#2f9e95"/>
+  <text x="40" y="264" font-size="14" fill="#546570">Both routes carry the same arithmetic; only the person setting the concentration changes.</text>
+</svg>

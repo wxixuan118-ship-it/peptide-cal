@@ -1,0 +1,184 @@
+<section class="hero">
+  <h1>HGH Peptide Dose Calculator</h1>
+  <p class="lead">This HGH peptide dose calculator turns a somatropin vial measured in IU, the bacteriostatic water added and a prescribed dose in IU into the units to draw on a U-100 insulin syringe. It also handles mg-labelled vials and doses. It does the arithmetic only — it does not suggest a dose, a schedule or a supplier.</p>
+</section>
+
+<section class="tool" data-calc="main" aria-labelledby="tool-title">
+  <form onsubmit="return false">
+    <h2 id="tool-title">HGH calculator inputs</h2>
+
+    <div class="field">
+      <label for="vial">HGH in the vial</label>
+      <div class="input-row">
+        <input id="vial" type="number" inputmode="decimal" min="0" step="any" value="10">
+        <select id="vial-unit" aria-label="Vial amount unit"><option value="iu" selected>IU</option><option value="mg">mg</option></select>
+      </div>
+      <div class="chips">
+        <button type="button" class="chip" data-target="vial" data-value="5">5 IU</button>
+        <button type="button" class="chip" data-target="vial" data-value="10">10 IU</button>
+        <button type="button" class="chip" data-target="vial" data-value="12">12 IU</button>
+        <button type="button" class="chip" data-target="vial" data-value="20">20 IU</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="water">Bacteriostatic water added (mL)</label>
+      <input id="water" type="number" inputmode="decimal" min="0" step="any" value="1">
+      <div class="chips">
+        <button type="button" class="chip" data-target="water" data-value="1">1 mL</button>
+        <button type="button" class="chip" data-target="water" data-value="2">2 mL</button>
+        <button type="button" class="chip" data-target="water" data-value="3">3 mL</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="dose">Dose prescribed per injection</label>
+      <div class="input-row">
+        <input id="dose" type="number" inputmode="decimal" min="0" step="any" value="2">
+        <select id="dose-unit" aria-label="Dose unit"><option value="iu" selected>IU</option><option value="mg">mg</option><option value="mcg">mcg</option></select>
+      </div>
+      <p class="hint">The 2 IU default is only an example input, not a recommended dose.</p>
+    </div>
+
+    <div class="field">
+      <label for="syringe">Syringe size</label>
+      <select id="syringe">
+        <option value="30">0.3 mL (30 units)</option>
+        <option value="50">0.5 mL (50 units)</option>
+        <option value="100" selected>1.0 mL (100 units)</option>
+      </select>
+    </div>
+  </form>
+
+  <div class="results" aria-live="polite">
+    <p class="big">Draw to <strong><span data-out="units">20</span> units</strong> on a U-100 syringe</p>
+    {{SYRINGE 20}}
+    <ul class="stats">
+      <li>Volume per dose<b data-out="ml">0.2 mL</b></li>
+      <li>Concentration<b data-out="conc">10 IU/mL</b></li>
+      <li>HGH per unit<b data-out="per-unit">0.1 IU</b></li>
+      <li>Doses per vial<b data-out="doses">5</b></li>
+    </ul>
+    <p class="alert" data-out="alert" hidden></p>
+  </div>
+</section>
+
+<article class="content">
+  <h2>What This HGH Dose Calculator Does</h2>
+  <p>HGH products are sold as lyophilised powder (or as prefilled pens) and their strength is written in international units, not milligrams. To work out what to draw, you need three numbers: the IU in the vial, the water you add, and the prescribed dose. This calculator converts them into millilitres and into the marks on a U-100 insulin syringe.</p>
+  <p>It is the same arithmetic as any peptide calculator. It does not decide how much HGH anyone should take, and it does not replace the directions supplied with a prescription product.</p>
+
+  <h2>Why HGH Is Labelled in IU, Not mg</h2>
+  <p>An international unit measures biological activity, while a milligram measures mass. For somatropin, most labels equate 1 mg with about 3 IU, but the exact figure belongs to the product and its manufacturer, so it cannot be assumed. If a label only gives mg, use the IU-per-mg figure printed in that product's own instructions.</p>
+  <p>Because of that, this calculator blocks mixing units: choose IU for both the vial and the dose, or mg/mcg for both. Converting between them needs the product-specific factor, not a generic one.</p>
+
+  <h2>HGH Calculator Formula</h2>
+  <p class="formula">concentration (IU/mL) = vial (IU) ÷ water (mL)<br>volume (mL) = dose (IU) ÷ concentration<br>units = volume (mL) × 100</p>
+  <p>On a U-100 insulin syringe, 100 units equal 1 mL. That conversion is fixed by the syringe, whatever the product. The concentration is the part that changes with the water volume.</p>
+
+  <figure>
+    <img src="/assets/img/hgh-iu-to-units.svg" width="800" height="260" loading="lazy" decoding="async" alt="HGH peptide dose calculator flow: a 10 IU vial plus 1 mL of water gives 10 IU per mL, a 2 IU dose is 0.2 mL and therefore 20 units on a U-100 syringe">
+    <figcaption>The same four numbers every time: vial IU, water volume, prescribed dose, syringe units.</figcaption>
+  </figure>
+
+  <h2>HGH Dose Calculator Example</h2>
+  <p>A 10 IU vial reconstituted with 1 mL of bacteriostatic water, with a prescribed 2 IU dose (an example input):</p>
+  <ul>
+    <li>Concentration: 10 IU ÷ 1 mL = 10 IU/mL.</li>
+    <li>Volume: 2 IU ÷ 10 IU/mL = 0.2 mL.</li>
+    <li>Units: 0.2 mL × 100 = <strong>20 units</strong>.</li>
+    <li>Doses per vial: 10 IU ÷ 2 IU = 5.</li>
+  </ul>
+  <p>With 2 mL of water the same vial is 5 IU/mL, so the same 2 IU dose becomes 0.4 mL or 40 units. More water makes each dose larger on the syringe; it does not change the dose itself.</p>
+
+  <h2>HGH Units Chart by Water Volume</h2>
+  <p>Units on a U-100 syringe for a 1 IU dose, by vial size and water volume. Multiply by your dose in IU.</p>
+
+  <figure>
+    <img src="/assets/img/hgh-units-per-iu.svg" width="800" height="310" loading="lazy" decoding="async" alt="Bar chart of U-100 units for a 1 IU HGH dose: a 5 IU vial gives 20 to 60 units, 10 IU gives 10 to 30, 12 IU gives 8.3 to 25, and 36 IU gives 2.8 to 8.3 units depending on 1, 2 or 3 mL of water">
+    <figcaption>The same 1 IU dose produces very different draws. Larger vials need more water to stay readable.</figcaption>
+  </figure>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Vial</th><th>Approx. mass</th><th>1 mL water</th><th>2 mL water</th><th>3 mL water</th></tr></thead>
+      <tbody>
+        <tr><td>5 IU</td><td>≈ 1.7 mg</td><td>20 units</td><td>40 units</td><td>60 units</td></tr>
+        <tr><td>10 IU</td><td>≈ 3.3 mg</td><td>10 units</td><td>20 units</td><td>30 units</td></tr>
+        <tr><td>12 IU</td><td>≈ 4 mg</td><td>8.3 units</td><td>16.7 units</td><td>25 units</td></tr>
+        <tr><td>15 IU</td><td>≈ 5 mg</td><td>6.7 units</td><td>13.3 units</td><td>20 units</td></tr>
+        <tr><td>24 IU</td><td>≈ 8 mg</td><td>4.2 units</td><td>8.3 units</td><td>12.5 units</td></tr>
+        <tr><td>36 IU</td><td>≈ 12 mg</td><td>2.8 units</td><td>5.6 units</td><td>8.3 units</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>If a dose works out under 2 units, adding more water on the next vial makes it easier to measure. Plan that with the <a href="/peptide-reconstitution-calculator/">peptide reconstitution calculator</a>, and check vial supply with the <a href="/peptide-dosage-calculator/">peptide dosage calculator</a>.</p>
+
+  <h2>Converting HGH IU to mg</h2>
+  <p>Most somatropin labels state a relationship close to 1 mg = 3 IU, which also means 1 IU ≈ 0.333 mg. It is a convention, not a physical constant: the IU is defined by a biological assay, and different products can be calibrated slightly differently. Two well-known examples show how the label is written in practice — a 5.3 mg Genotropin cartridge is labelled 16 IU, and a 12 mg cartridge is labelled 36 IU. Both fit the 3 IU per mg rule closely enough to be useful, but the number you should trust is the one printed on your own product.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>IU on the label</th><th>Approximate mg</th><th>Common form</th></tr></thead>
+      <tbody>
+        <tr><td>4 IU</td><td>≈ 1.3 mg</td><td>small vial or cartridge</td></tr>
+        <tr><td>8 IU</td><td>≈ 2.7 mg</td><td>vial</td></tr>
+        <tr><td>10 IU</td><td>≈ 3.3 mg</td><td>vial</td></tr>
+        <tr><td>16 IU</td><td>≈ 5.3 mg</td><td>cartridge or pen</td></tr>
+        <tr><td>36 IU</td><td>≈ 12 mg</td><td>pen cartridge</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The reverse direction is where mistakes happen. If a prescription is written in mg and the vial is labelled in IU, do not divide by 3 in your head and inject from a syringe built for IU. Either convert with the product's own factor and write the result down, or switch both selectors in the calculator to mg and work entirely in mass. This calculator refuses to mix IU and mg in one calculation precisely because the factor is product-specific.</p>
+
+  <h2>Working Entirely in Milligrams</h2>
+  <p>When the vial and the prescription are both in mg, the IU question disappears and the calculation becomes an ordinary peptide dilution. A 6 mg vial reconstituted with 1.2 mL gives 5 mg/mL. A prescribed 0.6 mg dose is therefore 0.12 mL, or 12 units on a U-100 syringe, and the vial holds 10 such doses. Nothing in that chain needs an IU-per-mg factor, which is why keeping both selectors in mg is safer than converting one side by hand.</p>
+  <p>Microgram prescriptions follow the same route. A 500 mcg dose is 0.5 mg, so with the same 5 mg/mL solution the draw is 0.1 mL, or 10 units. The common failure is to type 500 into a field that expects mg; the calculator then treats it as 500 mg and returns a result that is a thousand times too large. Check the unit selector before you read the units.</p>
+
+  <h2>Handling a 36 IU Vial</h2>
+  <p>Large cartridges are the ones that produce unreadable draws. A 36 IU vial with 1 mL of water gives 36 IU/mL, so a 1 IU dose is 2.8 units — below the range most people can measure reliably on a U-100 barrel. With 3 mL of water the concentration falls to 12 IU/mL and the same 1 IU dose becomes 8.3 units, which is a much better target. That is why high-strength products usually come with a larger diluent volume or as a pen with a fixed, pre-set concentration.</p>
+  <p>Check that the water volume you plan actually fits the vial. A 36 IU (12 mg) lyophilised cake often sits in a small vial, and adding 3 mL may be near the practical limit; adding 2 mL and accepting a 5.6 unit draw can be the better compromise. Whatever you choose, keep the same water volume for every vial of that product so the units for a given dose do not drift.</p>
+
+  <h2>Pens, Cartridges and Fixed Diluent</h2>
+  <p>Many prescription HGH products are supplied as pens or cartridges that already contain the diluent, often around 1.15 mL, and are dialled in IU rather than drawn in syringe units. With a pen there is no water volume to choose and no unit calculation to do: the dial shows the dose directly. Do not extract the contents with a syringe, and do not reuse the numbers from a powder vial, because the concentration inside the pen is set by the manufacturer.</p>
+
+  <figure>
+    <img src="/assets/img/hgh-vial-vs-pen.svg" width="800" height="280" loading="lazy" decoding="async" alt="HGH vial versus pen comparison: a powder vial lets you choose the water volume and calculate syringe units, while a pre-filled pen has a fixed diluent and a dial that already shows IU">
+    <figcaption>Same arithmetic underneath; the difference is who sets the concentration.</figcaption>
+  </figure>
+
+  <h2>Common HGH Dose Mistakes</h2>
+  <ul>
+    <li><strong>Confusing IU with syringe units.</strong> A "10 unit" draw is a volume of 0.1 mL. How much HGH that contains depends on the concentration you mixed, not on the number 10.</li>
+    <li><strong>Assuming 1 mg equals 3 IU for every brand.</strong> The 3 IU per mg rule is a convention. When a product gives its own factor, that factor wins.</li>
+    <li><strong>Shaking the vial.</strong> Somatropin is a protein. Shake it and you create foam and possibly aggregates; swirl or roll instead.</li>
+    <li><strong>Forgetting the water that is already there.</strong> Pens and cartridges contain diluent. Adding your own volume on top of that changes the concentration.</li>
+    <li><strong>Using a U-40 syringe.</strong> U-40 barrels carry 40 units per mL, so the same volume reads 100 units on a U-100 barrel and 40 units on a U-40 barrel. The calculator assumes U-100.</li>
+    <li><strong>Reusing the old unit count with a new vial.</strong> A change of vial size or water volume changes the units for the same dose. Recalculate every time.</li>
+  </ul>
+
+  <h2>Reconstituting HGH</h2>
+  <p>Follow the diluent and volume in the product's own instructions. Where bacteriostatic water is specified, add it slowly down the inside wall of the vial and swirl or roll the vial; do not shake it, because foaming can denature the protein. Most reconstituted somatropin is stored refrigerated at 2–8 °C, protected from light, and used within the period stated on the label — commonly up to about 28 days for reconstituted product, but the label for your specific product is the authority. Never freeze a reconstituted solution.</p>
+  <p>Some products come as ready-to-use pens with their own dial, in which case you do not draw units from a vial at all — use the pen as labelled. The <a href="/bac-water-calculator/">BAC water calculator</a> explains the concentration and dilution side of mixing.</p>
+
+  <h2>HGH Safety Notes</h2>
+  <ul>
+    <li><strong>HGH is a prescription medicine.</strong> In most countries somatropin is approved only for specific diagnosed conditions, and it is not a general-purpose anti-ageing or bodybuilding product.</li>
+    <li><strong>The calculator does not choose doses.</strong> Dose decisions belong to the prescriber who knows the diagnosis, the product and the monitoring plan.</li>
+    <li><strong>Units are not IU.</strong> A syringe unit is a volume mark; the IU in that volume depends on the concentration you mixed.</li>
+    <li><strong>Recheck after every new vial.</strong> A different vial size or water volume changes the units for the same dose.</li>
+  </ul>
+
+  <section id="faq">
+    <h2>HGH Peptide Dose Calculator FAQ</h2>
+    <h3>How many units is 2 IU of HGH?</h3>
+    <p>It depends on the concentration. A 10 IU vial with 1 mL of water is 10 IU/mL, so 2 IU is 0.2 mL or 20 units. The same vial with 2 mL of water makes 2 IU equal to 40 units.</p>
+    <h3>How do I convert HGH IU to mg?</h3>
+    <p>You need the IU-per-mg factor from the product's own label; most somatropin labels equate 1 mg with about 3 IU, but that figure is product-specific. This calculator blocks mixing IU and mg for that reason.</p>
+    <h3>Is an HGH dose written in IU or mg?</h3>
+    <p>Most somatropin products are labelled and prescribed in IU. If your prescription is in mg, switch both selectors to mg and the math is unchanged.</p>
+    <h3>Is this the same as a peptide calculator?</h3>
+    <p>Yes. HGH uses the same vial, water and dose arithmetic as any peptide. The main <a href="/">peptide calculator</a> runs the identical formula without HGH wording.</p>
+  </section>
+
+  <p class="note">This HGH peptide dose calculator performs arithmetic only and is for educational purposes. It is not medical advice and does not recommend any product or dose. HGH is a prescription medicine; follow the directions of a licensed healthcare professional and the product labelling. Read our <a href="/disclaimer/">medical disclaimer</a> and <a href="/about/">how the formulas are checked</a>.</p>
+</article>

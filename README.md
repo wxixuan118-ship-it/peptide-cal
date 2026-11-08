@@ -12,9 +12,12 @@ Static site for [peptidecalculatorpro.org](https://peptidecalculatorpro.org): fr
 | Peptide Concentration Calculator | `/peptide-concentration-calculator/` |
 | Molarity Calculator | `/molarity-calculator/` |
 | BAC Water Calculator | `/bac-water-calculator/` |
+| Peptide Property Calculator | `/peptide-property-calculator/` |
 | Peptide Molecular Weight Calculator | `/peptide-molecular-weight-calculator/` |
 | Peptide Net Charge Calculator | `/peptide-net-charge-calculator/` |
 | Retatrutide Peptide Calculator | `/retatrutide-peptide-calculator/` |
+| HGH Peptide Dose Calculator | `/hgh-peptide-dose-calculator/` |
+| KLOW Peptide Calculator | `/klow-peptide-calculator/` |
 | TDEE Calculator | `/tdee-calculator/` |
 | Blog index | `/blog/` |
 | BAC Water guide | `/blog/bac-water/` |

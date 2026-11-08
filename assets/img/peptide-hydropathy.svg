@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="300" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="42" font-size="22" font-weight="700" fill="#15232b">GRAVY puts a peptide on a hydrophilic–hydrophobic scale</text>
+  <text x="40" y="68" font-size="15" fill="#546570">Kyte-Doolittle average: negative dissolves in water more easily, positive may need an organic solvent.</text>
+
+  <defs>
+    <linearGradient id="grav" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#1f6f8b"/>
+      <stop offset="0.5" stop-color="#7fb3ae"/>
+      <stop offset="1" stop-color="#c1691f"/>
+    </linearGradient>
+  </defs>
+  <rect x="70" y="108" width="660" height="26" rx="13" fill="url(#grav)"/>
+  <g font-size="12" fill="#546570" text-anchor="middle">
+    <text x="70" y="158">−4.5</text>
+    <text x="180" y="158">−3</text>
+    <text x="290" y="158">−1.5</text>
+    <text x="400" y="158">0</text>
+    <text x="510" y="158">+1.5</text>
+    <text x="620" y="158">+3</text>
+    <text x="730" y="158">+4.5</text>
+  </g>
+  <text x="70" y="96" font-size="13" fill="#546570">hydrophilic</text>
+  <text x="668" y="96" font-size="13" fill="#546570">hydrophobic</text>
+
+  <g stroke="#15232b" stroke-width="2">
+    <line x1="217" y1="134" x2="217" y2="186"/>
+    <line x1="349" y1="134" x2="349" y2="200"/>
+    <line x1="369" y1="134" x2="369" y2="186"/>
+  </g>
+  <circle cx="217" cy="134" r="5" fill="#15232b"/>
+  <circle cx="349" cy="134" r="5" fill="#15232b"/>
+  <circle cx="369" cy="134" r="5" fill="#15232b"/>
+
+  <text x="217" y="208" font-size="13" font-weight="700" fill="#15232b" text-anchor="middle">GHK</text>
+  <text x="217" y="226" font-size="12" fill="#546570" text-anchor="middle">−2.50</text>
+  <text x="352" y="222" font-size="13" font-weight="700" fill="#15232b">BPC-157</text>
+  <text x="352" y="240" font-size="12" fill="#546570">−0.69</text>
+  <text x="372" y="208" font-size="13" font-weight="700" fill="#15232b">KPV</text>
+  <text x="372" y="226" font-size="12" fill="#546570" text-anchor="middle">−0.43</text>
+
+  <text x="40" y="278" font-size="13" fill="#546570">A single average hides sequence detail: a peptide can be neutral overall yet have a hydrophobic tail that resists water.</text>
+</svg>

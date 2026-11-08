@@ -33,9 +33,12 @@ CALCULATOR_NAV = [
     ("/mg-to-ml-calculator/", "mg to mL Calculator"),
     ("/molarity-calculator/", "Molarity Calculator"),
     ("/bac-water-calculator/", "BAC Water Calculator"),
+    ("/peptide-property-calculator/", "Peptide Property Calculator"),
     ("/peptide-molecular-weight-calculator/", "Molecular Weight Calculator"),
     ("/peptide-net-charge-calculator/", "Net Charge Calculator"),
     ("/retatrutide-peptide-calculator/", "Retatrutide"),
+    ("/hgh-peptide-dose-calculator/", "HGH"),
+    ("/klow-peptide-calculator/", "KLOW"),
     ("/tdee-calculator/", "TDEE"),
 ]
 
@@ -55,6 +58,7 @@ PAGES = [
         "crumb": None,
         "app": "Peptide Calculator",
         "priority": "1.0",
+        "updated": "2026-11-08",
     },
     {
         "path": "/peptide-reconstitution-calculator/",
@@ -65,16 +69,18 @@ PAGES = [
         "crumb": "Peptide Reconstitution Calculator",
         "app": "Peptide Reconstitution Calculator",
         "priority": "0.9",
+        "updated": "2026-11-08",
     },
     {
         "path": "/peptide-dosage-calculator/",
         "src": "dosage.html",
-        "title": "Peptide Dosage Calculator: Dose, Units & Vial Supply",
-        "description": ("Peptide dosage calculator: turn any mcg or mg dose into syringe units and mL, "
-                        "then see doses per vial, how long a vial lasts and monthly needs."),
+        "title": "Peptide Dosage Calculator in Units: mcg, mg & Vial Supply",
+        "description": ("Peptide dosage calculator in units: turn any mcg or mg dose into syringe units "
+                        "and mL, then see doses per vial, how long a vial lasts and monthly needs."),
         "crumb": "Peptide Dosage Calculator",
         "app": "Peptide Dosage Calculator",
         "priority": "0.9",
+        "updated": "2026-11-08",
     },
     {
         "path": "/peptide-blend-calculator/",
@@ -138,6 +144,18 @@ PAGES = [
         "priority": "0.8",
     },
     {
+        "path": "/peptide-property-calculator/",
+        "src": "peptide-property.html",
+        "title": "Peptide Property Calculator: MW, pI & Net Charge",
+        "description": ("Peptide property calculator: paste a sequence to get average and monoisotopic "
+                        "molecular weight, length, net charge at any pH, isoelectric point and GRAVY."),
+        "crumb": "Peptide Property Calculator",
+        "app": "Peptide Property Calculator",
+        "category": "ScientificApplication",
+        "priority": "0.8",
+        "updated": "2026-11-08",
+    },
+    {
         "path": "/peptide-molecular-weight-calculator/",
         "src": "molecular-weight.html",
         "title": "Peptide Molecular Weight Calculator: MW, Mass & m/z",
@@ -168,6 +186,29 @@ PAGES = [
         "crumb": "Retatrutide Peptide Calculator",
         "app": "Retatrutide Peptide Calculator",
         "priority": "0.8",
+        "updated": "2026-11-08",
+    },
+    {
+        "path": "/hgh-peptide-dose-calculator/",
+        "src": "hgh.html",
+        "title": "HGH Peptide Dose Calculator: IU to Syringe Units",
+        "description": ("HGH peptide dose calculator: turn a somatropin vial in IU, the bacteriostatic water "
+                        "added and a prescribed dose into U-100 syringe units and mL. Math only."),
+        "crumb": "HGH Peptide Dose Calculator",
+        "app": "HGH Peptide Dose Calculator",
+        "priority": "0.8",
+        "updated": "2026-11-08",
+    },
+    {
+        "path": "/klow-peptide-calculator/",
+        "src": "klow.html",
+        "title": "KLOW Peptide Calculator: 80 mg Blend Units & Doses",
+        "description": ("KLOW peptide calculator for the 80 mg four-peptide blend: enter GHK-Cu, BPC-157, "
+                        "TB-500 and KPV, then get the syringe units and what each draw delivers."),
+        "crumb": "KLOW Peptide Calculator",
+        "app": "KLOW Peptide Calculator",
+        "priority": "0.8",
+        "updated": "2026-11-08",
     },
     {
         "path": "/tdee-calculator/",
@@ -286,9 +327,12 @@ TEMPLATE = """<!doctype html>
       <a href="/mg-to-ml-calculator/">mg to mL Calculator</a>
       <a href="/molarity-calculator/">Molarity Calculator</a>
       <a href="/bac-water-calculator/">BAC Water Calculator</a>
+      <a href="/peptide-property-calculator/">Peptide Property Calculator</a>
       <a href="/peptide-molecular-weight-calculator/">Peptide Molecular Weight Calculator</a>
       <a href="/peptide-net-charge-calculator/">Peptide Net Charge Calculator</a>
       <a href="/retatrutide-peptide-calculator/">Retatrutide Peptide Calculator</a>
+      <a href="/hgh-peptide-dose-calculator/">HGH Peptide Dose Calculator</a>
+      <a href="/klow-peptide-calculator/">KLOW Peptide Calculator</a>
       <a href="/tdee-calculator/">TDEE Calculator</a>
       <a href="/blog/">Blog</a>
       <a href="/blog/bac-water/">BAC Water Guide</a>

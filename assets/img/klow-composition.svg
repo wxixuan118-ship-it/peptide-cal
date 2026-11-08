@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="300" rx="16" fill="#f3f8f8"/>
+  <text x="40" y="42" font-size="22" font-weight="700" fill="#15232b">An 80 mg KLOW vial is 5 : 1 : 1 : 1 by mass</text>
+  <text x="40" y="68" font-size="15" fill="#546570">Standard label split: GHK-Cu 50 mg, BPC-157 10 mg, TB-500 10 mg, KPV 10 mg.</text>
+
+  <g>
+    <rect x="60" y="88" width="425" height="42" rx="6" fill="#0b7a75"/>
+    <rect x="485" y="88" width="85" height="42" fill="#2f9e95"/>
+    <rect x="570" y="88" width="85" height="42" fill="#67b8b1"/>
+    <rect x="655" y="88" width="85" height="42" rx="6" fill="#a8cfcb"/>
+    <text x="78" y="115" font-size="15" font-weight="700" fill="#ffffff">GHK-Cu 50 mg</text>
+    <text x="500" y="115" font-size="13" font-weight="700" fill="#ffffff">BPC 10</text>
+    <text x="585" y="115" font-size="13" font-weight="700" fill="#ffffff">TB-500 10</text>
+    <text x="670" y="115" font-size="13" font-weight="700" fill="#15232b">KPV 10</text>
+  </g>
+  <text x="60" y="152" font-size="13" fill="#546570">62.5% of the powder</text>
+  <text x="485" y="152" font-size="13" fill="#546570">12.5%</text>
+  <text x="570" y="152" font-size="13" fill="#546570">12.5%</text>
+  <text x="655" y="152" font-size="13" fill="#546570">12.5%</text>
+
+  <g font-size="14" fill="#15232b">
+    <rect x="40" y="176" width="172" height="86" rx="10" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="56" y="200" font-weight="700">GHK-Cu</text>
+    <text x="56" y="224" fill="#546570">MW ≈ 401.9 Da</text>
+    <text x="56" y="246" fill="#546570">copper complex</text>
+
+    <rect x="224" y="176" width="172" height="86" rx="10" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="240" y="200" font-weight="700">BPC-157</text>
+    <text x="240" y="224" fill="#546570">MW ≈ 1419.5 Da</text>
+    <text x="240" y="246" fill="#546570">15 residues</text>
+
+    <rect x="408" y="176" width="172" height="86" rx="10" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="424" y="200" font-weight="700">TB-500</text>
+    <text x="424" y="224" fill="#546570">MW ≈ 889 Da</text>
+    <text x="424" y="246" fill="#546570">7 residues</text>
+
+    <rect x="592" y="176" width="168" height="86" rx="10" fill="#ffffff" stroke="#c5d2d7"/>
+    <text x="608" y="200" font-weight="700">KPV</text>
+    <text x="608" y="224" fill="#546570">MW ≈ 342.4 Da</text>
+    <text x="608" y="246" fill="#546570">3 residues</text>
+  </g>
+</svg>
